@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "title": "Стікерпак «Коркóза»",
+        "author": "від Nataartada",
+        "price": "50",
+        "image": "item/item1.png",
+        "description": "Це стікерпак з унікальними ілюстраціями.",
+        "material": "Папір"
+    },
+    {
+        "id": "2",
+        "title": "Футболка «Коркóза»",
+        "author": "від Nataart",
+        "price": "250",
+        "image": "item/item2.png",
+        "description": "Футболка з високоякісного матеріалу.",
+        "material": "Бавовна"
+    },
+    {
+        "id": "3",
+        "title": "Кепка «Коркóза»",
+        "author": "від Nataart",
+        "price": "150",
+        "image": "item/item3.png",
+        "description": "Стильна кепка для будь-якої погоди.",
+        "material": "Поліестер"
+    },
+    {
+        "id": "4",
+        "title": "Чашка «Коркóза»",
+        "author": "від Nataart",
+        "price": "100",
+        "image": "item/item4.png",
+        "description": "Чашка з оригінальним дизайном.",
+        "material": "Кераміка"
+    }
+]

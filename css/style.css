@@ -22,7 +22,9 @@ body, html {
 }
 
 .box {
-    height: 100%;
+  
+  min-height: 700px;
+  max-height: 
     width: 100vw;
     display: flex;
     align-items: center;
@@ -30,6 +32,12 @@ body, html {
     flex-direction: column;
     padding: 20px;
 }
+
+#modal-image{
+  width: 100%;
+}
+
+
 
 .logobox {
 

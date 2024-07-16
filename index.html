@@ -23,55 +23,45 @@
     <link rel="icon" href="https://i.imgur.com/Uh17mda.png" type="image/x-icon">
 </head>
 <body>
-  
-
     <div class="box">
-        
-    <div class="logobox">
-        <img class="logo" src="img/logo.png" alt="logo">
-    </div>
+        <div class="logobox">
+            <img class="logo" src="img/logo.png" alt="logo">
+        </div>
         <div class="tabs">
             <button class="tablinks" onclick="openTab(event, 'Shop')">Магазин</button>
             <button class="tablinks" onclick="openTab(event, 'Delivery')">Інформація про доставку</button>
         </div>
-
         
         <div id="Shop" class="tabcontent">
             <div class="items_box">
                 <div id="animation-container" class="items">
-                    <div class="item" id="1">
-                        <img class="item_img" src="item/item1.png" alt="1">
-                        <p class="title">Стікерпак «Коркóза»</p>
-                        <p class="author">від Nataartada</p>
-                        <p class="price">50 грн</p>
-                        <button class="addtocart" data-id="1" data-title="Стікерпак «Коркóза»" data-price="50">Додати до кошика</button>
-                    </div>
+                  
                 </div>
             </div>
         </div>
 
         <div id="Delivery" class="tabcontent">
             <div class="deliverycont">
-            <h2>Інформація про доставку</h2>
-            <p>Відправляємо будь-куди, де є Нова Пошта, навіть в інші країни (до відділення або кур'єром як вам буде зручно). Доставлення здійснюється з Івано-Франківська вихідними. Точну ціну доставлення ви можете дізнатись на сайті Нової Пошти (це приблизно 60-70 грн якщо ви в Україні).</p>
-            <p>Оплата може бути здійснена наступним способом:</p>
-            <li>Переказ на картку (ПриватБанк або monobank)</li>
-        </div>
+                <h2>Інформація про доставку</h2>
+                <p>Відправляємо будь-куди, де є Нова Пошта, навіть в інші країни (до відділення або кур'єром як вам буде зручно). Доставлення здійснюється з Івано-Франківська вихідними. Точну ціну доставлення ви можете дізнатись на сайті Нової Пошти (це приблизно 60-70 грн якщо ви в Україні).</p>
+                <p>Оплата може бути здійснена наступним способом:</p>
+                <li>Переказ на картку (ПриватБанк або monobank)</li>
+            </div>
         </div>
     </div>
 
     <div class="footer">
         <div class="footertext">
-          <div class="infotext socialbtns">
-            <a href="https://www.youtube.com/@kork0za" class="socialbtn"><i class="fa fa-youtube-play"></i></a>
-            <a href="https://twitch.tv/kork0za" class="socialbtn"><i class="fa fa-twitch"></i></a>
-            <a href="https://x.com/kork0za" class="socialbtn"><i class="fa fa-twitter"></i></a>
-        </div>
-          <div class="infotext">© 2024 Коркóза</div>
-          <div class="infotext">Створив <a href="https://megatrex4.netlify.app/">MEGATREX4</a> з <span class="heart">❤</span> до вас</div>
+            <div class="infotext socialbtns">
+                <a href="https://www.youtube.com/@kork0za" class="socialbtn"><i class="fa fa-youtube-play"></i></a>
+                <a href="https://twitch.tv/kork0za" class="socialbtn"><i class="fa fa-twitch"></i></a>
+                <a href="https://x.com/kork0za" class="socialbtn"><i class="fa fa-twitter"></i></a>
+            </div>
+            <div class="infotext">© 2024 Коркóза</div>
+            <div class="infotext">Створив <a href="https://megatrex4.netlify.app/">MEGATREX4</a> з <span class="heart">❤</span> до вас</div>
         </div>
     </div>
-
+   
     
     <button id="view-cart"><i class="fa fa-shopping-cart"></i></button>
     <div id="cart-modal" class="modal">
@@ -100,16 +90,29 @@
                 <input type="text" id="post-office" name="post-office" required><br>
                 <label for="communication-method">Контакт:</label>
                 <input type="text" id="communication-method" name="communication-method" required><br>
-                <label for="items">Промокод:</label>
+                <label for="promocode">Промокод:</label>
                 <input type="text" id="promocode" name="promocode"><br><br>
-                <br><br>
                 <button type="submit">Оформити замовлення</button>
             </form>
         </div>
     </div>
+    
+    
+    <div id="item-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title"></h2>
+        <img id="modal-image" src="" alt="">
+        <p id="modal-description"></p>
+        <p id="modal-material"></p>
+        <p id="modal-price"></p>
+    </div>
+</div>
+    
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/json-loader.js"></script>
     <script>
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
