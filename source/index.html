@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:locale" content="uk_UA">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Korkoza Shop</title>
+    <meta property="og:title" content="Korkoza Shop">
+    <meta property="og:site_name" content="Korkoza Shop">
+    <meta property="og:url" content="https://kork0za-shop.netlify.app/">
+    <meta property="og:description" content="Ласкаво просимо до офіційного магазину мерчу вашого улюбленого блогера та стримера – Коркóза! Тут ви знайдете унікальні та стильні товари, які допоможуть вам стати частиною нашої неймовірної спільноти.">
+    <meta property="og:type" content="product">
+    <meta property="product:brand" content="Kork0za">
+    <meta property="product:availability" content="in stock">
+    <meta property="product:condition" content="new">
+    <meta property="product:price:amount" content="50">
+    <meta property="product:price:currency" content="UAH">
+    <meta property="product:retailer_item_id" content="1">
+    <meta propert="keywords" content="@kork0za,kork0za,korkoza,portal,yakuza,fortnite,nikattica,call of duty,проходження ігор,запис стрімів,українською,стрім українською">
+    <meta property="og:image" content="https://i.imgur.com/z78hs7o.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="https://i.imgur.com/Uh17mda.png" type="image/x-icon">
+</head>
+<body>
+
+    <div class="box">
+        
+    <div class="logobox">
+        <img class="logo" src="img/logo.png" alt="logo">
+    </div>
+        <div class="tabs">
+            <button class="tablinks" onclick="openTab(event, 'Shop')">Магазин</button>
+            <button class="tablinks" onclick="openTab(event, 'Delivery')">Інформація про доставку</button>
+        </div>
+
+        
+        <div id="Shop" class="tabcontent">
+            <div class="items_box">
+                <div id="animation-container" class="items">
+                    <div class="item" id="1">
+                        <img class="item_img" src="item/item1.png" alt="1">
+                        <p class="title">Стікерпак «Коркóза»</p>
+                        <p class="author">від Nataartada</p>
+                        <p class="price">50 грн</p>
+                        <button class="addtocart" data-id="1" data-title="Стікерпак «Коркóза»" data-price="50">Додати до кошика</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="Delivery" class="tabcontent">
+            <div class="deliverycont">
+            <h2>Інформація про доставку</h2>
+            <p>Відправляємо будь-куди, де є Нова Пошта, навіть в інші країни (до відділення або кур'єром як вам буде зручно). Доставлення здійснюється з Івано-Франківська вихідними. Точну ціну доставлення ви можете дізнатись на сайті Нової Пошти (це приблизно 60-70 грн якщо ви в Україні).</p>
+            <p>Оплата може бути здійснена наступним способом:</p>
+            <li>Переказ на картку (ПриватБанк або monobank)</li>
+        </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footertext">
+          <div class="infotext socialbtns">
+            <a href="https://www.youtube.com/@kork0za" class="socialbtn"><i class="fa fa-youtube-play"></i></a>
+            <a href="https://twitch.tv/kork0za" class="socialbtn"><i class="fa fa-twitch"></i></a>
+            <a href="https://x.com/kork0za" class="socialbtn"><i class="fa fa-twitter"></i></a>
+        </div>
+          <div class="infotext">© 2024 Коркóза</div>
+          <div class="infotext">Створив <a href="https://megatrex4.netlify.app/">MEGATREX4</a> з <span class="heart">❤</span> до вас</div>
+        </div>
+    </div>
+
+    
+    <button id="view-cart"><i class="fa fa-shopping-cart"></i></button>
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <p class="postinfo"></p>
+            <span class="close">&times;</span>
+            <h2>Ваш кошик</h2>
+            <ul id="cart-items"></ul>
+            <p id="total-price">Загальна сума: 0 грн</p>
+            <button class="btn" id="checkout">Оформити замовлення</button>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Оформлення замовлення</h2>
+            <form id="order-form">
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="surname">Прізвище:</label>
+                <input type="text" id="surname" name="surname" required><br>
+                <label for="phone">Номер телефону:</label>
+                <input type="text" id="phone" name="phone" required><br>
+                <label for="post-office">Відділення Нової Пошти:</label>
+                <input type="text" id="post-office" name="post-office" required><br>
+                <label for="communication-method">Контакт:</label>
+                <input type="text" id="communication-method" name="communication-method" required><br>
+                <label for="items">Промокод:</label>
+                <input type="text" id="promocode" name="promocode"><br><br>
+                <br><br>
+                <button type="submit">Оформити замовлення</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "flex";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementsByClassName('tablinks')[0].click();
+        });
+    </script>
+</body>
+</html>
