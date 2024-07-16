@@ -115,8 +115,8 @@ $(document).ready(function() {
       $('#modal-title').text(title);
       $('#modal-header').text(`Опис`);
       $('#modal-description').text(`${description}`);
-      $('#modal-material').text(`Material: ${material}`);
-      $('#modal-price').text(`Price: ${price} грн`);
+      $('#modal-material').text(`${material}`);
+      $('#modal-price').text(`Ціна: ${price} грн`);
       $('#modal-image').attr('src', image);
   
       // Set data attributes for the Add to cart button

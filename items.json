@@ -6,15 +6,6 @@
         "price": "50",
         "image": "item/item1.png",
         "description": "Це стікерпак з унікальними ілюстраціями.",
-        "material": "Папір"
-    },
-    {
-        "id": "2",
-        "title": "Фуболка «Коркóза»",
-        "author": "від Nataartada",
-        "price": "500",
-        "image": "item/item1.png",
-        "description": "Це стікерпак з унікальними ілюстраціями.",
-        "material": "Папір"
+        "material": "Папір А3"
     }
 ]
