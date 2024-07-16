@@ -3,17 +3,19 @@ $(document).ready(function() {
   loadCartFromLocalStorage();
 
   function updateCart() {
+    // Function to update the cart display
     $('#cart-items').empty();
     let totalPrice = 0;
     cart.forEach(item => {
       $('#cart-items').append(`
-                <li class="cart-item">
-                    <div style="background-image: url(${item.image});" class="cart-item-img"></div>
-                    <div class="cart-item-info">${item.title} - ${item.price} грн 
-                    <button class="decrease" data-id="${item.id}">-</button>
-                    <span>${item.quantity}</span>
-                    <button class="increase" data-id="${item.id}">+</button>
-                </div></li>`);
+        <li class="cart-item">
+          <div style="background-image: url(${item.image});" class="cart-item-img"></div>
+          <div class="cart-item-info">${item.title} - ${item.price} грн 
+            <button class="decrease" data-id="${item.id}">-</button>
+            <span>${item.quantity}</span>
+            <button class="increase" data-id="${item.id}">+</button>
+          </div>
+        </li>`);
       totalPrice += item.price * item.quantity;
     });
     $('#total-price').text(`Загальна сума: ${totalPrice} грн`);
@@ -63,27 +65,44 @@ $(document).ready(function() {
       animateImageToCart(image);
     });
 
-    $(document).on('click', '.increase', function() {
+
+    $('.modal-addtocart').click(function() {
       const id = $(this).data('id');
-      const item = cart.find(cartItem => cartItem.id === id);
-      if (item) {
-        item.quantity++;
-      }
-      updateCart();
+      const title = $(this).data('title');
+      const price = parseFloat($(this).data('price'));
+      const description = $(this).data('description');
+      const quantity = parseInt($('#modal-quantity').val()); // Retrieve quantity from input
+      const image = $('#modal-image').attr('src');
+  
+      // Create item object with quantity
+      const item = { id, title, price, description, quantity, image };
+      addItemToCart(item); // Add item to cart
+      $('#item-modal').hide(); // Hide modal after adding to cart
+      animateImageToCart(image); // Optional: Animation effect
     });
 
-    $(document).on('click', '.decrease', function() {
-      const id = $(this).data('id');
-      const item = cart.find(cartItem => cartItem.id === id);
-      if (item) {
-        item.quantity--;
-        if (item.quantity === 0) {
-          cart = cart.filter(cartItem => cartItem.id !== id);
-        }
+    // Function to update cart when increasing quantity
+  $(document).on('click', '.increase', function() {
+    const id = $(this).data('id');
+    const item = cart.find(cartItem => cartItem.id === id);
+    if (item) {
+      item.quantity++;
+      updateCart();
+    }
+  });
+
+  // Function to update cart when decreasing quantity
+  $(document).on('click', '.decrease', function() {
+    const id = $(this).data('id');
+    const item = cart.find(cartItem => cartItem.id === id);
+    if (item) {
+      item.quantity--;
+      if (item.quantity === 0) {
+        cart = cart.filter(cartItem => cartItem.id !== id);
       }
       updateCart();
-      saveCartToLocalStorage();
-    });
+    }
+  });
 
     $(document).on('click', '.item_img', function() {
       const id = $(this).data('id');
@@ -94,16 +113,26 @@ $(document).ready(function() {
       const image = $(this).attr('src');
       
       $('#modal-title').text(title);
-      $('#modal-description').text(`Description: ${description}`);
+      $('#modal-header').text(`Опис`);
+      $('#modal-description').text(`${description}`);
       $('#modal-material').text(`Material: ${material}`);
       $('#modal-price').text(`Price: ${price} грн`);
       $('#modal-image').attr('src', image);
+  
+      // Set data attributes for the Add to cart button
+      $('.modal-addtocart').data('id', id);
+      $('.modal-addtocart').data('title', title);
+      $('.modal-addtocart').data('price', price);
+      $('.modal-addtocart').data('description', description);
       
-      $('#item-modal').show();
-    });
+      $('#item-modal').css('display', 'flex');
+  });
 
+
+
+  
     $('.close').click(function() {
-      $(this).closest('.modal').hide();
+      $(this).closest('.modal').css('display', 'none');
     });
   }
 
@@ -141,7 +170,7 @@ $(document).ready(function() {
   loadItemsFromJson();
 
   $('#view-cart').click(function() {
-    $('#cart-modal').show();
+    $('#cart-modal').css('display', 'flex');
   });
 
   $('.close').click(function() {
@@ -153,7 +182,7 @@ $(document).ready(function() {
       alert('Ваш кошик порожній. Будь ласка, додайте товари, щоб перейти до оформлення замовлення.');
       return;
     }
-    $('#checkout-modal').show();
+    $('#checkout-modal').css('display', 'flex');
   });
 
   $('#order-form').submit(async function(event) {
