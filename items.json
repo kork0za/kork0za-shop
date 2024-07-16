@@ -13,7 +13,7 @@
         "title": "Футболка «Коркóза»",
         "author": "від Nataart",
         "price": "250",
-        "image": "item/item2.png",
+        "image": "item/item1.png",
         "description": "Футболка з високоякісного матеріалу.",
         "material": "Бавовна"
     },
@@ -22,7 +22,7 @@
         "title": "Кепка «Коркóза»",
         "author": "від Nataart",
         "price": "150",
-        "image": "item/item3.png",
+        "image": "item/item1.png",
         "description": "Стильна кепка для будь-якої погоди.",
         "material": "Поліестер"
     },
@@ -31,7 +31,7 @@
         "title": "Чашка «Коркóза»",
         "author": "від Nataart",
         "price": "100",
-        "image": "item/item4.png",
+        "image": "item/item1.png",
         "description": "Чашка з оригінальним дизайном.",
         "material": "Кераміка"
     }
