@@ -45,7 +45,10 @@ body, html {
 }
 
 .logo {
-    max-width: 90%;
+    min-width: 400px;
+    width: 400px;
+    max-width: 70%;
+    border-radius: 25px;
 }
 
 .items_box {
