@@ -203,11 +203,13 @@ $(document).ready(function() {
       }
     });
 
+    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+
     const webhookBody = {
       content: '@everyone',
       embeds: [{
         title: 'Нове замовлення',
-        description: `**Ім'я:** ${firstName} ${lastName}\n**Телефон:** ${phone}\n**Відділення Нової Пошти:** ${postOffice}\n**Контакт:** ${communicationMethod}\n**Замовили:** ${itemsText}\n**Промокод:** ${promocode}`,
+        description: `**Ім'я:** ${firstName} ${lastName}\n**Телефон:** ${phone}\n**Відділення Нової Пошти:** ${postOffice}\n**Контакт:** ${communicationMethod}\n**Замовили:** ${itemsText}\n**Промокод:** ${promocode}\n\n\n**Загальна сума(Без промокода):** ${totalPrice} грн`,
         color: 16777215,
         timestamp: new Date().toISOString()
       }]
