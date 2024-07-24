@@ -205,7 +205,12 @@ $(document).ready(function() {
 
     const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
 
+    //generate random UUID
+    const uuid = crypto.randomUUID();
+
+
     const webhookBody = {
+      username: "ЗАМОВЛЕННЯ " + uuid,
       content: '@everyone',
       embeds: [{
         title: 'Нове замовлення',
