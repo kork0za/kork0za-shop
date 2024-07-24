@@ -412,6 +412,11 @@ a:hover {
         margin-top: 10px;
         max-width: 100%!important;
     }
+    .logo{
+        max-width: 100%!important;
+        width: 100%!important;
+        min-width: 100%!important;
+    }
 }
 
 
