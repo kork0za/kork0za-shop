@@ -2,6 +2,32 @@ $(document).ready(function() {
   let cart = [];
   loadCartFromLocalStorage();
 
+  let cityData = [];
+
+  function loadCityData() {
+    $.getJSON("city.json", function(data) {
+      cityData = data;
+      console.log(cityData); // Check if data is loaded correctly
+    });
+  }
+  
+
+$(document).ready(function() {
+  loadCityData();
+});
+
+// Initialize autocomplete for the city input field
+$('#city').autocomplete({
+  source: function(request, response) {
+    // Filter cityData to match the user's input
+    const matches = cityData.filter(city => 
+      city.toLowerCase().includes(request.term.toLowerCase())
+    );
+    response(matches);
+  }
+});
+
+
   function updateCart() {
     $('#cart-items').empty();
     let totalPrice = 0;
@@ -24,7 +50,7 @@ $(document).ready(function() {
     if (promoCode === 'korkoza20' && isPromoCodeValid()) {
         let discount = 0.20;
         const discountedPrice = totalPrice - (totalPrice * discount);
-        $('#total-price').text(`Загальна сума (зі знижкою): ${discountedPrice.toFixed(2)} грн`);
+        $('#total-price').text(`Загальна сума: ${discountedPrice.toFixed(2)} грн`);
     } else {
         $('#total-price').text(`Загальна сума: ${totalPrice.toFixed(2)} грн`);
     }
@@ -55,6 +81,7 @@ $(document).ready(function() {
     }
     
     $('#total-price-modal').text(`${totalPrice.toFixed(2)} грн`);
+    updateCart();
   }
 
   
@@ -68,6 +95,7 @@ $(document).ready(function() {
     } else {
         $('#total-price').text(`Загальна сума: ${cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)} грн`);
         $('#total-price-modal').text(`${cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)} грн`);
+        updateCart();
     }
   }
 
@@ -110,6 +138,7 @@ $(document).ready(function() {
       const item = { id, title, price, image };
       addItemToCart(item);
       animateImageToCart(image);
+      updateCart();
     });
   
 
@@ -182,6 +211,7 @@ $(document).ready(function() {
     $('#modal-author-link').attr('href', authorLink);
   
     $('#item-modal').css('display', 'flex');
+    updateCart();
   });
   
 
@@ -205,6 +235,7 @@ function loadItemsFromJson() {
         `);
       });
       attachEventListeners();
+      updateCart();
     });
   }
 }
@@ -216,8 +247,6 @@ function generateUUID() {
     return v.toString(16);
   });
 }
-
-
 
 
 
@@ -237,10 +266,12 @@ function generateUUID() {
 
   $('#view-cart').click(function() {
     $('#cart-modal').css('display', 'flex');
+    updateCart();
   });
 
   $('.close').click(function() {
     $(this).closest('.modal').hide();
+    updateCart();
   });
 
   $('#checkout').click(function() {
@@ -249,7 +280,18 @@ function generateUUID() {
       return;
     }
     $('#checkout-modal').css('display', 'flex');
+    updateCart();
+    updateCheckoutModalTotalPrice();
   });
+
+
+  function showOrderConfirmation() {
+    $('#checkout-modal').css('display', 'none');
+    $('#order-confirmation-modal').css('display', 'flex');
+    $('#cart-modal').css('display', 'none');
+    updateCart();
+  }
+
 
   $('#order-form').submit(async function(event) {
     event.preventDefault();
@@ -257,6 +299,8 @@ function generateUUID() {
     const firstName = $('#name').val().trim();
     const lastName = $('#surname').val().trim();
     const phone = $('#phone').val().trim();
+    const city = $('#city').val().trim();
+    const address = $('#address').val().trim();
     const postOffice = $('#post-office').val().trim();
     const communicationMethod = $('#communication-method').val().trim();
     const promocode = $('#promocode').val().trim();
@@ -266,7 +310,7 @@ function generateUUID() {
       alert('Please fill out all required fields.');
       return;
     }
-
+  
     let itemsText = '';
     cart.forEach((item, index) => {
       itemsText += `${item.title} x${item.quantity}`;
@@ -281,18 +325,18 @@ function generateUUID() {
     }
   
     let UUID = generateUUID();
-
+  
     const webhookBody = {
       username: "ЗАМОВЛЕННЯ",
       content: '@everyone',
       embeds: [{
         title: 'Нове замовлення',
-        description: `**Ім'я:** ${firstName} ${lastName}\n**Телефон:** ${phone}\n**Відділення Нової Пошти:** ${postOffice}\n**Контакт:** ${communicationMethod}\n**Замовили:** ${itemsText}\n**Промокод:** ${promocode}\n\n**Загальна сума:** ${totalPrice.toFixed(2)} грн`,
+        description: `**Ім'я:** ${firstName} ${lastName}\n**Телефон:** ${phone}\n**Місто:** ${city}\n**Адреса:** ${address}\n**Відділення Нової Пошти:** ${postOffice}\n**Контакт:** ${communicationMethod}\n**Замовили:** ${itemsText}\n**Промокод:** ${promocode}\n\n**Загальна сума:** ${totalPrice.toFixed(2)} грн`,
         color: 16777215,
         footer: {
-        text: UUID,
-        icon_url: "https://i.imgur.com/fKL31aD.jpg"
-      },
+          text: UUID,
+          icon_url: "https://i.imgur.com/fKL31aD.jpg"
+        },
         timestamp: new Date().toISOString()
       }]
     };
@@ -312,15 +356,18 @@ function generateUUID() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
   
+      if (response.ok){
+        $('#checkout-modal').hide(); // Close the checkout modal
+        showOrderConfirmation(); // Show the order confirmation modal
+      }
+  
       cart = [];
       updateCart();
-      $('#checkout-modal').hide();
-      window.location.href = 'index.html';
     } catch (error) {
       console.error('Error sending order:', error);
       alert('Failed to submit order. Please try again later.');
     }
-});
+  });
 handlePromoCode();
 
 });

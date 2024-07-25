@@ -483,3 +483,70 @@ a:hover {
     width: 40px;
     text-align: center;
 }
+
+
+/* Styles for the new order confirmation modal */
+#order-confirmation-modal .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 480px;
+    position: relative;
+    border-radius: 15px;
+    text-align: center;
+  }
+  
+  #order-confirmation-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .success{
+    background: url(../img/success.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 300px;
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .required {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .required-tooltip {
+    position: relative;
+    display: inline-block;
+    color: red;
+  }
+  
+  .required-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position above the text */
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .required-tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  

@@ -113,20 +113,24 @@
         <span class="close">&times;</span>
         <h2>Оформлення замовлення</h2>
         <form id="order-form">
-          <label for="name">Ім'я:</label>
+          <label for="name">Ім'я: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <input type="text" id="name" name="name" required /><br />
-          <label for="surname">Прізвище:</label>
+          <label for="surname">Прізвище: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <input type="text" id="surname" name="surname" required /><br />
-          <label for="phone">Номер телефону:</label>
+          <label for="phone">Номер телефону: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <input type="text" id="phone" name="phone" required /><br />
-          <label for="post-office">Відділення Нової Пошти:</label>
+          <label for="city">Місто/населений пункт: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
+          <input type="text" id="city" name="city" required /><br />
+          <label for="address">Адреса:</label>
+          <input type="text" id="address" name="address"/><br />
+          <label for="post-office">Відділення Нової Пошти: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <input
             type="text"
             id="post-office"
             name="post-office"
             required
           /><br />
-          <label for="communication-method">Контакт:</label>
+          <label for="communication-method">Контакт: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <input
             type="text"
             id="communication-method"
@@ -167,10 +171,26 @@
       </div>
   </div>
   
-    
+  <div id="order-confirmation-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Ваше замовлення в опрацюванні</h2>
+      <div class="success"></div>
+      <p>Дякуємо за ваше замовлення! Ми зв'яжемося з вами найближчим часом для підтвердження та обробки вашого замовлення.</p>
+    </div>
+  </div>
+  
     
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include jQuery UI -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
+
     <script src="js/script.js"></script>
     <script>
       function openTab(evt, tabName) {
