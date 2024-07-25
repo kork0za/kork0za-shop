@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
 
     // Apply promo code discount if applicable
-    if (promoCode === 'korkoza20') {
+    if (promoCode === 'korkoza20' && isPromoCodeValid()) {
         let discount = 0.20;
         const discountedPrice = totalPrice - (totalPrice * discount);
         $('#total-price').text(`Загальна сума (зі знижкою): ${discountedPrice.toFixed(2)} грн`);
@@ -50,7 +50,7 @@ $(document).ready(function() {
     const promocode = $('#promocode').val().trim();
     
     // Apply promo code discount if applicable
-    if (promocode === 'korkoza20') {
+    if (promocode === 'korkoza20' && isPromoCodeValid()) {
         totalPrice -= totalPrice * 0.20;
     }
     
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
   function handlePromoCode() {
     const enteredCode = $('#promocode').val().trim();
-    if (enteredCode === 'korkoza20') {
+    if (enteredCode === 'korkoza20' && isPromoCodeValid()) {
         updateCart();
         updateCheckoutModalTotalPrice();
     } else {
@@ -73,7 +73,11 @@ $(document).ready(function() {
 
   $('#promocode').on('input', handlePromoCode);
 
-  
+  function isPromoCodeValid() {
+    const now = new Date();
+    const endDate = new Date('2024-08-04T23:59:00'); // Set the promo code expiration date
+    return now <= endDate;
+  }
   
 
   function animateImageToCart(imageSrc) {
