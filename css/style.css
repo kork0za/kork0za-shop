@@ -83,6 +83,7 @@ body, html {
 .item_img {
     width: 100%;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .title, .author, .price {
