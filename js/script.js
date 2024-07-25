@@ -3,24 +3,35 @@ $(document).ready(function() {
   loadCartFromLocalStorage();
 
   function updateCart() {
-    // Function to update the cart display
     $('#cart-items').empty();
     let totalPrice = 0;
+    let promoCode = $('#promocode').val().trim(); // Get the promo code input value
+
     cart.forEach(item => {
-      $('#cart-items').append(`
-        <li class="cart-item">
-          <div style="background-image: url(${item.image});" class="cart-item-img"></div>
-          <div class="cart-item-info">${item.title} - ${item.price} грн 
-            <button class="decrease" data-id="${item.id}">-</button>
-            <span>${item.quantity}</span>
-            <button class="increase" data-id="${item.id}">+</button>
-          </div>
-        </li>`);
-      totalPrice += item.price * item.quantity;
+        $('#cart-items').append(`
+            <li class="cart-item">
+                <div style="background-image: url(${item.image});" class="cart-item-img"></div>
+                <div class="cart-item-info">${item.title} - ${item.price} грн 
+                    <button class="decrease" data-id="${item.id}">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="increase" data-id="${item.id}">+</button>
+                </div>
+            </li>`);
+        totalPrice += item.price * item.quantity;
     });
-    $('#total-price').text(`Загальна сума: ${totalPrice} грн`);
+
+    // Apply promo code discount if applicable
+    if (promoCode === 'korkoza20') {
+        let discount = 0.20;
+        const discountedPrice = totalPrice - (totalPrice * discount);
+        $('#total-price').text(`Загальна сума (зі знижкою): ${discountedPrice.toFixed(2)} грн`);
+    } else {
+        $('#total-price').text(`Загальна сума: ${totalPrice.toFixed(2)} грн`);
+    }
     saveCartToLocalStorage();
   }
+
+  
 
   function addItemToCart(item) {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
@@ -32,6 +43,38 @@ $(document).ready(function() {
     updateCart();
     saveCartToLocalStorage();
   }
+
+
+  function updateCheckoutModalTotalPrice() {
+    let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const promocode = $('#promocode').val().trim();
+    
+    // Apply promo code discount if applicable
+    if (promocode === 'korkoza20') {
+        totalPrice -= totalPrice * 0.20;
+    }
+    
+    $('#total-price-modal').text(`${totalPrice.toFixed(2)} грн`);
+  }
+
+  
+
+
+  function handlePromoCode() {
+    const enteredCode = $('#promocode').val().trim();
+    if (enteredCode === 'korkoza20') {
+        updateCart();
+        updateCheckoutModalTotalPrice();
+    } else {
+        $('#total-price').text(`Загальна сума: ${cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)} грн`);
+        $('#total-price-modal').text(`${cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)} грн`);
+    }
+  }
+
+  $('#promocode').on('input', handlePromoCode);
+
+  
+  
 
   function animateImageToCart(imageSrc) {
     const cartButton = $('#view-cart');
@@ -64,6 +107,7 @@ $(document).ready(function() {
       addItemToCart(item);
       animateImageToCart(image);
     });
+  
 
 
     $('.modal-addtocart').click(function() {
@@ -71,25 +115,26 @@ $(document).ready(function() {
       const title = $(this).data('title');
       const price = parseFloat($(this).data('price'));
       const description = $(this).data('description');
+      const author = $(this).data('author'); // Retrieve author data
       const quantity = parseInt($('#modal-quantity').val()); // Retrieve quantity from input
       const image = $('#modal-image').attr('src');
-  
-      // Create item object with quantity
-      const item = { id, title, price, description, quantity, image };
+    
+      // Create item object with quantity and author
+      const item = { id, title, price, description, quantity, image, author };
       addItemToCart(item); // Add item to cart
       $('#item-modal').hide(); // Hide modal after adding to cart
       animateImageToCart(image); // Optional: Animation effect
     });
 
     // Function to update cart when increasing quantity
-  $(document).on('click', '.increase', function() {
-    const id = $(this).data('id');
-    const item = cart.find(cartItem => cartItem.id === id);
-    if (item) {
-      item.quantity++;
-      updateCart();
-    }
-  });
+    $(document).on('click', '.increase', function() {
+      const id = $(this).data('id');
+      const item = cart.find(cartItem => cartItem.id === id);
+      if (item) {
+        item.quantity++;
+        updateCart();
+      }
+    });
 
   // Function to update cart when decreasing quantity
   $(document).on('click', '.decrease', function() {
@@ -104,56 +149,73 @@ $(document).ready(function() {
     }
   });
 
-    $(document).on('click', '.item_img', function() {
-      const id = $(this).data('id');
-      const title = $(this).data('title');
-      const description = $(this).data('description');
-      const material = $(this).data('material');
-      const price = $(this).data('price');
-      const image = $(this).attr('src');
-      
-      $('#modal-title').text(title);
-      $('#modal-header').text(`Опис`);
-      $('#modal-description').text(`${description}`);
-      $('#modal-material').text(`${material}`);
-      $('#modal-price').text(`Ціна: ${price} грн`);
-      $('#modal-image').attr('src', image);
+  $(document).on('click', '.item_img', function() {
+    const id = $(this).data('id');
+    const title = $(this).data('title');
+    const description = $(this).data('description');
+    const material = $(this).data('material');
+    const price = $(this).data('price');
+    const image = $(this).attr('src');
+    const author = $(this).data('author'); // Get the author data
+    const authorLink = $(this).data('author-link'); // Get the author link data
+    
+    $('#modal-title').text(title);
+    $('#modal-header').text(`Опис`);
+    $('#modal-author').text(`${author}`); // Set the author text
+    $('#modal-description').text(`${description}`);
+    $('#modal-material').text(`${material}`);
+    $('#modal-price').text(`Ціна: ${price} грн`);
+    $('#modal-image').attr('src', image);
   
-      // Set data attributes for the Add to cart button
-      $('.modal-addtocart').data('id', id);
-      $('.modal-addtocart').data('title', title);
-      $('.modal-addtocart').data('price', price);
-      $('.modal-addtocart').data('description', description);
-      
-      $('#item-modal').css('display', 'flex');
+    // Set data attributes for the Add to cart button
+    $('.modal-addtocart').data('id', id);
+    $('.modal-addtocart').data('title', title);
+    $('.modal-addtocart').data('author', author); // Set author data
+    $('.modal-addtocart').data('price', price);
+    $('.modal-addtocart').data('description', description);
+  
+    // Set the href attribute for the author link
+    $('#modal-author-link').attr('href', authorLink);
+  
+    $('#item-modal').css('display', 'flex');
   });
-
-
-
   
-    $('.close').click(function() {
-      $(this).closest('.modal').css('display', 'none');
+
+  $('.close').click(function() {
+    $(this).closest('.modal').css('display', 'none');
+  });
+}
+
+function loadItemsFromJson() {
+  if ($('#animation-container').children().length === 0) { // Check if items are already loaded
+    $.getJSON("items.json", function(data) {
+      data.forEach(function(item) {
+        $('#animation-container').append(`
+          <div class="item" id="${item.id}">
+            <img class="item_img" src="${item.image}" alt="${item.id}" data-id="${item.id}" data-title="${item.title}" data-description="${item.description}" data-material="${item.material}" data-price="${item.price}" data-author="${item.author}" data-author-link="${item['author-link']}"> <!-- Added data-author-link attribute -->
+            <p class="title">${item.title}</p>
+            <p class="author">${item.author}</p>
+            <p class="price">${item.price} грн</p>
+            <button class="addtocart" data-id="${item.id}" data-title="${item.title}" data-price="${item.price}" data-author="${item.author}">Додати до кошика</button> <!-- Added data-author attribute -->
+          </div>
+        `);
+      });
+      attachEventListeners();
     });
   }
+}
 
-  function loadItemsFromJson() {
-    if ($('#animation-container').children().length === 0) { // Check if items are already loaded
-      $.getJSON("items.json", function(data) {
-        data.forEach(function(item) {
-          $('#animation-container').append(`
-                    <div class="item" id="${item.id}">
-                        <img class="item_img" src="${item.image}" alt="${item.id}" data-id="${item.id}" data-title="${item.title}" data-description="${item.description}" data-material="${item.material}" data-price="${item.price}">
-                        <p class="title">${item.title}</p>
-                        <p class="author">${item.author}</p>
-                        <p class="price">${item.price} грн</p>
-                        <button class="addtocart" data-id="${item.id}" data-title="${item.title}" data-price="${item.price}">Додати до кошика</button>
-                    </div>
-                `);
-        });
-        attachEventListeners();
-      });
-    }
-  }
+function generateUUID() {
+  // Simple UUID generator function
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+
+
+
 
   function saveCartToLocalStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -187,13 +249,19 @@ $(document).ready(function() {
 
   $('#order-form').submit(async function(event) {
     event.preventDefault();
-
-    const firstName = $('#name').val();
-    const lastName = $('#surname').val();
-    const phone = $('#phone').val();
-    const postOffice = $('#post-office').val();
-    const communicationMethod = $('#communication-method').val();
-    const promocode = $('#promocode').val();
+  
+    const firstName = $('#name').val().trim();
+    const lastName = $('#surname').val().trim();
+    const phone = $('#phone').val().trim();
+    const postOffice = $('#post-office').val().trim();
+    const communicationMethod = $('#communication-method').val().trim();
+    const promocode = $('#promocode').val().trim();
+  
+    // Check if all required fields are filled
+    if (!firstName || !lastName || !phone || !postOffice || !communicationMethod) {
+      alert('Please fill out all required fields.');
+      return;
+    }
 
     let itemsText = '';
     cart.forEach((item, index) => {
@@ -202,26 +270,31 @@ $(document).ready(function() {
         itemsText += ', ';
       }
     });
-
-    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-
-    //generate random UUID
-    const uuid = crypto.randomUUID();
-
+  
+    let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    if (promocode === 'korkoza20') {
+      totalPrice -= totalPrice * 0.20;
+    }
+  
+    let UUID = generateUUID();
 
     const webhookBody = {
-      username: "ЗАМОВЛЕННЯ " + uuid,
+      username: "ЗАМОВЛЕННЯ",
       content: '@everyone',
       embeds: [{
         title: 'Нове замовлення',
-        description: `**Ім'я:** ${firstName} ${lastName}\n**Телефон:** ${phone}\n**Відділення Нової Пошти:** ${postOffice}\n**Контакт:** ${communicationMethod}\n**Замовили:** ${itemsText}\n**Промокод:** ${promocode}\n\n\n**Загальна сума(Без промокода):** ${totalPrice} грн`,
+        description: `**Ім'я:** ${firstName} ${lastName}\n**Телефон:** ${phone}\n**Відділення Нової Пошти:** ${postOffice}\n**Контакт:** ${communicationMethod}\n**Замовили:** ${itemsText}\n**Промокод:** ${promocode}\n\n\n**Загальна сума:** ${totalPrice.toFixed(2)} грн`,
         color: 16777215,
+        footer: {
+        text: UUID,
+        icon_url: "https://i.imgur.com/fKL31aD.jpg"
+      },
         timestamp: new Date().toISOString()
       }]
     };
-
+  
     const webhookUrl = 'https://discord.com/api/webhooks/1262144981687074939/5oXvsZsPYl5IgPjPm8UTFoctdf-zzN9Thr7Eb42n_kzutZF8cfLLniJ0Qgoto81_3MsH';
-
+  
     try {
       const response = await fetch(webhookUrl, {
         method: 'POST',
@@ -230,19 +303,20 @@ $(document).ready(function() {
         },
         body: JSON.stringify(webhookBody),
       });
-
+  
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
-      window.location.href = 'index.html';
-
+  
       cart = [];
       updateCart();
       $('#checkout-modal').hide();
+      window.location.href = 'index.html';
     } catch (error) {
       console.error('Error sending order:', error);
       alert('Failed to submit order. Please try again later.');
     }
-  });
+});
+handlePromoCode();
+
 });

@@ -30,7 +30,12 @@ body, html {
 }
 
 .imagecontainer #modal-image {
-    width: 80%;
+    width: 100%;
+
+}
+
+#modal-image{
+    border-radius: 5px;
 }
 
 .logobox {
@@ -96,7 +101,7 @@ body, html {
     font-size: 17px;
 }
 
-.author {
+.author, #modal-author {
     font-size: 16px;
     font-style: italic;
 }
@@ -438,9 +443,16 @@ a:hover {
 .infocontainer {
     line-height: 1.6em;
     flex: 1; /* Make the info container take up available space */
-    max-width: 50%; /* Adjust as necessary */
     padding: 20px; /* Add some padding for better spacing */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.concont{
+    margin-bottom: 150px;
+}
+
 
 
 .quantity-controls {

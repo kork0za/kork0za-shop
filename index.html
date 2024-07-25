@@ -67,9 +67,9 @@
           </p>
           <p>Оплата може бути здійснена наступним способом:</p>
           <ul>
-            <li style="margin-left:1.2em">Переказ на картку</li>
-             <li style="margin-left:2.3em">Приват банк</li>
-             <li style="margin-left:2.3em; padding-bottom: 0;">Монобанк</li>
+            <strong>Переказ на картки:</strong><br>
+             <span>Приват банк</span><br>
+             <span>Монобанк</span>
             
           </ul>
         </div>
@@ -135,29 +135,38 @@
           /><br />
           <label for="promocode">Промокод:</label>
           <input type="text" id="promocode" name="promocode" /><br /><br />
+          <p>Загальна сума замовлення: <span id="total-price-modal"></span></p>
           <button type="submit">Оформити замовлення</button>
         </form>
       </div>
     </div>
 
     <div id="item-modal" class="modal">
-        <div class="detail-modal-content">
-            <span class="close">&times;</span>
-            <div class="itemcontainer">
-                <div class="imagecontainer">
-                    <img id="modal-image" src="" alt="" />
-                </div>
-                <div class="infocontainer">
-                    <h2 id="modal-title"></h2>
-                    <h3 id="modal-header"></h3>
-                    <p id="modal-description"></p>
-                    <p id="modal-material"></p>
-                    <p id="modal-price"></p>
-                    <button class="modal-addtocart">Додати до кошика</button>
-                </div>
-            </div>
-        </div>
-    </div>
+      <div class="detail-modal-content">
+          <span class="close">&times;</span>
+          <div class="itemcontainer">
+              <div class="imagecontainer">
+                  <img id="modal-image" src="" alt="" />
+              </div>
+              <div class="infocontainer">
+                  <div class="concont">
+                      <div class="containertitle">
+                          <h2 id="modal-title"></h2>
+                          <h3 id="modal-header"></h3>
+                          <a id="modal-author-link" href="#" target="_blank" class="author-link-btn"><p id="modal-author"></p></a>  
+                      </div>
+                      <div class="containerinfor">
+                          <p id="modal-description"></p>
+                          <p id="modal-material"></p>
+                          <p id="modal-price"></p>
+                      </div>
+                  </div>
+                  <button class="modal-addtocart">Додати до кошика</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  
     
     
 

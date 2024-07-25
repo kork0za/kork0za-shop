@@ -6,6 +6,7 @@
         "price": "50",
         "image": "item/item1.png",
         "description": "Це стікерпак з унікальними ілюстраціями.",
-        "material": "Папір формату А5, глянцевий"
+        "material": "Папір формату А5, глянцевий",
+        "author-link": "https://twitter.com/nataartada?t=N0zavOTHPDxfaWIQNbArLA&s=09"
     }
 ]
