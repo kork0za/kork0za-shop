@@ -283,7 +283,7 @@ function generateUUID() {
       content: '@everyone',
       embeds: [{
         title: 'Нове замовлення',
-        description: `**Ім'я:** ${firstName} ${lastName}\n**Телефон:** ${phone}\n**Відділення Нової Пошти:** ${postOffice}\n**Контакт:** ${communicationMethod}\n**Замовили:** ${itemsText}\n**Промокод:** ${promocode}\n\n\n**Загальна сума:** ${totalPrice.toFixed(2)} грн`,
+        description: `**Ім'я:** ${firstName} ${lastName}\n**Телефон:** ${phone}\n**Відділення Нової Пошти:** ${postOffice}\n**Контакт:** ${communicationMethod}\n**Замовили:** ${itemsText}\n**Промокод:** ${promocode}\n\n**Загальна сума:** ${totalPrice.toFixed(2)} грн`,
         color: 16777215,
         footer: {
         text: UUID,
