@@ -10,7 +10,6 @@ html {
     background-color: #e5e5f7;
     background-image: radial-gradient(#444cf7 2px, #e5e5f7 2px);
     background-size: 40px 40px;
-    overflow-x: hidden;
 }
 
 body, html {
@@ -176,9 +175,8 @@ a:hover {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: hidden; /* Disable scrolling */
     background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
     justify-content: center;
     align-items: center;
 }
@@ -199,9 +197,16 @@ a:hover {
     border: 1px solid #888;
     width: 80%;
     max-width: 480px;
+    max-height: 100%; /* Set a max height */
     position: relative;
     border-radius: 15px;
     text-align: center;
+    overflow-y: auto; /* Ensure content inside modal can scroll */
+}
+
+
+body.modal-open {
+    overflow: hidden;
 }
 
 .detail-modal-content{
@@ -215,13 +220,14 @@ a:hover {
 }
 
 .close {
-    position: absolute;
+    position: fixed;
     top: 10px;
-    right: 20px;
+    right: 10px;
     color: #aaa;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 10; /* Ensures it stays above content */
 }
 
 .close:hover,

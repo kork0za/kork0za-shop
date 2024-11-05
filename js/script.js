@@ -295,6 +295,35 @@ function generateUUID() {
   }
 
 
+
+// Open modal and disable background scroll
+$('.modal').on('show', function() {
+  $('body').addClass('modal-open');
+  $(this).css('display', 'flex'); // Show modal in flex mode for centering
+});
+
+// Close modal and re-enable background scroll
+$('.close').click(function() {
+  $(this).closest('.modal').hide();
+  $('body').removeClass('modal-open');
+});
+
+// Example to trigger opening a modal with class 'modal'
+$('#view-cart').click(function() {
+  $('#cart-modal').trigger('show');
+});
+
+// Close any modal on background click
+$('.modal').click(function(e) {
+  if (e.target === this) { // Only close if clicking outside content
+    $(this).hide();
+    $('body').removeClass('modal-open');
+  }
+});
+
+
+
+
   $('#order-form').submit(async function(event) {
     event.preventDefault();
   
