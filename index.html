@@ -117,22 +117,25 @@
           <input type="text" id="phone" name="phone" required /><br />
           <label for="city">Місто/населений пункт: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <input type="text" id="city" name="city" required /><br />
-          <label for="address">Адреса:</label>
-          <input type="text" id="address" name="address"/><br />
-          <label for="post-office">Відділення Нової Пошти: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
-          <input
-            type="text"
-            id="post-office"
-            name="post-office"
-            required
-          /><br />
-          <label for="communication-method">Контакт: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
-          <input
-            type="text"
-            id="communication-method"
-            name="communication-method"
-            required
-          /><br />
+          
+          <label for="delivery-method">Спосіб доставки:</label>
+          <select id="delivery-method" name="delivery-method" required>
+            <option value="nova-poshta">Нова Пошта</option>
+            <option value="ukrposhta">УкрПошта</option>
+          </select><br />
+
+          <div id="address-container" style="display:none;">
+            <label for="address">Адреса (УкрПошта):</label>
+            <input type="text" id="address" name="address" /><br />
+          </div>
+          
+          <div id="post-office-container">
+            <label id="post-office-label" for="post-office">Відділення Нової Пошти: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
+            <input type="text" id="post-office" name="post-office" required /><br />
+          </div>
+          
+          <label for="communication-method">Контакт(Telegram тег): <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
+          <input type="text" id="communication-method" name="communication-method" required /><br />
           <label for="promocode">Промокод:</label>
           <input type="text" id="promocode" name="promocode" /><br>
           <p style="color: gray">* - Обов'язкові поля</p><br /><br />
@@ -189,6 +192,28 @@
 
 
     <script src="js/script.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#delivery-method').change(function() {
+      if ($(this).val() === 'ukrposhta') {
+        $('#address-container').show();
+        $('#post-office-container').hide();
+        $('#post-office-label').text('Повна адреса УкрПошти:');
+        $('#post-office').prop('required', false);
+        $('#address').prop('required', true);
+      } else if ($(this).val() === 'nova-poshta') {
+        $('#address-container').hide();
+        $('#post-office-container').show();
+        $('#post-office-label').text('Відділення Нової Пошти:');
+        $('#post-office').prop('required', true);
+        $('#address').prop('required', false);
+      }
+    });
+
+    // Trigger change event on load to set correct fields visibility
+    $('#delivery-method').trigger('change');
+  });
+</script>
     <script>
       function openTab(evt, tabName) {
         var i, tabcontent, tablinks;

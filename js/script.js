@@ -1,3 +1,4 @@
+//script.js
 $(document).ready(function() {
   let cart = [];
   loadCartFromLocalStorage();
@@ -300,13 +301,14 @@ function generateUUID() {
     const lastName = $('#surname').val().trim();
     const phone = $('#phone').val().trim();
     const city = $('#city').val().trim();
-    const address = $('#address').val().trim();
-    const postOffice = $('#post-office').val().trim();
+    const deliveryMethod = $('#delivery-method').val();
+    const address = deliveryMethod === 'ukrposhta' ? $('#address').val().trim() : '';
+    const postOffice = deliveryMethod === 'nova-poshta' ? $('#post-office').val().trim() : '';
     const communicationMethod = $('#communication-method').val().trim();
     const promocode = $('#promocode').val().trim();
   
     // Check if all required fields are filled
-    if (!firstName || !lastName || !phone || !postOffice || !communicationMethod) {
+    if (!firstName || !lastName || !phone || (!postOffice && !address) || !communicationMethod) {
       alert('Please fill out all required fields.');
       return;
     }
@@ -331,7 +333,16 @@ function generateUUID() {
       content: '@everyone',
       embeds: [{
         title: 'Нове замовлення',
-        description: `**Ім'я:** ${firstName} ${lastName}\n**Телефон:** ${phone}\n**Місто:** ${city}\n**Адреса:** ${address}\n**Відділення Нової Пошти:** ${postOffice}\n**Контакт:** ${communicationMethod}\n**Замовили:** ${itemsText}\n**Промокод:** ${promocode}\n\n**Загальна сума:** ${totalPrice.toFixed(2)} грн`,
+        description: `**Ім'я:** ${firstName} ${lastName}
+        **Телефон:** ${phone}
+        **Місто:** ${city}
+        **Адреса/відділення:** ${address} ${postOffice}
+        **Спосіб доставки:** ${deliveryMethod}
+        **Контакт:** ${communicationMethod}
+        **Замовили:** ${itemsText}
+        **Промокод:** ${promocode}
+
+        **Загальна сума:** ${totalPrice.toFixed(2)} грн`,
         color: 16777215,
         footer: {
           text: UUID,
@@ -356,7 +367,7 @@ function generateUUID() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
   
-      if (response.ok){
+      if (response.ok) {
         $('#checkout-modal').hide(); // Close the checkout modal
         showOrderConfirmation(); // Show the order confirmation modal
       }
