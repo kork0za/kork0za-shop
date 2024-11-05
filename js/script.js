@@ -196,7 +196,8 @@ $('#city').autocomplete({
     $('#modal-title').text(title);
     $('#modal-header').text(`Опис`);
     $('#modal-author').text(`${author}`); // Set the author text
-    $('#modal-description').text(`${description}`);
+    const converter = new showdown.Converter();
+    $('#modal-description').html(converter.makeHtml(description));
     $('#modal-material').text(`${material}`);
     $('#modal-price').text(`Ціна: ${price} грн`);
     $('#modal-image').attr('src', image);

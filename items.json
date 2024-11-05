@@ -1,12 +1,12 @@
 [
-    {
-        "id": "1",
-        "title": "Стікерпак «Коркóза»",
-        "author": "від Nataartada",
-        "price": "50",
-        "image": "item/item1.png",
-        "description": "Це стікерпак з унікальними ілюстраціями.",
-        "material": "Папір формату А5, глянцевий",
-        "author-link": "https://twitter.com/nataartada?t=N0zavOTHPDxfaWIQNbArLA&s=09"
-    }
+{
+    "id": "1",
+    "title": "Стікерпак «Коркóза»",
+    "author": "від Nataartada",
+    "price": "70",
+    "image": "item/item1.png",
+    "description": "Це стікерпак з **унікальними ілюстраціями**. Цей стікерпак також доступний у телеграмі! [Telegram Stickers](https://t.me/addstickers/Kork0za_by_fStikBot)",
+    "material": "Папір формату А5, глянцевий",
+    "author-link": "https://twitter.com/nataartada?t=N0zavOTHPDxfaWIQNbArLA&s=09"
+}
 ]
