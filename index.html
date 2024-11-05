@@ -198,19 +198,37 @@
 <script>
   function updatePhoneInput() {
       const phoneInput = document.getElementById('phone');
-      phoneInput.addEventListener('input', function () {
-          let x = this.value.replace(/\D/g, '').substring(3); // Remove +380 and non-digit characters
-          if (x.length > 0) {
-              this.value = '+380 (' + x.substring(0, 2);
+      phoneInput.addEventListener('input', function (e) {
+          let cursorPosition = phoneInput.selectionStart;
+          let rawValue = this.value.replace(/\D/g, '');
+          
+          // If the input length is less than or equal to 3, reset to base prefix
+          if (rawValue.length <= 3) {
+              this.value = '+380 ';
+              return;
           }
-          if (x.length >= 2) {
-              this.value += ') ' + x.substring(2, 5);
+
+          rawValue = rawValue.substring(3); // Remove +380 prefix
+          let formattedValue = '+380 ';
+          
+          if (rawValue.length > 0) {
+              formattedValue += '(' + rawValue.substring(0, Math.min(2, rawValue.length));
           }
-          if (x.length >= 5) {
-              this.value += '-' + x.substring(5, 7);
+          if (rawValue.length >= 2) {
+              formattedValue += ') ' + rawValue.substring(2, Math.min(5, rawValue.length));
           }
-          if (x.length >= 7) {
-              this.value += '-' + x.substring(7, 9);
+          if (rawValue.length >= 5) {
+              formattedValue += '-' + rawValue.substring(5, Math.min(7, rawValue.length));
+          }
+          if (rawValue.length >= 7) {
+              formattedValue += '-' + rawValue.substring(7, Math.min(9, rawValue.length));
+          }
+          
+          this.value = formattedValue;
+          
+          // Restore cursor position if deleting
+          if (e.inputType === 'deleteContentBackward') {
+              phoneInput.setSelectionRange(cursorPosition, cursorPosition);
           }
       });
   }
