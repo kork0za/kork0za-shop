@@ -85,9 +85,11 @@ body, html {
 }
 
 .item_img {
+    height: 376px;
     width: 100%;
     border-radius: 5px;
     cursor: pointer;
+    object-fit:cover;
 }
 
 .title, .author, .price {
@@ -402,7 +404,7 @@ body.modal-open {
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 580px) {
     .deliverycont {
         width: 100%;
     }
@@ -418,17 +420,31 @@ body.modal-open {
 
     .itemcontainer{
         flex-direction: column!important;
+        display: flex!important;
+        align-items: center!important;
+        justify-content: center!important;
         
     }
     .infocontainer{
         margin-top: 10px;
-        max-width: 100%!important;
+        max-width: 100%!important;        
+    }
+
+    .concont{
+        margin-bottom: 0px!important;
+        max-height: 100%!important;
     }
     .logo{
         max-width: 100%!important;
         width: 100%!important;
         min-width: 100%!important;
     }
+
+    .detail-modal-content{
+        overflow:visible!important;
+        overflow-y: visible!important;
+    }
+
 }
 
 
