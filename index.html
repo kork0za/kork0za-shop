@@ -120,14 +120,14 @@
           <label for="city">Місто/населений пункт: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <input type="text" id="city" name="city" required /><br />
           
-          <label for="delivery-method">Спосіб доставки:</label>
+          <label for="delivery-method">Спосіб доставки: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <select id="delivery-method" name="delivery-method" required>
             <option value="nova-poshta">Нова Пошта</option>
             <option value="ukrposhta">УкрПошта</option>
           </select><br />
 
           <div id="address-container" style="display:none;">
-            <label for="address">Адреса (УкрПошта):</label>
+            <label for="address">Адреса (УкрПошта):<span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
             <input type="text" id="address" name="address" /><br />
           </div>
           
@@ -136,12 +136,26 @@
             <input type="text" id="post-office" name="post-office" required /><br />
           </div>
           
-          <label for="communication-method">Контакт(Telegram тег): <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
-          <input type="text" id="communication-method" name="communication-method" required /><br />
-          <label for="promocode">Промокод:</label>
+          <p style="color: gray">Увага! Обговорення оплати буде проходити у месендежрі який ви обрали, не забудьте додати його в коментар!</p><br />
+          <label for="messenger">Месенджер для контакту: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
+          <select id="messenger" name="messenger" required>
+            <option value="" disabled selected>Оберіть месенджер</option>
+            <option value="Twitter">X (формально Twitter)</option>
+            <option value="Viber">Viber</option>
+            <option value="Telegram">Telegram</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Discord">Discord</option>
+          </select>
+          <br />
+
+          <label for="comment">Коментар до замовлення:<span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
+          <textarea id="comment" name="comment" rows="4" placeholder="Ваші контакти, побажання або уточнення" required></textarea>
+          <br />
+
+          <label for="promocode">Промокод:<span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <input type="text" id="promocode" name="promocode" /><br>
           <p style="color: gray">Поля позначені <span>*</span> - обов'язкові</p>
-          <p style="color: rgb(163, 0, 0)">Увага! Обговорення оплати буде проходити у месендежрі який ви вказали у полі «Контакт»!</p><br /><br />
+          <br />
           <p>Загальна сума замовлення: <span id="total-price-modal"></span></p>
           <button type="submit">Оформити замовлення</button>
         </form>

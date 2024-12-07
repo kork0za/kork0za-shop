@@ -334,7 +334,8 @@ $('.modal').click(function(e) {
     const deliveryMethod = $('#delivery-method').val();
     const address = deliveryMethod === 'ukrposhta' ? $('#address').val().trim() : '';
     const postOffice = deliveryMethod === 'nova-poshta' ? $('#post-office').val().trim() : '';
-    const communicationMethod = $('#communication-method').val().trim();
+    const communicationMethod = $('#messenger').val().trim();
+    const comment = $('#comment').val().trim();
     const promocode = $('#promocode').val().trim();
   
     // Check if all required fields are filled
@@ -369,6 +370,7 @@ $('.modal').click(function(e) {
         **Адреса/відділення:** ${address} ${postOffice}
         **Спосіб доставки:** ${deliveryMethod}
         **Контакт:** ${communicationMethod}
+        **Коментар:** ${comment}
         **Замовили:** ${itemsText}
         **Промокод:** ${promocode}
 
@@ -398,8 +400,8 @@ $('.modal').click(function(e) {
       }
   
       if (response.ok) {
-        $('#checkout-modal').hide(); // Close the checkout modal
-        showOrderConfirmation(); // Show the order confirmation modal
+        $('#checkout-modal').hide(); 
+        showOrderConfirmation();
       }
   
       cart = [];
