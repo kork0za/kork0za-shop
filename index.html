@@ -136,8 +136,8 @@
             <input type="text" id="post-office" name="post-office" required /><br />
           </div>
           
-          <p style="color: gray">Увага! Обговорення оплати буде проходити у месендежрі який ви обрали, не забудьте додати його в коментар!</p><br />
-          <label for="messenger">Месенджер для контакту: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
+          <p style="color: gray">Увага! Обговорення оплати буде проходити у месендежрі який ви обрали!</p><br />
+          <label for="messenger">Месенджер: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
           <select id="messenger" name="messenger" required>
             <option value="" disabled selected>Оберіть месенджер</option>
             <option value="Twitter">X (формально Twitter)</option>
@@ -148,8 +148,11 @@
           </select>
           <br />
 
-          <label for="comment">Коментар до замовлення:<span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
-          <textarea id="comment" name="comment" rows="4" placeholder="Ваші контакти, побажання або уточнення" required></textarea>
+          <label for="contact">Тег в месендежрі: <span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>
+          <input type="text" id="contact" name="contact" required /><br />
+
+          <label for="comment">Коментар до замовлення:</label>
+          <textarea id="comment" name="comment" rows="4" placeholder="Ваші побажання або уточнення"></textarea>
           <br />
 
           <label for="promocode">Промокод:<span class="required-tooltip">*<span class="tooltiptext">Обов'язкове</span></span></label>

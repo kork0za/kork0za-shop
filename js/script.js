@@ -335,6 +335,7 @@ $('.modal').click(function(e) {
     const address = deliveryMethod === 'ukrposhta' ? $('#address').val().trim() : '';
     const postOffice = deliveryMethod === 'nova-poshta' ? $('#post-office').val().trim() : '';
     const communicationMethod = $('#messenger').val().trim();
+    const contact = $('#contact').val().trim();
     const comment = $('#comment').val().trim();
     const promocode = $('#promocode').val().trim();
   
@@ -370,6 +371,7 @@ $('.modal').click(function(e) {
         **Адреса/відділення:** ${address} ${postOffice}
         **Спосіб доставки:** ${deliveryMethod}
         **Контакт:** ${communicationMethod}
+        **Тег в месендежрі:** ${contact}
         **Коментар:** ${comment}
         **Замовили:** ${itemsText}
         **Промокод:** ${promocode}
