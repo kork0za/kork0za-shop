@@ -324,95 +324,87 @@ $('.modal').click(function(e) {
 
 
 
-  $('#order-form').submit(async function(event) {
-    event.preventDefault();
-  
-    const firstName = $('#name').val().trim();
-    const lastName = $('#surname').val().trim();
-    const phone = $('#phone').val().trim();
-    const city = $('#city').val().trim();
-    const deliveryMethod = $('#delivery-method').val();
-    const address = deliveryMethod === 'ukrposhta' ? $('#address').val().trim() : '';
-    const postOffice = deliveryMethod === 'nova-poshta' ? $('#post-office').val().trim() : '';
-    const communicationMethod = $('#messenger').val().trim();
-    const contact = $('#contact').val().trim();
-    const comment = $('#comment').val().trim();
-    const promocode = $('#promocode').val().trim();
-  
-    // Check if all required fields are filled
-    if (!firstName || !lastName || !phone || (!postOffice && !address) || !communicationMethod) {
-      alert('Please fill out all required fields.');
-      return;
-    }
-  
-    let itemsText = '';
-    cart.forEach((item, index) => {
-      itemsText += `${item.title} x${item.quantity}`;
-      if (index < cart.length - 1) {
-        itemsText += ', ';
-      }
-    });
-  
-    let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-    if (promocode === 'korkoza20') {
-      totalPrice -= totalPrice * 0.20;
-    }
-  
-    let UUID = generateUUID();
-  
-    const webhookBody = {
-      username: "ЗАМОВЛЕННЯ",
-      content: '@everyone',
-      embeds: [{
-        title: 'Нове замовлення',
-        description: `**Ім'я:** ${firstName} ${lastName}
-        **Телефон:** ${phone}
-        **Місто:** ${city}
-        **Адреса/відділення:** ${address} ${postOffice}
-        **Спосіб доставки:** ${deliveryMethod}
-        **Контакт:** ${communicationMethod}
-        **Тег в месендежрі:** ${contact}
-        **Коментар:** ${comment}
-        **Замовили:** ${itemsText}
-        **Промокод:** ${promocode}
+$('#order-form').submit(async function(event) {
+  event.preventDefault();
 
-        **Загальна сума:** ${totalPrice.toFixed(2)} грн`,
-        color: 16777215,
-        footer: {
-          text: UUID,
-          icon_url: "https://i.imgur.com/fKL31aD.jpg"
-        },
-        timestamp: new Date().toISOString()
-      }]
-    };
-  
-    const webhookUrl = 'https://discord.com/api/webhooks/1262144981687074939/5oXvsZsPYl5IgPjPm8UTFoctdf-zzN9Thr7Eb42n_kzutZF8cfLLniJ0Qgoto81_3MsH';
-  
-    try {
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(webhookBody),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      if (response.ok) {
-        $('#checkout-modal').hide(); 
-        showOrderConfirmation();
-      }
-  
-      cart = [];
-      updateCart();
-    } catch (error) {
-      console.error('Error sending order:', error);
-      alert('Failed to submit order. Please try again later.');
+  const firstName = $('#name').val().trim();
+  const lastName = $('#surname').val().trim();
+  const phone = $('#phone').val().trim();
+  const city = $('#city').val().trim();
+  const deliveryMethod = $('#delivery-method').val();
+  const address = deliveryMethod === 'ukrposhta' ? $('#address').val().trim() : '';
+  const postOffice = deliveryMethod === 'nova-poshta' ? $('#post-office').val().trim() : '';
+  const communicationMethod = $('#messenger').val().trim();
+  const contact = $('#contact').val().trim();
+  const comment = $('#comment').val().trim();
+  const promocode = $('#promocode').val().trim();
+
+  if (!firstName || !lastName || !phone || (!postOffice && !address) || !communicationMethod) {
+    alert('Please fill out all required fields.');
+    return;
+  }
+
+  let itemsText = '';
+  cart.forEach((item, index) => {
+    itemsText += `${item.title} x${item.quantity}`;
+    if (index < cart.length - 1) {
+      itemsText += ', ';
     }
   });
+
+  let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  if (promocode === 'korkoza20') {
+    totalPrice -= totalPrice * 0.20;
+  }
+
+  const UUID = generateUUID();
+
+  const webhookBody = {
+    username: "Order Bot",
+    embeds: [{
+      title: 'New Order',
+      description: `**Name:** ${firstName} ${lastName}
+        **Phone:** ${phone}
+        **City:** ${city}
+        **Address/Office:** ${address || postOffice}
+        **Delivery Method:** ${deliveryMethod}
+        **Contact Method:** ${communicationMethod}
+        **Contact Tag:** ${contact}
+        **Comment:** ${comment}
+        **Items:** ${itemsText}
+        **Promo Code:** ${promocode}
+        **Total Price:** ${totalPrice.toFixed(2)} UAH`,
+      color: 16777215,
+      footer: {
+        text: UUID,
+        icon_url: "https://i.imgur.com/fKL31aD.jpg",
+      },
+      timestamp: new Date().toISOString(),
+    }],
+  };
+
+  try {
+    const response = await fetch('/.netlify/functions/discordWebhook', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(webhookBody),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    alert('Order submitted successfully!');
+    cart = [];
+    updateCart();
+  } catch (error) {
+    console.error('Error sending order:', error);
+    alert('Failed to submit order. Please try again later.');
+  }
+});
+
 handlePromoCode();
 
 });
