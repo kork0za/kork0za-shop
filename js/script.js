@@ -363,17 +363,17 @@ $('#order-form').submit(async function(event) {
     username: "Order Bot",
     embeds: [{
       title: 'New Order',
-      description: `**Name:** ${firstName} ${lastName}
-        **Phone:** ${phone}
-        **City:** ${city}
-        **Address/Office:** ${address || postOffice}
-        **Delivery Method:** ${deliveryMethod}
-        **Contact Method:** ${communicationMethod}
-        **Contact Tag:** ${contact}
-        **Comment:** ${comment}
-        **Items:** ${itemsText}
-        **Promo Code:** ${promocode}
-        **Total Price:** ${totalPrice.toFixed(2)} UAH`,
+      description: `**Ім'я:** ${firstName} ${lastName}
+        **Телефон:** ${phone}
+        **Місто:** ${city}
+        **Адреса/Офіс:** ${address || postOffice}
+        **Метод доставки:** ${deliveryMethod}
+        **Метод зв'язку:** ${communicationMethod}
+        **Тег контакту:** ${contact}
+        **Коментар:** ${comment}
+        **Товари:** ${itemsText}
+        **Промокод:** ${promocode}
+        **Загальна ціна:** ${totalPrice.toFixed(2)} UAH`,
       color: 16777215,
       footer: {
         text: UUID,

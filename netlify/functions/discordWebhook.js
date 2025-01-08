@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 exports.handler = async (event) => {
-  const webhookUrl = process.env.DISCORD_WEBHOOK;
+  const webhookUrl = process.env.DISCORD;
 
   if (!webhookUrl) {
     return {
