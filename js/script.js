@@ -147,18 +147,36 @@ $('#city').autocomplete({
     $('.modal-addtocart').click(function() {
       const id = $(this).data('id');
       const title = $(this).data('title');
-      const price = parseFloat($(this).data('price'));
-      const description = $(this).data('description');
-      const author = $(this).data('author'); // Retrieve author data
-      const quantity = parseInt($('#modal-quantity').val()); // Retrieve quantity from input
       const image = $('#modal-image').attr('src');
+      const description = $(this).data('description');
+      const author = $(this).data('author');
+      const quantity = parseInt($('#modal-quantity').val());
     
-      // Create item object with quantity and author
-      const item = { id, title, price, description, quantity, image, author };
-      addItemToCart(item); // Add item to cart
-      $('#item-modal').hide(); // Hide modal after adding to cart
-      animateImageToCart(image); // Optional: Animation effect
-    });
+      // ✅ Забираємо окремо ці значення
+      const discount = $(this).data('discount') === true || $(this).data('discount') === 'true';
+      const discountPrice = parseFloat($(this).data('discount-price'));
+      const price = parseFloat($(this).data('price'));
+    
+      // ✅ Формуємо правильну ціну
+      const finalPrice = discount ? discountPrice : price;
+    
+      const item = {
+        id,
+        title,
+        image,
+        description,
+        author,
+        preorder: $(this).data('preorder') === true || $(this).data('preorder') === 'true',
+        discount,
+        discountPrice,
+        price: finalPrice, // ось тут вже правильна ціна
+        quantity: quantity || 1
+      };
+    
+      addItemToCart(item);
+      $('#item-modal').hide();
+      animateImageToCart(image);
+    });    
 
     // Function to update cart when increasing quantity
     $(document).on('click', '.increase', function() {
@@ -231,8 +249,20 @@ function loadItemsFromJson() {
             <img class="item_img" src="${item.image}" alt="${item.id}" data-id="${item.id}" data-title="${item.title}" data-description="${item.description}" data-material="${item.material}" data-price="${item.price}" data-author="${item.author}" data-author-link="${item['author-link']}"> <!-- Added data-author-link attribute -->
             <p class="title">${item.title}</p>
             <p class="author">${item.author}</p>
-            <p class="price">${item.price} грн</p>
-            <button class="addtocart" data-id="${item.id}" data-title="${item.title}" data-price="${item.price}" data-author="${item.author}">Додати до кошика</button> <!-- Added data-author attribute -->
+            <p class="price">
+            ${item.discount ? `<span class="old-price">${item.price} грн</span> <span class="new-price">${item.discountPrice} грн</span>` : `${item.price} грн`}
+            </p>
+            ${item.preorder ? `<span class="preorder-label">Предзамовлення</span>` : ''}
+            <button class="addtocart"
+                data-id="${item.id}"
+                data-title="${item.title}"
+                data-price="${item.price}"
+                data-discount="${item.discount}"
+                data-discount-price="${item.discountPrice}"
+                data-preorder="${item.preorder}"
+                data-author="${item.author}">
+              Додати до кошика
+            </button>
           </div>
         `);
       });

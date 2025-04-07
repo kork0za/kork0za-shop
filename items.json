@@ -21,12 +21,15 @@
 },
 {
     "id": "3",
-    "title": "Пін «patsiuk» (ПЕРЕДЗАМОВЛЕННЯ)",
+    "title": "Пін «patsiuk»",
     "author": "від ua_lemon_543",
-    "price": "45 ~~60~~",
+    "price": "45",
     "image":"item/DSC_0136.jpg",
     "description": "Що на голові? «Передзамовлення» у назві означає, що цього продукту ще немає в продажу, але йог оможна передзамовити за меншою ціною.",
     "material": "Діаметр: 58 мм, зад металевий",
-    "author-link": "https://x.com/ua_lemon_543"
+    "author-link": "https://x.com/ua_lemon_543",
+    "discount": true,
+    "discountPrice": "60",
+    "preorder": true
 }
 ]
