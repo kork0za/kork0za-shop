@@ -403,8 +403,6 @@ $('#order-form').submit(async function(event) {
         **Коментар:** ${comment}
         **Товари:** ${itemsText}
         **Промокод:** ${promocode}
-        **Знижка:** ${discount}
-        
         **Загальна ціна:** ${totalPrice.toFixed(2)} UAH`,
       color: 16777215,
       footer: {
