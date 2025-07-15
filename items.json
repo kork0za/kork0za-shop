@@ -13,11 +13,14 @@
     "id": "2",
     "title": "Пін «Коркоза одобрює»",
     "author": "від ua_lemon_543",
-    "price": "60",
+    "price": "80",
     "image":"item/item2.jpg",
     "description": "**Це крутезний пін**, який можна почепити собі на рюкзак! Він випромінює лише **позитивну енергію** саме для вас!",
     "material": "Діаметр: 58 мм, зад пластиковий",
-    "author-link": "https://x.com/ua_lemon_543"
+    "author-link": "https://x.com/ua_lemon_543",
+    "discount": true,
+    "discountPrice": "60",
+    "preorder": true
 },
 {
     "id": "3",
@@ -28,8 +31,8 @@
     "description": "Що на голові? «Передзамовлення» у назві означає, що цього продукту ще немає в продажу, але йог оможна передзамовити за меншою ціною.\nПочаток доставки очікуйте ближче до середини квітня ( ͡° ͜ʖ ͡°).",
     "material": "Діаметр: 58 мм, зад металевий",
     "author-link": "https://x.com/ua_lemon_543",
-    "discount": false,
-    "discountPrice": "60",
+    "discount": true,
+    "discountPrice": "80",
     "preorder": false
 }
 ]
