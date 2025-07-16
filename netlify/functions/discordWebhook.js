@@ -80,6 +80,11 @@ exports.handler = async (event) => {
               name: "💰 Загальна сума",
               value: `${orderData.totalPrice.toFixed(2)} грн`,
               inline: true
+            },
+            {
+              name: "💳 Спосіб оплати",
+              value: orderData.paymentMethod === 'monobank' ? 'Оплата онлайн (Monobank)' : 'Переказ на картку (Monobank/PrivatBank)',
+              inline: true
             }
           ],
           timestamp: orderData.timestamp
