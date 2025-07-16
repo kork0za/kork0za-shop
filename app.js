@@ -89,7 +89,7 @@ const App = () => {
             </div>
           ` : ''}
           ${item.preorder ? `
-            <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+            <div class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
               <i class="fas fa-clock mr-1"></i>
               Передзамовлення
             </div>
@@ -241,7 +241,6 @@ const App = () => {
   // Router function
   const navigate = (page, item = null) => {
     if (page === 'item' && item) {
-      window.history.pushState(null, '', `?item=${item.id}`);
       setSelectedItem(item);
       setCurrentPage('item');
     } else if (page === '404') {
@@ -433,7 +432,7 @@ const CartModal = ({ cart, onClose, onCheckout, removeFromCart, updateQuantity, 
         React.createElement('p', { className: 'text-gray-300 mb-6' }, 'Додайте товари до кошика, щоб продовжити покупки'),
         React.createElement('button', {
           onClick: onClose,
-          className: 'bg-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-6 py-3 rounded-lg transition-all duration-300 hover-glow'
+          className: 'continue-shopping-button bg-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-6 py-3 rounded-lg transition-all duration-300 hover-glow'
         }, 'Продовжити покупки')
       )
     );
@@ -486,7 +485,7 @@ const CartModal = ({ cart, onClose, onCheckout, removeFromCart, updateQuantity, 
             ),
             React.createElement('button', {
               onClick: () => removeFromCart(item.id),
-              className: 'text-red-400 hover:text-red-300 transition-colors duration-200'
+              className: 'w-8 h-8 text-red-400 hover:text-red-300 transition-colors duration-200'
             }, React.createElement('i', { className: 'fas fa-trash' }))
           )
         )
@@ -499,7 +498,7 @@ const CartModal = ({ cart, onClose, onCheckout, removeFromCart, updateQuantity, 
         ),
         React.createElement('button', {
           onClick: onCheckout,
-          className: 'w-full bg-teal-600 hover:from-green-500 hover:to-teal-500 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
+          className: 'checkout-button w-full bg-teal-600 hover:from-green-500 hover:to-teal-500 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
         },
           React.createElement('i', { className: 'fas fa-credit-card mr-2' }),
           'Оформити замовлення'
@@ -953,11 +952,10 @@ const OrderConfirmationModal = ({ onClose }) => {
       ),
       React.createElement('p', { className: 'text-sm text-gray-400 mb-6' },
         'Очікуйте дзвінка або повідомлення від нашого менеджера протягом 24 годин.'
-      ),
-      React.createElement('button', {
-        onClick: onClose,
-        className: 'bg-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover-glow'
-      }, 'Чудово!')
+      ),        React.createElement('button', {
+          onClick: onClose,
+          className: 'continue-shopping-button bg-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover-glow'
+        }, 'Чудово!')
     )
   );
 };
@@ -977,7 +975,7 @@ const NotFoundPage = ({ onHome }) => {
         React.createElement('div', { className: 'text-6xl mb-6 animate-float' }, '🎮'),
         React.createElement('button', {
           onClick: onHome,
-          className: 'bg-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
+          className: 'continue-shopping-button bg-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
         },
           React.createElement('i', { className: 'fas fa-home mr-2' }),
           'Повернутися на головну'

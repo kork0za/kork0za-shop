@@ -502,12 +502,12 @@ body {
 
 /* Order summary styling */
 [data-theme="light"] .text-white {
-  color: #0f172a !important;
+  color: #ffffff !important;
   font-weight: 600;
 }
 
 [data-theme="light"] .text-gray-300 {
-  color: #475569 !important;
+  color: #e2e8f0 !important;
   font-weight: 500;
 }
 
@@ -527,7 +527,6 @@ body {
 [data-theme="light"] button {
   font-weight: 600;
   text-shadow: none;
-  transition: all 0.2s ease;
 }
 
 [data-theme="light"] .bg-gray-600 {
@@ -619,4 +618,665 @@ body {
 /* Loading state styling */
 [data-theme="light"] .fa-spinner {
   color: #ffffff !important;
+}
+
+/* Button and icon color fixes for light theme */
+
+/* Product card buttons - ensure white text and icons */
+[data-theme="light"] .view-item-btn,
+[data-theme="light"] .add-to-cart-btn {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .view-item-btn i,
+[data-theme="light"] .add-to-cart-btn i,
+[data-theme="light"] .view-item-btn span,
+[data-theme="light"] .add-to-cart-btn span {
+  color: #ffffff !important;
+}
+
+/* Cart navigation button */
+[data-theme="light"] #cart-btn {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] #cart-btn i {
+  color: #ffffff !important;
+}
+
+/* Hero section button styling */
+[data-theme="light"] .hero-button {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .hero-button i {
+  color: #ffffff !important;
+}
+
+/* Gaming icon should be blue */
+[data-theme="light"] .gaming-icon,
+[data-theme="light"] .fa-gamepad {
+  color: #3b82f6 !important;
+}
+
+/* Badge styling - Pre-order and discount */
+[data-theme="light"] .bg-orange-500,
+[data-theme="light"] .bg-yellow-500,
+[data-theme="light"] .bg-pink-500 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 2px solid #e2e8f0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .bg-orange-500 i,
+[data-theme="light"] .bg-yellow-500 i,
+[data-theme="light"] .bg-pink-500 i {
+  color: #0f172a !important;
+}
+
+/* Specific fix for pre-order badge text and icons */
+[data-theme="light"] .bg-yellow-500 *,
+[data-theme="light"] .bg-orange-500 *,
+[data-theme="light"] .bg-pink-500 * {
+  color: #0f172a !important;
+}
+
+/* Extra specific targeting for FontAwesome icons in badges */
+[data-theme="light"] .bg-yellow-500 .fa-clock,
+[data-theme="light"] .bg-orange-500 .fa-clock,
+[data-theme="light"] .bg-orange-500 .fa-fire,
+[data-theme="light"] .bg-pink-500 .fa-fire,
+[data-theme="light"] .bg-yellow-500 .fas,
+[data-theme="light"] .bg-orange-500 .fas,
+[data-theme="light"] .bg-pink-500 .fas {
+  color: #0f172a !important;
+}
+
+/* Primary action buttons */
+[data-theme="light"] .checkout-button,
+[data-theme="light"] .continue-shopping-button,
+[data-theme="light"] .bg-accent-600 {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .checkout-button i,
+[data-theme="light"] .continue-shopping-button i,
+[data-theme="light"] .bg-accent-600 i {
+  color: #ffffff !important;
+}
+
+/* Modal add to cart buttons */
+[data-theme="light"] .add-to-cart-modal,
+[data-theme="light"] .add-to-cart-page {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .add-to-cart-modal i,
+[data-theme="light"] .add-to-cart-page i {
+  color: #ffffff !important;
+}
+
+/* Form submit buttons */
+[data-theme="light"] button[type="submit"] {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] button[type="submit"] i {
+  color: #ffffff !important;
+}
+
+/* Navigation elements */
+[data-theme="light"] nav button,
+[data-theme="light"] nav a {
+  color: inherit;
+}
+
+[data-theme="light"] nav .bg-primary-600,
+[data-theme="light"] nav .bg-primary-600 i {
+  color: #ffffff !important;
+}
+
+/* Ensure all colored buttons maintain white text */
+[data-theme="light"] .bg-green-600,
+[data-theme="light"] .bg-green-500,
+[data-theme="light"] .bg-blue-600,
+[data-theme="light"] .bg-blue-500 {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .bg-green-600 i,
+[data-theme="light"] .bg-green-500 i,
+[data-theme="light"] .bg-blue-600 i,
+[data-theme="light"] .bg-blue-500 i {
+  color: #ffffff !important;
+}
+
+/* Override any conflicting icon styles */
+[data-theme="light"] button .fas,
+[data-theme="light"] button .fab,
+[data-theme="light"] button i {
+  color: inherit !important;
+}
+
+/* Specific overrides for colored button backgrounds */
+[data-theme="light"] .bg-teal-600 .fas,
+[data-theme="light"] .bg-green-600 .fas,
+[data-theme="light"] .bg-primary-600 .fas,
+[data-theme="light"] .bg-accent-600 .fas {
+  color: #ffffff !important;
+}
+
+/* Badge icons should be dark on white background - highest priority override */
+[data-theme="light"] .bg-orange-500 .fas,
+[data-theme="light"] .bg-yellow-500 .fas,
+[data-theme="light"] .bg-pink-500 .fas {
+  color: #0f172a !important;
+}
+
+/* Gaming icon specific styling */
+[data-theme="light"] .gaming-icon {
+  color: #3b82f6 !important;
+}
+
+/* Override for gaming icon in the hero section */
+[data-theme="light"] .fas.fa-gamepad.gaming-icon {
+  color: #3b82f6 !important;
+}
+
+/* Cart count badge - enhanced contrast for light theme */
+[data-theme="light"] #cart-count {
+  background: #dc2626 !important; /* Darker red for better contrast */
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(220, 38, 38, 0.1) !important;
+  font-weight: 700 !important;
+}
+
+/* Fix checkout form button contrast issues */
+[data-theme="light"] .bg-gray-600,
+[data-theme="light"] .bg-gray-600:hover,
+[data-theme="light"] .bg-gray-500 {
+  background: #4b5563 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .bg-teal-600,
+[data-theme="light"] .bg-teal-600:hover,
+[data-theme="light"] .bg-green-500,
+[data-theme="light"] .bg-green-600 {
+  background: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+/* Ensure all form buttons have white text */
+[data-theme="light"] button {
+  color: #ffffff !important;
+}
+
+/* Specifically target checkout form buttons */
+[data-theme="light"] .checkout-button,
+[data-theme="light"] button[type="submit"],
+[data-theme="light"] .continue-shopping-button {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* Fix basket/cart modal buttons */
+[data-theme="light"] .checkout-button i,
+[data-theme="light"] button[type="submit"] i {
+  color: #ffffff !important;
+}
+
+/* Override any gray text on buttons */
+[data-theme="light"] button.bg-gray-600,
+[data-theme="light"] button.bg-gray-500,
+[data-theme="light"] .bg-gray-600,
+[data-theme="light"] .bg-gray-500 {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] button.bg-teal-600,
+[data-theme="light"] button.bg-green-600,
+[data-theme="light"] .bg-teal-600,
+[data-theme="light"] .bg-green-600 {
+  color: #ffffff !important;
+}
+
+/* Ensure button text inheritance */
+[data-theme="light"] button span {
+  color: inherit !important;
+}
+
+/* Fix specific button text issues */
+[data-theme="light"] .flex-1.bg-gray-600,
+[data-theme="light"] .flex-1.bg-teal-600 {
+  color: #ffffff !important;
+}
+
+/* Cancel and submit button text fixes */
+[data-theme="light"] .flex-1.bg-gray-600:hover,
+[data-theme="light"] .flex-1.bg-teal-600:hover {
+  color: #ffffff !important;
+}
+
+/* COMPREHENSIVE BUTTON COLOR FIXES FOR LIGHT THEME - HIGH SPECIFICITY */
+
+/* Force white text on all colored buttons - highest priority */
+[data-theme="light"] button.bg-gray-600,
+[data-theme="light"] button.bg-gray-500,
+[data-theme="light"] button.bg-teal-600,
+[data-theme="light"] button.bg-green-600,
+[data-theme="light"] button.bg-green-500,
+[data-theme="light"] .bg-gray-600,
+[data-theme="light"] .bg-gray-500,
+[data-theme="light"] .bg-teal-600,
+[data-theme="light"] .bg-green-600,
+[data-theme="light"] .bg-green-500 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+/* Specific targeting for flex buttons in checkout form */
+[data-theme="light"] .flex-1.bg-gray-600,
+[data-theme="light"] .flex-1.bg-teal-600,
+[data-theme="light"] .flex-1.bg-gray-600:hover,
+[data-theme="light"] .flex-1.bg-teal-600:hover {
+  color: #ffffff !important;
+  background-color: inherit !important;
+}
+
+/* Force white text and icons on checkout buttons */
+[data-theme="light"] .checkout-button,
+[data-theme="light"] .checkout-button:hover,
+[data-theme="light"] button[class*="checkout"],
+[data-theme="light"] button[class*="checkout"]:hover {
+  color: #ffffff !important;
+  background-color: #0d9488 !important;
+}
+
+/* Fix all icons inside colored buttons */
+[data-theme="light"] button i,
+[data-theme="light"] .bg-gray-600 i,
+[data-theme="light"] .bg-gray-500 i,
+[data-theme="light"] .bg-teal-600 i,
+[data-theme="light"] .bg-green-600 i,
+[data-theme="light"] .bg-green-500 i,
+[data-theme="light"] .checkout-button i,
+[data-theme="light"] button[type="submit"] i,
+[data-theme="light"] .flex-1 i {
+  color: #ffffff !important;
+}
+
+/* Fix all spans inside colored buttons */
+[data-theme="light"] button span,
+[data-theme="light"] .bg-gray-600 span,
+[data-theme="light"] .bg-teal-600 span,
+[data-theme="light"] .checkout-button span,
+[data-theme="light"] .flex-1 span {
+  color: #ffffff !important;
+}
+
+/* Override Tailwind text color utilities with !important */
+[data-theme="light"] .bg-gray-600.text-white,
+[data-theme="light"] .bg-teal-600.text-white,
+[data-theme="light"] .checkout-button.text-white,
+[data-theme="light"] button.text-white {
+  color: #ffffff !important;
+}
+
+/* Ensure hover states maintain white text */
+[data-theme="light"] button:hover,
+[data-theme="light"] .bg-gray-600:hover,
+[data-theme="light"] .bg-teal-600:hover,
+[data-theme="light"] .checkout-button:hover {
+  color: #ffffff !important;
+}
+
+/* Target specific button content in cart modal */
+[data-theme="light"] .checkout-button *,
+[data-theme="light"] .flex-1.bg-gray-600 *,
+[data-theme="light"] .flex-1.bg-teal-600 *,
+[data-theme="light"] button[type="submit"] * {
+  color: #ffffff !important;
+}
+
+/* Override any conflicting Tailwind classes */
+[data-theme="light"] [class*="bg-gray-6"].text-gray-900,
+[data-theme="light"] [class*="bg-teal-6"].text-gray-900,
+[data-theme="light"] [class*="bg-green-6"].text-gray-900 {
+  color: #ffffff !important;
+}
+
+/* SPECIFIC FIX FOR "ОФОРМИТИ ЗАМОВЛЕННЯ" BUTTON TEXT */
+[data-theme="light"] button:contains("Оформити замовлення"),
+[data-theme="light"] button:contains("Скасувати") {
+  color: #ffffff !important;
+}
+
+/* Fix button content that contains Ukrainian text */
+[data-theme="light"] button[class*="bg-"]:not([class*="bg-white"]):not([class*="bg-transparent"]) {
+  color: #ffffff !important;
+}
+
+/* Final catch-all for any button with colored background */
+[data-theme="light"] button[style*="background"],
+[data-theme="light"] button[class*="bg-blue"],
+[data-theme="light"] button[class*="bg-red"],
+[data-theme="light"] button[class*="bg-yellow"],
+[data-theme="light"] button[class*="bg-purple"],
+[data-theme="light"] button[class*="bg-pink"],
+[data-theme="light"] button[class*="bg-indigo"] {
+  color: #ffffff !important;
+}
+
+/* Ensure text content inside React elements is white */
+[data-theme="light"] .checkout-button > *,
+[data-theme="light"] .bg-teal-600 > *,
+[data-theme="light"] .bg-gray-600 > *,
+[data-theme="light"] button[class*="bg-"] > * {
+  color: inherit !important;
+}
+
+/* ULTRA-SPECIFIC BUTTON TEXT FIXES FOR CHECKOUT FORM - MAXIMUM PRIORITY */
+
+/* Target the exact button structure from the checkout form */
+[data-theme="light"] .flex-1.bg-gray-600,
+[data-theme="light"] .flex-1.bg-gray-600:hover,
+[data-theme="light"] .flex-1.bg-gray-600:focus,
+[data-theme="light"] .flex-1.bg-gray-600:active,
+[data-theme="light"] button.flex-1.bg-gray-600,
+[data-theme="light"] button.flex-1.bg-gray-600:hover,
+[data-theme="light"] button.flex-1.bg-gray-600:focus,
+[data-theme="light"] button.flex-1.bg-gray-600:active {
+  color: #ffffff !important;
+  background-color: #4b5563 !important;
+}
+
+[data-theme="light"] .flex-1.bg-teal-600,
+[data-theme="light"] .flex-1.bg-teal-600:hover,
+[data-theme="light"] .flex-1.bg-teal-600:focus,
+[data-theme="light"] .flex-1.bg-teal-600:active,
+[data-theme="light"] button.flex-1.bg-teal-600,
+[data-theme="light"] button.flex-1.bg-teal-600:hover,
+[data-theme="light"] button.flex-1.bg-teal-600:focus,
+[data-theme="light"] button.flex-1.bg-teal-600:active {
+  color: #ffffff !important;
+  background-color: #0d9488 !important;
+}
+
+/* Force override of any Tailwind text utilities on these specific buttons */
+[data-theme="light"] button[class*="flex-1"][class*="bg-gray-6"],
+[data-theme="light"] button[class*="flex-1"][class*="bg-teal-6"] {
+  color: #ffffff !important;
+}
+
+/* Target buttons that contain the specific Ukrainian text */
+[data-theme="light"] button[type="button"]:contains("Скасувати"),
+[data-theme="light"] button[type="submit"]:contains("Оформити замовлення") {
+  color: #ffffff !important;
+}
+
+/* Maximum specificity override for checkout form buttons */
+[data-theme="light"] form button.flex-1.bg-gray-600,
+[data-theme="light"] form button.flex-1.bg-teal-600,
+[data-theme="light"] form .flex-1.bg-gray-600,
+[data-theme="light"] form .flex-1.bg-teal-600 {
+  color: #ffffff !important;
+}
+
+/* Override any possible text color classes on these buttons */
+[data-theme="light"] .flex-1.bg-gray-600.text-gray-900,
+[data-theme="light"] .flex-1.bg-teal-600.text-gray-900,
+[data-theme="light"] .flex-1.bg-gray-600.text-black,
+[data-theme="light"] .flex-1.bg-teal-600.text-black,
+[data-theme="light"] .flex-1.bg-gray-600[class*="text-"],
+[data-theme="light"] .flex-1.bg-teal-600[class*="text-"] {
+  color: #ffffff !important;
+}
+
+/* Ensure all child elements also have white text */
+[data-theme="light"] .flex-1.bg-gray-600 *,
+[data-theme="light"] .flex-1.bg-teal-600 *,
+[data-theme="light"] button.flex-1.bg-gray-600 *,
+[data-theme="light"] button.flex-1.bg-teal-600 * {
+  color: #ffffff !important;
+}
+
+/* Additional safety net for any text inside these buttons */
+[data-theme="light"] .flex-1[class*="bg-gray-6"] > *,
+[data-theme="light"] .flex-1[class*="bg-teal-6"] > *,
+[data-theme="light"] button.flex-1[class*="bg-gray-6"] > *,
+[data-theme="light"] button.flex-1[class*="bg-teal-6"] > * {
+  color: inherit !important;
+}
+
+/* Force styling for the exact button classes from the checkout form */
+[data-theme="light"] button[class="flex-1 bg-gray-600 hover:bg-gray-500 text-white py-4 rounded-xl font-semibold transition-all duration-300"],
+[data-theme="light"] button[class="flex-1 bg-teal-600 hover:from-green-500 hover:to-teal-500 disabled:opacity-50 text-white py-4 rounded-xl font-semibold transition-all duration-300 hover-glow"] {
+  color: #ffffff !important;
+}
+
+/* GLOBAL BUTTON TEXT CONTRAST ENFORCEMENT FOR LIGHT THEME */
+
+/* Force white text on ALL buttons with ANY colored background */
+[data-theme="light"] button:not([class*="bg-white"]):not([class*="bg-transparent"]):not([class*="bg-gray-1"]):not([class*="bg-gray-2"]):not([class*="bg-gray-3"]):not([class*="bg-slate-1"]):not([class*="bg-slate-2"]):not([class*="bg-slate-3"]) {
+  color: #ffffff !important;
+}
+
+/* Specifically target all variations of gray and teal buttons */
+[data-theme="light"] button[class*="bg-gray-4"],
+[data-theme="light"] button[class*="bg-gray-5"],
+[data-theme="light"] button[class*="bg-gray-6"],
+[data-theme="light"] button[class*="bg-gray-7"],
+[data-theme="light"] button[class*="bg-gray-8"],
+[data-theme="light"] button[class*="bg-gray-9"],
+[data-theme="light"] button[class*="bg-teal"],
+[data-theme="light"] button[class*="bg-green"],
+[data-theme="light"] button[class*="bg-blue"],
+[data-theme="light"] button[class*="bg-primary"],
+[data-theme="light"] button[class*="bg-accent"] {
+  color: #ffffff !important;
+}
+
+/* Override Tailwind's text color utilities with maximum specificity */
+[data-theme="light"] button[class*="bg-gray-"][class*="text-"],
+[data-theme="light"] button[class*="bg-teal-"][class*="text-"],
+[data-theme="light"] button[class*="bg-green-"][class*="text-"],
+[data-theme="light"] button[class*="bg-blue-"][class*="text-"],
+[data-theme="light"] button[class*="bg-primary-"][class*="text-"],
+[data-theme="light"] button[class*="bg-accent-"][class*="text-"] {
+  color: #ffffff !important;
+}
+
+/* Safety net: Any element with flex-1 and a background color should have white text */
+[data-theme="light"] .flex-1[class*="bg-"]:not([class*="bg-white"]):not([class*="bg-transparent"]) {
+  color: #ffffff !important;
+}
+
+/* Final override for checkout form structure */
+[data-theme="light"] .flex.space-x-4 > button {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .flex.space-x-4 > button:first-child {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .flex.space-x-4 > button:last-child {
+  border-radius: 20px!important;
+  background-color: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+/* ICON CONTRAST FIXES FOR LIGHT THEME */
+
+/* Hero Features Highlights icons - darker backgrounds for better contrast (excluding badges) */
+[data-theme="light"] .glass-effect .bg-primary-500,
+[data-theme="light"] section .bg-primary-500,
+[data-theme="light"] .hero .bg-primary-500 {
+  background-color: #1e40af !important; /* Darker blue */
+}
+
+[data-theme="light"] .glass-effect .bg-accent-500,
+[data-theme="light"] section .bg-accent-500,
+[data-theme="light"] .hero .bg-accent-500 {
+  background-color: #7c3aed !important; /* Darker purple */
+}
+
+[data-theme="light"] .glass-effect .bg-yellow-500,
+[data-theme="light"] section .bg-yellow-500:not(.absolute),
+[data-theme="light"] .hero .bg-yellow-500 {
+  background-color: #d97706 !important; /* Darker orange */
+}
+
+[data-theme="light"] .glass-effect .bg-green-500,
+[data-theme="light"] section .bg-green-500,
+[data-theme="light"] .hero .bg-green-500 {
+  background-color: #059669 !important; /* Darker green */
+}
+
+/* Badge backgrounds remain white for proper contrast in light theme */
+[data-theme="light"] .absolute.bg-yellow-500,
+[data-theme="light"] .absolute.bg-orange-500,
+[data-theme="light"] .absolute.bg-pink-500 {
+  background-color: #ffffff !important; /* White background for badges */
+  border: 2px solid #e5e7eb !important; /* Light gray border */
+}
+
+/* Badge text and icons are dark for contrast on white background - HIGHEST PRIORITY */
+[data-theme="light"] .absolute.bg-yellow-500,
+[data-theme="light"] .absolute.bg-yellow-500 *,
+[data-theme="light"] .absolute.bg-yellow-500 .fas,
+[data-theme="light"] .absolute.bg-yellow-500 .fa-clock,
+[data-theme="light"] .absolute.bg-yellow-500 i,
+[data-theme="light"] .absolute.bg-orange-500,
+[data-theme="light"] .absolute.bg-orange-500 *,
+[data-theme="light"] .absolute.bg-orange-500 .fas,
+[data-theme="light"] .absolute.bg-orange-500 .fa-clock,
+[data-theme="light"] .absolute.bg-orange-500 i,
+[data-theme="light"] .absolute.bg-pink-500,
+[data-theme="light"] .absolute.bg-pink-500 *,
+[data-theme="light"] .absolute.bg-pink-500 .fas,
+[data-theme="light"] .absolute.bg-pink-500 .fa-fire,
+[data-theme="light"] .absolute.bg-pink-500 i {
+  color: #0f172a !important; /* Dark text and icons on white background */
+}
+
+/* Override any conflicting white color rules for badge icons */
+[data-theme="light"] .absolute.bg-yellow-500 .text-white,
+[data-theme="light"] .absolute.bg-orange-500 .text-white,
+[data-theme="light"] .absolute.bg-pink-500 .text-white {
+  color: #0f172a !important; /* Force dark color even if text-white class is present */
+}
+
+/* Ensure white icons remain visible on darker backgrounds */
+[data-theme="light"] .bg-primary-500 .fas,
+[data-theme="light"] .bg-primary-500 i,
+[data-theme="light"] .bg-accent-500 .fas,
+[data-theme="light"] .bg-accent-500 i,
+[data-theme="light"] .bg-yellow-500 .fas,
+[data-theme="light"] .bg-yellow-500 i,
+[data-theme="light"] .bg-green-500 .fas,
+[data-theme="light"] .bg-green-500 i {
+  color: #ffffff !important;
+}
+
+/* About section icons - specific targeting for better contrast */
+[data-theme="light"] .glass-effect .bg-primary-500 .fas,
+[data-theme="light"] .glass-effect .bg-accent-500 .fas,
+[data-theme="light"] .glass-effect .bg-yellow-500 .fas {
+  color: #ffffff !important;
+}
+
+/* Delivery and payment section icons */
+[data-theme="light"] .bg-primary-500 .fa-truck,
+[data-theme="light"] .bg-accent-500 .fa-credit-card,
+[data-theme="light"] .bg-yellow-500 .fa-shield-alt,
+[data-theme="light"] .bg-green-500 .fa-headset {
+  color: #ffffff !important;
+}
+
+/* Social media icons in header and footer */
+[data-theme="light"] .fab.fa-discord,
+[data-theme="light"] .fab.fa-instagram, 
+[data-theme="light"] .fab.fa-telegram {
+  color: #374151 !important; /* Dark gray for better contrast */
+}
+
+/* Navigation and footer social icons with backgrounds */
+[data-theme="light"] nav .bg-primary-500 .fab,
+[data-theme="light"] footer .bg-primary-500 .fab,
+[data-theme="light"] nav .bg-accent-500 .fab,
+[data-theme="light"] footer .bg-accent-500 .fab {
+  color: #ffffff !important;
+}
+
+/* Header navigation icons */
+[data-theme="light"] nav .fas,
+[data-theme="light"] nav .fab {
+  color: #374151 !important;
+}
+
+/* Footer icons */
+[data-theme="light"] footer .fas,
+[data-theme="light"] footer .fab {
+  color: #9ca3af !important;
+}
+
+/* Contact section icons with colored backgrounds - ensure white icons */
+[data-theme="light"] #contact .bg-blue-500 .fab,
+[data-theme="light"] #contact .bg-pink-500 .fab,
+[data-theme="light"] #contact .bg-cyan-500 .fab,
+[data-theme="light"] section#contact .fas,
+[data-theme="light"] section#contact .fab {
+  color: #ffffff !important;
+}
+
+/* Contact section - ЗВ'ЯЗОК З НАМИ - all icons should be white */
+[data-theme="light"] #contact .glass-effect .fas,
+[data-theme="light"] #contact .glass-effect .fab,
+[data-theme="light"] #contact .bg-primary-500 .fas,
+[data-theme="light"] #contact .bg-accent-500 .fas,
+[data-theme="light"] #contact .bg-yellow-500 .fas,
+[data-theme="light"] #contact .bg-green-500 .fas,
+[data-theme="light"] #contact .bg-blue-500 .fab,
+[data-theme="light"] #contact .bg-pink-500 .fab,
+[data-theme="light"] #contact .bg-cyan-500 .fab {
+  color: #ffffff !important;
+}
+
+/* Ensure Discord, Instagram, Telegram icons are visible (excluding badges) */
+[data-theme="light"] section .bg-blue-500,
+[data-theme="light"] #contact .bg-blue-500,
+[data-theme="light"] footer .bg-blue-500 {
+  background-color: #1d4ed8 !important; /* Darker blue for Discord */
+}
+
+[data-theme="light"] section .bg-pink-500:not(.absolute),
+[data-theme="light"] #contact .bg-pink-500,
+[data-theme="light"] footer .bg-pink-500 {
+  background-color: #be185d !important; /* Darker pink for Instagram */
+}
+
+[data-theme="light"] section .bg-cyan-500,
+[data-theme="light"] #contact .bg-cyan-500,
+[data-theme="light"] footer .bg-cyan-500 {
+  background-color: #0891b2 !important; /* Darker cyan for Telegram */
+}
+
+/* Award, palette, and heart icons in about section */
+[data-theme="light"] .fa-award,
+[data-theme="light"] .fa-palette,
+[data-theme="light"] .fa-heart {
+  color: #ffffff !important;
+}
+
+/* Hero section floating icons - make them more visible */
+[data-theme="light"] .bg-primary-500\/20,
+[data-theme="light"] .bg-accent-500\/20,
+[data-theme="light"] .bg-yellow-500\/20,
+[data-theme="light"] .bg-green-500\/20 {
+  background-color: rgba(59, 130, 246, 0.3) !important; /* More visible floating elements */
 }

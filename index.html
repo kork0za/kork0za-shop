@@ -283,25 +283,6 @@
             color: inherit;
         }
         
-        /* Icons in colored backgrounds should remain white */
-        [data-theme="light"] .bg-primary-500 .fas,
-        [data-theme="light"] .bg-primary-500 .fab,
-        [data-theme="light"] .bg-primary-500 i,
-        [data-theme="light"] .bg-accent-500 .fas,
-        [data-theme="light"] .bg-accent-500 .fab,
-        [data-theme="light"] .bg-accent-500 i,
-        [data-theme="light"] .bg-yellow-500 .fas,
-        [data-theme="light"] .bg-yellow-500 .fab,
-        [data-theme="light"] .bg-yellow-500 i,
-        [data-theme="light"] .bg-green-500 .fas,
-        [data-theme="light"] .bg-green-500 .fab,
-        [data-theme="light"] .bg-green-500 i,
-        [data-theme="light"] .bg-red-500 .fas,
-        [data-theme="light"] .bg-red-500 .fab,
-        [data-theme="light"] .bg-red-500 i {
-            color: #ffffff !important;
-        }
-        
         /* Fix logo inversion - don't invert in light theme */
         .logo-image {
             filter: invert(1);
@@ -600,6 +581,106 @@
             color: #0f172a !important;
             font-weight: 800;
         }
+        
+        /* Product card button icons and text */
+        [data-theme="light"] .view-item-btn,
+        [data-theme="light"] .add-to-cart-btn {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .view-item-btn i,
+        [data-theme="light"] .add-to-cart-btn i {
+            color: #ffffff !important;
+        }
+        
+        /* Cart icon in navigation */
+        [data-theme="light"] #cart-btn i {
+            color: #ffffff !important;
+        }
+        
+        /* Hero section "Переглянути товари" button */
+        [data-theme="light"] .hero-button,
+        [data-theme="light"] .hero-button i {
+            color: #ffffff !important;
+        }
+        
+        /* Gaming icon should be blue */
+        [data-theme="light"] .gaming-icon {
+            color: #3b82f6 !important;
+        }
+        
+        /* Pre-order badges - white text and icons */
+        [data-theme="light"] .bg-orange-500,
+        [data-theme="light"] .bg-yellow-500 {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .bg-orange-500 i,
+        [data-theme="light"] .bg-yellow-500 i {
+            color: #ffffff !important;
+        }
+        
+        /* Discount badges - white text and icons */
+        [data-theme="light"] .bg-pink-500 {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .bg-pink-500 i {
+            color: #ffffff !important;
+        }
+        
+        /* "Оформити замовлення" button */
+        [data-theme="light"] .checkout-button,
+        [data-theme="light"] .checkout-button i {
+            color: #ffffff !important;
+        }
+        
+        /* "Продовжити покупки" button */
+        [data-theme="light"] .continue-shopping-button,
+        [data-theme="light"] .continue-shopping-button i {
+            color: #ffffff !important;
+        }
+        
+        /* All colored background buttons should have white text */
+        [data-theme="light"] .bg-accent-600,
+        [data-theme="light"] .bg-accent-600 i {
+            color: #ffffff !important;
+        }
+        
+        /* Specific button text fixes for checkout form */
+        [data-theme="light"] button[type="submit"] {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] button[type="submit"] i {
+            color: #ffffff !important;
+        }
+        
+        /* Add to cart buttons in modals */
+        [data-theme="light"] .add-to-cart-modal,
+        [data-theme="light"] .add-to-cart-modal i {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .add-to-cart-page,
+        [data-theme="light"] .add-to-cart-page i {
+            color: #ffffff !important;
+        }
+        
+        /* Ensure all product card elements maintain proper colors */
+        [data-theme="light"] .view-item-btn span,
+        [data-theme="light"] .add-to-cart-btn span {
+            color: #ffffff !important;
+        }
+        
+        /* Navigation buttons */
+        [data-theme="light"] nav button {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] nav button i {
+            color: #ffffff !important;
+        }
     </style>
     
     <!-- Preloader Styles -->
@@ -878,7 +959,7 @@
                 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                    <a href="#shop" class="group bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 pixel-corners w-full sm:w-auto">
+                    <a href="#shop" class="hero-button group bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 pixel-corners w-full sm:w-auto">
                         <i class="fas fa-shopping-bag mr-2"></i>
                         Переглянути товари
                     </a>
@@ -973,7 +1054,7 @@
                         </p>
                         <div class="flex flex-wrap gap-4 mt-6">
                             <span class="bg-primary-500/20 text-primary-400 px-4 py-2 rounded-full text-sm font-medium">
-                                <i class="fas fa-gamepad mr-2"></i>Ґеймінґ
+                                <i class="gaming-icon fas fa-gamepad mr-2"></i>Ґеймінґ
                             </span>
                             <span class="bg-accent-500/20 text-accent-400 px-4 py-2 rounded-full text-sm font-medium">
                                 <i class="fas fa-video mr-2"></i>Стрімінґ
