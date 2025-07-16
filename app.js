@@ -81,7 +81,7 @@ const App = () => {
     grid.innerHTML = products.map(item => `
       <div class="group glass-effect rounded-2xl p-6 border border-primary-500/30 hover:border-primary-400/60 transition-all duration-300 hover-glow transform hover:-translate-y-2" data-item-id="${item.id}">
         <div class="relative overflow-hidden rounded-xl mb-6 bg-dark-700">
-          <img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
+          <img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110 product-image" ${item.image2 ? `data-image2="${item.image2}" data-original="${item.image}"` : ''}>
           ${item.discount ? `
             <div class="absolute top-4 left-4 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
               <i class="fas fa-fire mr-1"></i>
@@ -160,6 +160,22 @@ const App = () => {
           }, 1500);
         }
       });
+    });
+
+    // Add hover functionality for image2
+    grid.querySelectorAll('.product-image').forEach(img => {
+      const image2 = img.dataset.image2;
+      const originalImage = img.dataset.original;
+      
+      if (image2) {
+        img.addEventListener('mouseenter', () => {
+          img.src = image2;
+        });
+        
+        img.addEventListener('mouseleave', () => {
+          img.src = originalImage;
+        });
+      }
     });
   };
 
