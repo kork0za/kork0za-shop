@@ -538,7 +538,8 @@ const CheckoutModal = ({ cart, onClose, onOrderSubmit }) => {
     messenger: '',
     contact: '',
     comment: '',
-    promocode: ''
+    promocode: '',
+    paymentMethod: 'monobank'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [cities, setCities] = useState([]);
@@ -613,7 +614,7 @@ const CheckoutModal = ({ cart, onClose, onOrderSubmit }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.surname || !formData.phone || !formData.city || !formData.messenger || !formData.contact) {
+    if (!formData.name || !formData.surname || !formData.phone || !formData.city || !formData.messenger || !formData.contact || !formData.paymentMethod) {
       alert('Будь ласка, заповніть всі обов\'язкові поля.');
       return;
     }
@@ -644,24 +645,50 @@ const CheckoutModal = ({ cart, onClose, onOrderSubmit }) => {
         contact: formData.contact,
         comment: formData.comment,
         promocode: formData.promocode,
+        paymentMethod: formData.paymentMethod,
         cart: cart,
         totalPrice: totalPrice,
         timestamp: timestamp
       };
 
-      const response = await fetch('/.netlify/functions/discordWebhook', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(orderData),
-      });
+      // Handle different payment methods
+      if (formData.paymentMethod === 'monobank') {
+        // Create order details for Monobank link
+        const orderDetails = `${formData.name} ${formData.surname}, ${formData.phone}`;
+        const monobankUrl = `https://send.monobank.ua/jar/3JerLagGqx?a=${totalPrice}&t=${encodeURIComponent(orderDetails)}`;
+        
+        // Send order data to Discord first
+        const response = await fetch('/.netlify/functions/discordWebhook', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(orderData),
+        });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Open Monobank payment link
+        window.open(monobankUrl, '_blank');
+        onOrderSubmit();
+      } else {
+        // For card transfer method, just send to Discord
+        const response = await fetch('/.netlify/functions/discordWebhook', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(orderData),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        onOrderSubmit();
       }
-
-      onOrderSubmit();
     } catch (error) {
       console.error('Error sending order:', error);
       alert('Не вдалося відправити замовлення. Спробуйте ще раз пізніше.');
@@ -855,6 +882,34 @@ const CheckoutModal = ({ cart, onClose, onOrderSubmit }) => {
                 required: true,
                 placeholder: '@username або номер'
               })
+            )
+          )
+        ),
+
+        // Payment Information
+        React.createElement('div', { className: 'bg-dark-800/30 rounded-lg p-6 border border-primary-500/20' },
+          React.createElement('h3', { className: 'text-lg font-semibold text-white mb-4 flex items-center' },
+            React.createElement('i', { className: 'fas fa-credit-card mr-2 text-primary-400' }),
+            'Оплата'
+          ),
+          React.createElement('div', null,
+            React.createElement('label', { className: 'block text-sm font-medium text-gray-300 mb-2' },
+              'Спосіб оплати *'
+            ),
+            React.createElement('select', {
+              value: formData.paymentMethod,
+              onChange: (e) => handleInputChange('paymentMethod', e.target.value),
+              className: 'w-full bg-dark-700 border border-primary-500/30 rounded-lg px-4 py-3 text-white focus:border-primary-400 focus:outline-none transition-colors duration-200',
+              required: true
+            },
+              React.createElement('option', { value: 'monobank' }, 'Оплата онлайн (Monobank)'),
+              React.createElement('option', { value: 'card-transfer' }, 'Переказ на картку (Monobank/PrivatBank)')
+            )
+          ),
+          formData.paymentMethod === 'card-transfer' && React.createElement('div', { className: 'mt-4 p-4 bg-blue-500/20 border border-blue-500/30 rounded-lg' },
+            React.createElement('p', { className: 'text-blue-300 text-sm flex items-center' },
+              React.createElement('i', { className: 'fas fa-info-circle mr-2' }),
+              'Після оформлення замовлення ми надішлемо вам реквізити для оплати через обраний месенджер.'
             )
           )
         ),
