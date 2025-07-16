@@ -69,10 +69,10 @@
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'glow': 'none',
                         'bounce-slow': 'bounce 3s infinite',
                         'pulse-slow': 'pulse 4s infinite',
-                        'gradient': 'gradient 8s ease infinite',
+                        'gradient': 'none',
                     },
                     keyframes: {
                         float: {
@@ -80,17 +80,17 @@
                             '50%': { transform: 'translateY(-20px)' },
                         },
                         glow: {
-                            'from': { 'box-shadow': '0 0 20px #00ffff' },
-                            'to': { 'box-shadow': '0 0 30px #00ffff, 0 0 40px #00ffff' },
+                            'from': { 'box-shadow': 'none' },
+                            'to': { 'box-shadow': 'none' },
                         },
                         gradient: {
                             '0%, 100%': { 'background-position': '0% 50%' },
-                            '50%': { 'background-position': '100% 50%' },
+                            '50%': { 'background-position': '0% 50%' },
                         }
                     },
                     backgroundImage: {
-                        'gaming-gradient': 'linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff)',
-                        'neon-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                        'gaming-gradient': 'none',
+                        'neon-gradient': 'none',
                         'cyber-grid': "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
                     }
                 }
@@ -122,7 +122,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: #0f172a;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -139,7 +139,7 @@
         .loader-logo {
             width: 80px;
             height: 80px;
-            background: linear-gradient(45deg, #38bdf8, #ec4899);
+            background: #38bdf8;
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -153,7 +153,7 @@
             color: #38bdf8;
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            text-shadow: 0 0 20px currentColor;
+            text-shadow: none;
         }
         
         .loader-spinner {
@@ -176,7 +176,7 @@
         
         .loader-progress-bar {
             height: 100%;
-            background: linear-gradient(45deg, #38bdf8, #ec4899);
+            background: #38bdf8;
             border-radius: 2px;
             width: 0%;
             animation: loadProgress 3s ease forwards;
@@ -200,35 +200,25 @@
         }
         
         .text-shadow-neon {
-            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
+            text-shadow: none;
         }
         
         .text-glow-animated {
-            animation: textGlow 3s ease-in-out infinite alternate;
+            animation: none;
         }
         
         @keyframes textGlow {
             from {
-                text-shadow: 
-                    0 0 5px rgba(56, 189, 248, 0.5),
-                    0 0 10px rgba(56, 189, 248, 0.5),
-                    0 0 15px rgba(56, 189, 248, 0.5),
-                    0 0 20px rgba(236, 72, 153, 0.5);
+                text-shadow: none;
             }
             to {
-                text-shadow: 
-                    0 0 10px rgba(56, 189, 248, 0.8),
-                    0 0 20px rgba(56, 189, 248, 0.8),
-                    0 0 30px rgba(56, 189, 248, 0.8),
-                    0 0 40px rgba(236, 72, 153, 0.8),
-                    0 0 50px rgba(255, 255, 0, 0.6);
+                text-shadow: none;
             }
         }
         
         .border-neon {
-            border: 2px solid;
-            border-image: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00) 1;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            border: 2px solid #38bdf8;
+            box-shadow: none;
         }
         
         .glass-effect {
@@ -238,8 +228,8 @@
         }
         
         .hover-glow:hover {
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
-            transform: translateY(-5px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
         
         .pixel-corners {
@@ -252,9 +242,9 @@
         }
 
         .bg-gradient-animated {
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            background: #667eea;
+            background-size: auto;
+            animation: none;
         }
 
         @keyframes gradient {
@@ -298,7 +288,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="#" class="flex items-center space-x-3 group">
-                        <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg flex items-center justify-center group-hover:animate-pulse">
+                        <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
                             <i class="fas fa-gamepad text-white text-lg"></i>
                         </div>
                         <span class="font-game text-primary-400 text-sm hidden sm:block">KORK0ZA</span>
@@ -325,10 +315,10 @@
                 
                 <!-- Cart Button -->
                 <div class="flex items-center space-x-4">
-                    <button id="cart-btn" class="relative bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover-glow">
+                    <button id="cart-btn" class="relative bg-primary-600 hover:bg-primary-500 text-white px-4 py-2 rounded-lg transition-all duration-300">
                         <i class="fas fa-shopping-cart mr-2"></i>
                         <span class="hidden sm:inline">Кошик</span>
-                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center animate-bounce-slow">0</span>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center">0</span>
                     </button>
                     
                     <!-- Mobile menu button -->
@@ -379,19 +369,19 @@
                 <!-- Subtitle -->
                 <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 font-light max-w-2xl mx-auto leading-relaxed">
                     Офіційний магазин мерчу твого улюбленого 
-                    <span class="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent font-semibold">
+                    <span class="text-primary-400 font-semibold">
                         стримера та блогера
                     </span>
                 </p>
                 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                    <a href="#shop" class="group bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 hover-glow pixel-corners w-full sm:w-auto">
-                        <i class="fas fa-shopping-bag mr-2 group-hover:animate-bounce"></i>
+                    <a href="#shop" class="group bg-primary-600 hover:bg-primary-500 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 pixel-corners w-full sm:w-auto">
+                        <i class="fas fa-shopping-bag mr-2"></i>
                         Переглянути товари
                     </a>
                     <a href="#about" class="group glass-effect border border-primary-500/50 hover:border-primary-400 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 hover:bg-primary-500/20 w-full sm:w-auto">
-                        <i class="fas fa-play mr-2 group-hover:animate-pulse"></i>
+                        <i class="fas fa-play mr-2"></i>
                         Дізнатися більше
                     </a>
                 </div>
@@ -399,28 +389,28 @@
                 <!-- Features Highlights -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
                     <div class="glass-effect rounded-xl p-4 text-center border border-primary-500/30 hover-glow transition-all duration-300">
-                        <div class="w-12 h-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <div class="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mx-auto mb-3">
                             <i class="fas fa-star text-white text-lg"></i>
                         </div>
                         <div class="text-xl font-bold text-primary-400 mb-1">Якість</div>
                         <div class="text-sm text-gray-400">Якість матеріалів</div>
                     </div>
                     <div class="glass-effect rounded-xl p-4 text-center border border-accent-500/30 hover-glow transition-all duration-300">
-                        <div class="w-12 h-12 bg-gradient-to-r from-accent-500 to-yellow-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <div class="w-12 h-12 bg-accent-500 rounded-lg flex items-center justify-center mx-auto mb-3">
                             <i class="fas fa-shipping-fast text-white text-lg"></i>
                         </div>
                         <div class="text-xl font-bold text-accent-400 mb-1">Швидко</div>
                         <div class="text-sm text-gray-400">Доставка до 7 днів</div>
                     </div>
                     <div class="glass-effect rounded-xl p-4 text-center border border-yellow-500/30 hover-glow transition-all duration-300">
-                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-green-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center mx-auto mb-3">
                             <i class="fas fa-palette text-white text-lg"></i>
                         </div>
                         <div class="text-xl font-bold text-yellow-400 mb-1">Унікально</div>
                         <div class="text-sm text-gray-400">Ексклюзивні дизайни</div>
                     </div>
                     <div class="glass-effect rounded-xl p-4 text-center border border-green-500/30 hover-glow transition-all duration-300">
-                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-primary-500 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mx-auto mb-3">
                             <i class="fas fa-headset text-white text-lg"></i>
                         </div>
                         <div class="text-xl font-bold text-green-400 mb-1">Підтримка</div>
@@ -439,20 +429,20 @@
         <!-- Products Section -->
         <section id="shop" class="py-20 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Section Header -->
-                <div class="text-center mb-16">
-                    <h2 class="font-game text-2xl sm:text-3xl md:text-4xl bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent mb-4">
-                        НАШІ ТОВАРИ
-                    </h2>
-                    <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-                        Унікальні дизайни та якісні матеріали для справжніх фанатів
-                    </p>
-                </div>
-                
-                <!-- Products Grid -->
-                <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Products will be loaded here by JavaScript -->
-                </div>
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="font-game text-2xl sm:text-3xl md:text-4xl text-primary-400 mb-4">
+                НАШІ ТОВАРИ
+                </h2>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                Унікальні дизайни та якісні матеріали для справжніх фанатів
+                </p>
+            </div>
+            
+            <!-- Products Grid -->
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
             </div>
         </section>
 
@@ -460,7 +450,7 @@
         <section id="about" class="py-20 relative bg-dark-800/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="font-game text-2xl sm:text-3xl md:text-4xl bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent mb-4">
+                    <h2 class="font-game text-2xl sm:text-3xl md:text-4xl text-primary-400 mb-4">
                         ПРО НАС
                     </h2>
                     <p class="text-lg text-gray-300 max-w-2xl mx-auto">
@@ -481,20 +471,20 @@
                         </p>
                         <div class="flex flex-wrap gap-4 mt-6">
                             <span class="bg-primary-500/20 text-primary-400 px-4 py-2 rounded-full text-sm font-medium">
-                                <i class="fas fa-gamepad mr-2"></i>Gaming
+                                <i class="fas fa-gamepad mr-2"></i>Ґеймінґ
                             </span>
                             <span class="bg-accent-500/20 text-accent-400 px-4 py-2 rounded-full text-sm font-medium">
-                                <i class="fas fa-video mr-2"></i>Streaming
+                                <i class="fas fa-video mr-2"></i>Стрімінґ
                             </span>
                             <span class="bg-yellow-500/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-medium">
-                                <i class="fas fa-tshirt mr-2"></i>Fashion
+                                <i class="fas fa-tshirt mr-2"></i>Стиль
                             </span>
                         </div>
                     </div>
                     <div class="glass-effect rounded-2xl p-8 border border-primary-500/30">
-                        <div class="space-y-6">
+                        <div class="grid grid-cols-1 gap-6 p-5">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
+                                <div class="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
                                     <i class="fas fa-award text-white text-xl"></i>
                                 </div>
                                 <div>
@@ -503,7 +493,7 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-accent-500 to-yellow-500 rounded-lg flex items-center justify-center">
+                                <div class="w-12 h-12 bg-accent-500 rounded-lg flex items-center justify-center">
                                     <i class="fas fa-palette text-white text-xl"></i>
                                 </div>
                                 <div>
@@ -512,7 +502,7 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-green-500 rounded-lg flex items-center justify-center">
+                                <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center">
                                     <i class="fas fa-heart text-white text-xl"></i>
                                 </div>
                                 <div>
@@ -530,7 +520,7 @@
         <section id="delivery" class="py-20 relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="font-game text-2xl sm:text-3xl md:text-4xl bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent mb-4">
+                    <h2 class="font-game text-2xl sm:text-3xl md:text-4xl text-primary-400 mb-4">
                         ДОСТАВКА ТА ОПЛАТА
                     </h2>
                     <p class="text-lg text-gray-300 max-w-2xl mx-auto">
@@ -540,7 +530,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="glass-effect rounded-2xl p-6 border border-primary-500/30 hover-glow transition-all duration-300">
-                        <div class="w-16 h-16 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <div class="w-16 h-16 bg-primary-500 rounded-lg flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-shipping-fast text-white text-2xl"></i>
                         </div>
                         <h3 class="font-semibold text-xl text-white text-center mb-3">Нова Пошта</h3>
@@ -562,7 +552,7 @@
                     </div>
                     
                     <div class="glass-effect rounded-2xl p-6 border border-accent-500/30 hover-glow transition-all duration-300">
-                        <div class="w-16 h-16 bg-gradient-to-r from-accent-500 to-yellow-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <div class="w-16 h-16 bg-accent-500 rounded-lg flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-credit-card text-white text-2xl"></i>
                         </div>
                         <h3 class="font-semibold text-xl text-white text-center mb-3">Онлайн Оплата</h3>
@@ -627,7 +617,7 @@
         <section id="contact" class="py-20 relative bg-dark-800/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="font-game text-2xl sm:text-3xl md:text-4xl bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent mb-4">
+                    <h2 class="font-game text-2xl sm:text-3xl md:text-4xl text-primary-400 mb-4">
                         ЗВ'ЯЗОК З НАМИ
                     </h2>
                     <p class="text-lg text-gray-300 max-w-2xl mx-auto">
@@ -637,7 +627,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="glass-effect rounded-xl p-6 border border-primary-500/30 text-center hover-glow transition-all duration-300">
-                        <div class="w-12 h-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <div class="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mx-auto mb-4">
                             <i class="fab fa-discord text-white text-xl"></i>
                         </div>
                         <h3 class="font-semibold text-white mb-2">Discord</h3>
@@ -645,7 +635,7 @@
                     </div>
                     
                     <div class="glass-effect rounded-xl p-6 border border-accent-500/30 text-center hover-glow transition-all duration-300">
-                        <div class="w-12 h-12 bg-gradient-to-r from-accent-500 to-yellow-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <div class="w-12 h-12 bg-accent-500 rounded-lg flex items-center justify-center mx-auto mb-4">
                             <i class="fab fa-telegram text-white text-xl"></i>
                         </div>
                         <h3 class="font-semibold text-white mb-2">Telegram</h3>
@@ -653,7 +643,7 @@
                     </div>
                     
                     <div class="glass-effect rounded-xl p-6 border border-yellow-500/30 text-center hover-glow transition-all duration-300">
-                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-green-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center mx-auto mb-4">
                             <i class="fab fa-instagram text-white text-xl"></i>
                         </div>
                         <h3 class="font-semibold text-white mb-2">Instagram</h3>
@@ -692,7 +682,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
-                            <div class="w-10 h-10 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg flex items-center justify-center">
+                            <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-gamepad text-white text-lg"></i>
                             </div>
                             <span class="font-game text-primary-400 text-lg">KORK0ZA</span>

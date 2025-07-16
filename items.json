@@ -19,7 +19,7 @@
     "material": "Діаметр: 58 мм, зад пластиковий",
     "author-link": "https://x.com/ua_lemon_543",
     "discount": true,
-    "discountPrice": "60",
+    "discountPrice": "30",
     "preorder": true
 },
 {
@@ -32,7 +32,7 @@
     "material": "Діаметр: 58 мм, зад металевий",
     "author-link": "https://x.com/ua_lemon_543",
     "discount": true,
-    "discountPrice": "80",
+    "discountPrice": "60",
     "preorder": false
 }
 ]

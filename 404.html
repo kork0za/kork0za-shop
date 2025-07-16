@@ -40,7 +40,7 @@
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'glow': 'none',
                         'bounce-slow': 'bounce 3s infinite',
                         'pulse-slow': 'pulse 4s infinite',
                     },
@@ -50,13 +50,13 @@
                             '50%': { transform: 'translateY(-20px)' },
                         },
                         glow: {
-                            'from': { 'box-shadow': '0 0 20px #00ffff' },
-                            'to': { 'box-shadow': '0 0 30px #00ffff, 0 0 40px #00ffff' },
+                            'from': { 'box-shadow': 'none' },
+                            'to': { 'box-shadow': 'none' },
                         }
                     },
                     backgroundImage: {
-                        'gaming-gradient': 'linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff)',
-                        'neon-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                        'gaming-gradient': 'none',
+                        'neon-gradient': 'none',
                         'cyber-grid': "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
                     }
                 }
@@ -88,12 +88,12 @@
         }
         
         .hover-glow:hover {
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
-            transform: translateY(-5px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
         
         .text-shadow-neon {
-            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
+            text-shadow: none;
         }
     </style>
 </head>
@@ -114,7 +114,7 @@
     <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
         <!-- Error Code -->
         <div class="mb-8">
-            <h1 class="font-game text-6xl sm:text-8xl md:text-9xl bg-gradient-to-r from-primary-400 via-accent-400 to-yellow-400 bg-clip-text text-transparent text-shadow-neon animate-glow">
+            <h1 class="font-game text-6xl sm:text-8xl md:text-9xl text-primary-400">
                 404
             </h1>
         </div>
@@ -153,12 +153,12 @@
         
         <!-- Action Buttons -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <a href="index-new.html" class="group bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow w-full sm:w-auto">
-                <i class="fas fa-home mr-2 group-hover:animate-bounce"></i>
+            <a href="index-new.html" class="group bg-primary-600 hover:bg-primary-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 w-full sm:w-auto">
+                <i class="fas fa-home mr-2"></i>
                 Повернутися на головну
             </a>
             <a href="index-new.html#shop" class="group glass-effect border border-primary-500/50 hover:border-primary-400 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-primary-500/20 w-full sm:w-auto">
-                <i class="fas fa-store mr-2 group-hover:animate-pulse"></i>
+                <i class="fas fa-store mr-2"></i>
                 Переглянути товари
             </a>
         </div>
@@ -190,8 +190,8 @@
     <!-- Fun Interactive Elements -->
     <div class="fixed bottom-8 right-8 z-20">
         <div class="group cursor-pointer">
-            <div class="bg-gradient-to-r from-purple-600 to-pink-600 w-16 h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 animate-bounce-slow">
-                <i class="fas fa-gamepad text-white text-2xl group-hover:animate-spin"></i>
+            <div class="bg-primary-600 w-16 h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                <i class="fas fa-gamepad text-white text-2xl"></i>
             </div>
         </div>
     </div>
@@ -234,10 +234,8 @@
             const gamepad = document.querySelector('.fixed.bottom-8.right-8 .group');
             if (gamepad) {
                 gamepad.addEventListener('click', function() {
-                    this.querySelector('i').classList.add('fa-spin');
-                    setTimeout(() => {
-                        this.querySelector('i').classList.remove('fa-spin');
-                    }, 1000);
+                    // Simple click interaction without spinning animation
+                    console.log('Gamepad clicked!');
                 });
             }
         });
