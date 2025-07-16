@@ -49,6 +49,40 @@ body {
   transform: translateY(-2px);
 }
 
+/* Modal Theme Support */
+[data-theme="light"] .glass-effect {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .bg-dark-700,
+[data-theme="light"] .bg-dark-800,
+[data-theme="light"] .bg-dark-800\/30,
+[data-theme="light"] .bg-dark-800\/50 {
+  background-color: #ffffff !important;
+}
+
+/* Modal overlay for light theme */
+[data-theme="light"] .fixed.bg-black\/80 {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Text colors in light theme modals */
+[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .text-gray-300 {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .text-gray-400 {
+  color: #64748b !important;
+}
+
 /* Text Shadow - Flat Design */
 .text-shadow-neon {
   text-shadow: none;
@@ -362,4 +396,227 @@ body {
     background: white !important;
     border: 1px solid #ccc !important;
   }
+}
+
+/* Light theme modal form enhancements */
+[data-theme="light"] .glass-effect {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Form container styling for better visual hierarchy */
+[data-theme="light"] .bg-dark-800\/30 {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  border: 2px solid #e2e8f0 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+}
+
+/* Enhanced input field styling */
+[data-theme="light"] input:not([type="submit"]):not([type="button"]),
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  background: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  color: #1e293b !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] input:focus,
+[data-theme="light"] textarea:focus,
+[data-theme="light"] select:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  outline: none;
+  background: #ffffff !important;
+}
+
+/* Placeholder text styling */
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #64748b !important;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Label styling for better readability */
+[data-theme="light"] label {
+  color: #374151 !important;
+  font-weight: 600;
+  text-shadow: none;
+}
+
+/* Warning and info boxes */
+[data-theme="light"] .bg-yellow-500\/20 {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%) !important;
+  border: 2px solid #f59e0b !important;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="light"] .text-yellow-300 {
+  color: #92400e !important;
+  font-weight: 600;
+  text-shadow: none;
+}
+
+/* Success boxes for confirmation modal */
+[data-theme="light"] .bg-green-500\/20 {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
+  border: 2px solid #16a34a !important;
+  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.1);
+}
+
+[data-theme="light"] .text-green-300 {
+  color: #15803d !important;
+  font-weight: 600;
+}
+
+/* Dropdown suggestions styling */
+[data-theme="light"] .bg-dark-700 {
+  background: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .hover\:bg-primary-500\/20:hover {
+  background: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+/* Modal header styling */
+[data-theme="light"] .glass-effect h2 {
+  color: #0f172a !important;
+  font-weight: 800;
+  text-shadow: none;
+}
+
+[data-theme="light"] .glass-effect h3 {
+  color: #1e293b !important;
+  font-weight: 700;
+  text-shadow: none;
+}
+
+/* Order summary styling */
+[data-theme="light"] .text-white {
+  color: #0f172a !important;
+  font-weight: 600;
+}
+
+[data-theme="light"] .text-gray-300 {
+  color: #475569 !important;
+  font-weight: 500;
+}
+
+/* Price displays with enhanced contrast */
+[data-theme="light"] .text-primary-400 {
+  color: #1d4ed8 !important;
+  font-weight: 800;
+  text-shadow: none;
+}
+
+[data-theme="light"] .text-green-400 {
+  color: #059669 !important;
+  font-weight: 700;
+}
+
+/* Button styling improvements */
+[data-theme="light"] button {
+  font-weight: 600;
+  text-shadow: none;
+  transition: all 0.2s ease;
+}
+
+[data-theme="light"] .bg-gray-600 {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%) !important;
+  border: none;
+  color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .bg-gray-600:hover {
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .bg-teal-600 {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%) !important;
+  border: none;
+  color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .bg-teal-600:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Close button enhanced */
+[data-theme="light"] .text-gray-400 {
+  color: #6b7280 !important;
+  transition: color 0.2s ease;
+}
+
+[data-theme="light"] .text-gray-400:hover {
+  color: #374151 !important;
+}
+
+/* Modal border and divider improvements */
+[data-theme="light"] .border-primary-500\/30 {
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .border-primary-500\/20 {
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .border-t {
+  border-color: #e2e8f0 !important;
+}
+
+/* Icon colors in modals */
+[data-theme="light"] .fas,
+[data-theme="light"] .fab {
+  color: #1d4ed8 !important;
+}
+
+/* Specific icon color overrides for colored backgrounds */
+[data-theme="light"] .bg-teal-600 .fas,
+[data-theme="light"] .bg-gray-600 .fas,
+[data-theme="light"] .text-primary-400 .fas {
+  color: #ffffff !important;
+}
+
+/* Enhanced text contrast for better readability */
+[data-theme="light"] .text-sm {
+  color: #475569 !important;
+  font-weight: 500;
+}
+
+[data-theme="light"] .font-semibold {
+  color: #1e293b !important;
+  font-weight: 700;
+}
+
+[data-theme="light"] .font-bold {
+  color: #0f172a !important;
+  font-weight: 800;
+}
+
+/* Disabled state improvements */
+[data-theme="light"] button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Loading state styling */
+[data-theme="light"] .fa-spinner {
+  color: #ffffff !important;
 }

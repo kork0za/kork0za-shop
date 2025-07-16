@@ -114,6 +114,494 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="styles-custom.css">
     
+    <!-- Theme Variables -->
+    <style>
+        :root {
+            /* Dark theme (default) */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --border-primary: rgba(56, 189, 248, 0.3);
+            --glass-bg: rgba(15, 23, 42, 0.8);
+            --glass-border: rgba(56, 189, 248, 0.3);
+        }
+        
+        [data-theme="light"] {
+            /* Light theme */
+            --bg-primary: #ffffff;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --border-primary: rgba(56, 189, 248, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(56, 189, 248, 0.4);
+        }
+        
+        /* Apply theme variables */
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .glass-effect {
+            background: var(--glass-bg);
+            border-color: var(--glass-border);
+            backdrop-filter: blur(12px);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .theme-card {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border-color: var(--border-primary);
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .theme-text-primary {
+            color: var(--text-primary);
+        }
+        
+        .theme-text-secondary {
+            color: var(--text-secondary);
+        }
+        
+        .theme-text-muted {
+            color: var(--text-muted);
+        }
+        
+        /* Override specific dark theme classes in light mode */
+        [data-theme="light"] .bg-dark-900 {
+            background-color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .bg-dark-800 {
+            background-color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .bg-dark-700 {
+            background-color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .bg-dark-800\/50 {
+            background-color: #f8fafc !important;
+        }
+        
+        [data-theme="light"] .text-white {
+            color: #0f172a !important;
+        }
+        
+        [data-theme="light"] .text-gray-300 {
+            color: #334155 !important;
+        }
+        
+        [data-theme="light"] .text-gray-400 {
+            color: #64748b !important;
+        }
+        
+        [data-theme="light"] .text-gray-500 {
+            color: #64748b !important;
+        }
+        
+        [data-theme="light"] .border-primary-500\/30 {
+            border-color: rgba(56, 189, 248, 0.5) !important;
+        }
+        
+        [data-theme="light"] .border-primary-500\/20 {
+            border-color: rgba(56, 189, 248, 0.4) !important;
+        }
+        
+        /* Fix glass effects in light mode */
+        [data-theme="light"] .glass-effect {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-color: rgba(56, 189, 248, 0.5) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Fix specific sections in light mode */
+        [data-theme="light"] section.bg-dark-800\/50 {
+            background-color: #f8fafc !important;
+        }
+        
+        [data-theme="light"] footer.bg-dark-900 {
+            background-color: #f1f5f9 !important;
+            border-top: 1px solid rgba(56, 189, 248, 0.3) !important;
+        }
+        
+        /* Fix animated background elements */
+        [data-theme="light"] .bg-gaming-pattern {
+            opacity: 0.1 !important;
+        }
+        
+        [data-theme="light"] .bg-cyber-grid {
+            opacity: 0.05 !important;
+        }
+        
+        /* Fix navigation colors */
+        [data-theme="light"] nav .text-white {
+            color: #0f172a !important;
+        }
+        
+        [data-theme="light"] nav .hover\:text-primary-400:hover {
+            color: #0284c7 !important;
+        }
+        
+        /* Fix border colors for better visibility */
+        [data-theme="light"] .border-t {
+            border-color: rgba(56, 189, 248, 0.3) !important;
+        }
+        
+        /* Improve readability for card content */
+        [data-theme="light"] .glass-effect .text-gray-300 {
+            color: #475569 !important;
+        }
+        
+        [data-theme="light"] .glass-effect .text-gray-400 {
+            color: #64748b !important;
+        }
+        
+        /* Fix theme toggle button */
+        [data-theme="light"] #theme-toggle {
+            background-color: #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+        
+        [data-theme="light"] #theme-toggle:hover {
+            background-color: #cbd5e1 !important;
+        }
+        
+        /* Keep icons white in light theme */
+        [data-theme="light"] .fas,
+        [data-theme="light"] .fab,
+        [data-theme="light"] i {
+            color: inherit;
+        }
+        
+        /* Icons in colored backgrounds should remain white */
+        [data-theme="light"] .bg-primary-500 .fas,
+        [data-theme="light"] .bg-primary-500 .fab,
+        [data-theme="light"] .bg-primary-500 i,
+        [data-theme="light"] .bg-accent-500 .fas,
+        [data-theme="light"] .bg-accent-500 .fab,
+        [data-theme="light"] .bg-accent-500 i,
+        [data-theme="light"] .bg-yellow-500 .fas,
+        [data-theme="light"] .bg-yellow-500 .fab,
+        [data-theme="light"] .bg-yellow-500 i,
+        [data-theme="light"] .bg-green-500 .fas,
+        [data-theme="light"] .bg-green-500 .fab,
+        [data-theme="light"] .bg-green-500 i,
+        [data-theme="light"] .bg-red-500 .fas,
+        [data-theme="light"] .bg-red-500 .fab,
+        [data-theme="light"] .bg-red-500 i {
+            color: #ffffff !important;
+        }
+        
+        /* Fix logo inversion - don't invert in light theme */
+        .logo-image {
+            filter: invert(1);
+            transition: filter 0.3s ease;
+        }
+        
+        [data-theme="light"] .logo-image {
+            filter: none !important;
+        }
+        
+        /* Fix button text contrast in light theme */
+        [data-theme="light"] .bg-primary-600,
+        [data-theme="light"] .bg-primary-500 {
+            background-color: #0284c7 !important;
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .bg-green-600,
+        [data-theme="light"] .bg-green-500 {
+            background-color: #059669 !important;
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .bg-gray-700,
+        [data-theme="light"] .bg-gray-600 {
+            background-color: #475569 !important;
+            color: #ffffff !important;
+        }
+        
+        /* Fix button hover states */
+        [data-theme="light"] .hover\:bg-primary-500:hover {
+            background-color: #0369a1 !important;
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] .hover\:bg-gray-600:hover {
+            background-color: #374151 !important;
+            color: #ffffff !important;
+        }
+        
+        /* Ensure all buttons have proper contrast */
+        [data-theme="light"] button {
+            color: inherit;
+        }
+        
+        [data-theme="light"] button.bg-primary-600,
+        [data-theme="light"] button.bg-primary-500,
+        [data-theme="light"] .bg-primary-600,
+        [data-theme="light"] .bg-primary-500 {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] button.bg-green-600,
+        [data-theme="light"] button.bg-green-500,
+        [data-theme="light"] .bg-green-600,
+        [data-theme="light"] .bg-green-500 {
+            color: #ffffff !important;
+        }
+        
+        /* Fix cart button specifically */
+        [data-theme="light"] #cart-btn {
+            background-color: #0284c7 !important;
+            color: #ffffff !important;
+        }
+        
+        [data-theme="light"] #cart-btn:hover {
+            background-color: #0369a1 !important;
+            color: #ffffff !important;
+        }
+        
+        /* Fix mobile menu button */
+        [data-theme="light"] #mobile-menu-btn {
+            color: #0f172a !important;
+        }
+        
+        [data-theme="light"] #mobile-menu-btn:hover {
+            color: #0284c7 !important;
+        }
+        
+        /* Fix mobile menu text */
+        [data-theme="light"] #mobile-menu .text-white {
+            color: #0f172a !important;
+        }
+        
+        [data-theme="light"] #mobile-menu .hover\:text-primary-400:hover {
+            color: #0284c7 !important;
+        }
+        
+        /* Fix mobile theme toggle button */
+        [data-theme="light"] #mobile-theme-toggle {
+            color: #0f172a !important;
+        }
+        
+        [data-theme="light"] #mobile-theme-toggle:hover {
+            color: #0284c7 !important;
+        }
+        
+        /* Modal overlay improvements */
+        [data-theme="light"] .fixed.inset-0.bg-black\/80 {
+            background-color: rgba(255, 255, 255, 0.85) !important;
+        }
+        
+        /* Modal backdrop improvements */
+        [data-theme="light"] .backdrop-blur-sm {
+            backdrop-filter: blur(8px);
+        }
+        
+        /* React Modal specific styles */
+        [data-theme="light"] .prose.prose-invert {
+            color: #0f172a !important;
+        }
+        
+        [data-theme="light"] .prose.prose-invert h1,
+        [data-theme="light"] .prose.prose-invert h2,
+        [data-theme="light"] .prose.prose-invert h3,
+        [data-theme="light"] .prose.prose-invert h4,
+        [data-theme="light"] .prose.prose-invert h5,
+        [data-theme="light"] .prose.prose-invert h6 {
+            color: #0f172a !important;
+        }
+        
+        [data-theme="light"] .prose.prose-invert p,
+        [data-theme="light"] .prose.prose-invert ul,
+        [data-theme="light"] .prose.prose-invert ol,
+        [data-theme="light"] .prose.prose-invert li {
+            color: #334155 !important;
+        }
+        
+        /* Enhanced form styling for better contrast in light theme */
+        [data-theme="light"] input,
+        [data-theme="light"] textarea,
+        [data-theme="light"] select {
+            background-color: #ffffff !important;
+            border: 2px solid #cbd5e1 !important;
+            color: #0f172a !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="light"] input:focus,
+        [data-theme="light"] textarea:focus,
+        [data-theme="light"] select:focus {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+            background-color: #ffffff !important;
+        }
+        
+        [data-theme="light"] input::placeholder,
+        [data-theme="light"] textarea::placeholder {
+            color: #64748b !important;
+            opacity: 0.8;
+        }
+        
+        /* Form section backgrounds and borders */
+        [data-theme="light"] .bg-dark-800\/30 {
+            background-color: #f8fafc !important;
+            border: 2px solid #e2e8f0 !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Form labels with better contrast */
+        [data-theme="light"] .text-gray-300 {
+            color: #374151 !important;
+            font-weight: 600;
+        }
+        
+        /* Enhanced dropdown and suggestions styling */
+        [data-theme="light"] .bg-dark-700 {
+            background-color: #ffffff !important;
+            border: 2px solid #cbd5e1 !important;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        [data-theme="light"] .hover\:bg-primary-500\/20:hover {
+            background-color: #dbeafe !important;
+        }
+        
+        /* Modal headers and section titles */
+        [data-theme="light"] .glass-effect h2,
+        [data-theme="light"] .glass-effect h3 {
+            color: #0f172a !important;
+            font-weight: 700;
+        }
+        
+        /* Warning boxes and alerts */
+        [data-theme="light"] .bg-yellow-500\/20 {
+            background-color: #fef3c7 !important;
+            border-color: #d97706 !important;
+        }
+        
+        [data-theme="light"] .text-yellow-300 {
+            color: #92400e !important;
+            font-weight: 600;
+        }
+        
+        /* Order summary items */
+        [data-theme="light"] .text-white {
+            color: #0f172a !important;
+        }
+        
+        [data-theme="light"] .text-gray-300 {
+            color: #475569 !important;
+        }
+        
+        /* Price and total displays */
+        [data-theme="light"] .text-primary-400 {
+            color: #1d4ed8 !important;
+            font-weight: 700;
+        }
+        
+        [data-theme="light"] .text-green-400 {
+            color: #059669 !important;
+            font-weight: 600;
+        }
+        
+        /* Button improvements for better contrast */
+        [data-theme="light"] button.bg-gray-600 {
+            background-color: #6b7280 !important;
+            color: #ffffff !important;
+            border: none;
+            font-weight: 600;
+        }
+        
+        [data-theme="light"] button.bg-gray-600:hover {
+            background-color: #4b5563 !important;
+        }
+        
+        [data-theme="light"] button.bg-teal-600 {
+            background-color: #0d9488 !important;
+            color: #ffffff !important;
+            border: none;
+            font-weight: 600;
+        }
+        
+        [data-theme="light"] button.bg-teal-600:hover {
+            background-color: #0f766e !important;
+        }
+        
+        /* Close button styling */
+        [data-theme="light"] .text-gray-400:hover {
+            color: #374151 !important;
+        }
+        
+        /* Disabled state styling */
+        [data-theme="light"] button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        /* Modal border improvements */
+        [data-theme="light"] .border-primary-500\/30 {
+            border-color: #cbd5e1 !important;
+        }
+        
+        [data-theme="light"] .border-primary-500\/20 {
+            border-color: #e2e8f0 !important;
+        }
+        
+        /* Section dividers */
+        [data-theme="light"] .border-t {
+            border-color: #e2e8f0 !important;
+        }
+        
+        /* Icons in light theme modals */
+        [data-theme="light"] .text-primary-400 i {
+            color: #1d4ed8 !important;
+        }
+        
+        /* Order confirmation modal specific styling */
+        [data-theme="light"] .bg-green-500\/20 {
+            background-color: #dcfce7 !important;
+            border-color: #16a34a !important;
+        }
+        
+        [data-theme="light"] .text-green-300 {
+            color: #15803d !important;
+            font-weight: 600;
+        }
+        
+        /* Success message styling */
+        [data-theme="light"] .bg-gradient-to-r {
+            background: #0d9488 !important;
+            color: #ffffff !important;
+        }
+        
+        /* Improve readability for all text elements */
+        [data-theme="light"] .glass-effect .text-sm {
+            color: #475569 !important;
+        }
+        
+        [data-theme="light"] .glass-effect .font-semibold {
+            color: #1e293b !important;
+            font-weight: 700;
+        }
+        
+        [data-theme="light"] .glass-effect .font-bold {
+            color: #0f172a !important;
+            font-weight: 800;
+        }
+    </style>
+    
     <!-- Preloader Styles -->
     <style>
         .preloader {
@@ -122,13 +610,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #0f172a;
+            background: var(--bg-primary);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.5s ease, background-color 0.3s ease;
         }
         
         .preloader.hidden {
@@ -154,6 +642,10 @@
             font-size: 1.5rem;
             margin-bottom: 2rem;
             text-shadow: none;
+        }
+        
+        [data-theme="light"] .loader-text {
+            color: #0284c7;
         }
         
         .loader-spinner {
@@ -263,7 +755,7 @@
         }
     </style>
 </head>
-<body class="bg-dark-900 text-white font-modern overflow-x-hidden">
+<body class="font-modern overflow-x-hidden" data-theme="dark">
     <!-- Preloader -->
     <div id="preloader" class="preloader">
         <div class="loader-logo">
@@ -315,6 +807,11 @@
                 
                 <!-- Cart Button -->
                 <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" class="relative bg-gray-700 hover:bg-gray-600 text-white p-2 rounded-lg transition-all duration-300" title="Переключити тему">
+                        <i id="theme-icon" class="fas fa-sun text-lg"></i>
+                    </button>
+                    
                     <button id="cart-btn" class="relative bg-primary-600 hover:bg-primary-500 text-white px-4 py-2 rounded-lg transition-all duration-300">
                         <i class="fas fa-shopping-cart mr-2"></i>
                         <span class="hidden sm:inline">Кошик</span>
@@ -344,6 +841,11 @@
                 <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-primary-400 transition-colors duration-200">
                     <i class="fas fa-envelope mr-2"></i>Контакти
                 </a>
+                <div class="border-t border-primary-500/30 pt-2 mt-2">
+                    <button id="mobile-theme-toggle" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:text-primary-400 transition-colors duration-200">
+                        <i id="mobile-theme-icon" class="fas fa-sun mr-2"></i>Переключити тему
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -363,7 +865,7 @@
             <div class="text-center z-10 max-w-5xl mx-auto px-4">
                 <!-- Logo -->
                 <div class="mb-6 animate-float">
-                    <img src="img/logo.png" alt="Kork0za Logo" class=" invert mx-auto h-24 sm:h-32 md:h-40 drop-shadow-2xl hover:animate-pulse transition-transform duration-300 hover:scale-105">
+                    <img src="img/logo.png" alt="Kork0za Logo" class="logo-image mx-auto h-24 sm:h-32 md:h-40 drop-shadow-2xl hover:animate-pulse transition-transform duration-300 hover:scale-105">
                 </div>
                 
                 <!-- Subtitle -->
@@ -753,6 +1255,12 @@
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.className = 'fas fa-bars text-xl';
+                } else {
+                    icon.className = 'fas fa-times text-xl';
+                }
             });
         }
         
@@ -803,6 +1311,91 @@
 
         // Observe elements for scroll animations
         document.addEventListener('DOMContentLoaded', () => {
+            // Theme Toggle Functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const body = document.body;
+            
+            // Load saved theme from localStorage or default to dark
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            body.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+            
+            // Theme toggle click handler
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                // Add transition class for smooth change
+                body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+                
+                // Update theme
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+                
+                // Remove transition after animation
+                setTimeout(() => {
+                    body.style.transition = '';
+                }, 300);
+            });
+            
+            function updateThemeIcon(theme) {
+                if (theme === 'dark') {
+                    themeIcon.className = 'fas fa-sun text-lg';
+                    themeToggle.title = 'Переключити на світлу тему';
+                } else {
+                    themeIcon.className = 'fas fa-moon text-lg';
+                    themeToggle.title = 'Переключити на темну тему';
+                }
+            }
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+            const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.className = 'fas fa-bars text-xl';
+                    } else {
+                        icon.className = 'fas fa-times text-xl';
+                    }
+                });
+            }
+            
+            // Mobile theme toggle
+            if (mobileThemeToggle && mobileThemeIcon) {
+                mobileThemeToggle.addEventListener('click', () => {
+                    themeToggle.click(); // Trigger the main theme toggle
+                });
+                
+                // Sync mobile theme icon with main theme icon
+                const syncMobileIcon = () => {
+                    const currentTheme = body.getAttribute('data-theme');
+                    if (currentTheme === 'dark') {
+                        mobileThemeIcon.className = 'fas fa-sun mr-2';
+                        mobileThemeToggle.innerHTML = '<i class="fas fa-sun mr-2"></i>Світла тема';
+                    } else {
+                        mobileThemeIcon.className = 'fas fa-moon mr-2';
+                        mobileThemeToggle.innerHTML = '<i class="fas fa-moon mr-2"></i>Темна тема';
+                    }
+                };
+                
+                // Initial sync
+                syncMobileIcon();
+                
+                // Sync when theme changes
+                new MutationObserver(syncMobileIcon).observe(body, { 
+                    attributes: true, 
+                    attributeFilter: ['data-theme'] 
+                });
+            }
+            
             const animatedElements = document.querySelectorAll('.glass-effect, .product-card, .animate-on-scroll');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';

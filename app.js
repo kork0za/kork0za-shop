@@ -2,6 +2,32 @@
 const { useState, useEffect, useRef } = React;
 const { createRoot } = ReactDOM;
 
+// Theme hook to detect current theme
+const useTheme = () => {
+  const [theme, setTheme] = useState('dark');
+  
+  useEffect(() => {
+    const updateTheme = () => {
+      const currentTheme = document.body.getAttribute('data-theme') || 'dark';
+      setTheme(currentTheme);
+    };
+    
+    // Initial theme
+    updateTheme();
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.body, { 
+      attributes: true, 
+      attributeFilter: ['data-theme'] 
+    });
+    
+    return () => observer.disconnect();
+  }, []);
+  
+  return theme;
+};
+
 // Main App Component
 const App = () => {
   const [items, setItems] = useState([]);
@@ -12,6 +38,7 @@ const App = () => {
   const [showOrderConfirmation, setShowOrderConfirmation] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [loading, setLoading] = useState(true);
+  const theme = useTheme(); // Add theme detection
 
   // Load items on component mount
   useEffect(() => {
@@ -53,16 +80,16 @@ const App = () => {
 
     grid.innerHTML = products.map(item => `
       <div class="group glass-effect rounded-2xl p-6 border border-primary-500/30 hover:border-primary-400/60 transition-all duration-300 hover-glow transform hover:-translate-y-2" data-item-id="${item.id}">
-        <div class="relative overflow-hidden rounded-xl mb-6 bg-gradient-to-br from-dark-800 to-dark-700">
+        <div class="relative overflow-hidden rounded-xl mb-6 bg-dark-700">
           <img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110">
           ${item.discount ? `
-            <div class="absolute top-4 left-4 bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
+            <div class="absolute top-4 left-4 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
               <i class="fas fa-fire mr-1"></i>
               -${Math.round((1 - item.discountPrice / item.price) * 100)}%
             </div>
           ` : ''}
           ${item.preorder ? `
-            <div class="absolute top-4 right-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+            <div class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
               <i class="fas fa-clock mr-1"></i>
               Передзамовлення
             </div>
@@ -285,6 +312,7 @@ const App = () => {
 const ItemModal = ({ item, onClose, addToCart }) => {
   const converter = new showdown.Converter();
   const [selectedImage, setSelectedImage] = useState(item.image);
+  const theme = useTheme(); // Add theme detection
 
   const handleAddToCart = () => {
     addToCart(item);
@@ -320,20 +348,20 @@ const ItemModal = ({ item, onClose, addToCart }) => {
         React.createElement('div', { className: 'grid grid-cols-1 lg:grid-cols-2 gap-8' },
           // Image section
           React.createElement('div', { className: 'space-y-4' },
-            React.createElement('div', { className: 'relative overflow-hidden rounded-xl bg-gradient-to-br from-dark-800 to-dark-700' },
+            React.createElement('div', { className: 'relative overflow-hidden rounded-xl bg-dark-700' },
               React.createElement('img', {
                 src: selectedImage,
                 alt: item.title,
                 className: 'w-full h-96 object-cover'
               }),
               item.discount && React.createElement('div', {
-                className: 'absolute top-4 left-4 bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-2 rounded-full font-semibold animate-pulse'
+                className: 'absolute top-4 left-4 bg-pink-500 text-white px-3 py-2 rounded-full font-semibold animate-pulse'
               },
                 React.createElement('i', { className: 'fas fa-fire mr-2' }),
                 `-${Math.round((1 - item.discountPrice / item.price) * 100)}%`
               ),
               item.preorder && React.createElement('div', {
-                className: 'absolute top-4 right-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-3 py-2 rounded-full font-semibold'
+                className: 'absolute top-4 right-4 bg-yellow-500 to-orange-500 text-white px-3 py-2 rounded-full font-semibold'
               },
                 React.createElement('i', { className: 'fas fa-clock mr-2' }),
                 'Передзамовлення'
@@ -378,7 +406,7 @@ const ItemModal = ({ item, onClose, addToCart }) => {
             
             React.createElement('button', {
               onClick: handleAddToCart,
-              className: 'add-to-cart-modal w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
+              className: 'add-to-cart-modal w-full bg-teal-600 hover:from-green-500 hover:to-teal-500 text-white py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
             },
               React.createElement('i', { className: 'fas fa-cart-plus mr-2' }),
               'Додати до кошика'
@@ -392,6 +420,8 @@ const ItemModal = ({ item, onClose, addToCart }) => {
 
 // Cart Modal Component
 const CartModal = ({ cart, onClose, onCheckout, removeFromCart, updateQuantity, getTotalPrice }) => {
+  const theme = useTheme(); // Add theme detection
+  
   if (cart.length === 0) {
     return React.createElement('div', {
       className: 'fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4',
@@ -403,7 +433,7 @@ const CartModal = ({ cart, onClose, onCheckout, removeFromCart, updateQuantity, 
         React.createElement('p', { className: 'text-gray-300 mb-6' }, 'Додайте товари до кошика, щоб продовжити покупки'),
         React.createElement('button', {
           onClick: onClose,
-          className: 'bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-6 py-3 rounded-lg transition-all duration-300 hover-glow'
+          className: 'bg-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-6 py-3 rounded-lg transition-all duration-300 hover-glow'
         }, 'Продовжити покупки')
       )
     );
@@ -469,7 +499,7 @@ const CartModal = ({ cart, onClose, onCheckout, removeFromCart, updateQuantity, 
         ),
         React.createElement('button', {
           onClick: onCheckout,
-          className: 'w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
+          className: 'w-full bg-teal-600 hover:from-green-500 hover:to-teal-500 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
         },
           React.createElement('i', { className: 'fas fa-credit-card mr-2' }),
           'Оформити замовлення'
@@ -481,6 +511,7 @@ const CartModal = ({ cart, onClose, onCheckout, removeFromCart, updateQuantity, 
 
 // Checkout Modal Component  
 const CheckoutModal = ({ cart, onClose, onOrderSubmit }) => {
+  const theme = useTheme(); // Add theme detection
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
@@ -890,7 +921,7 @@ const CheckoutModal = ({ cart, onClose, onOrderSubmit }) => {
           React.createElement('button', {
             type: 'submit',
             disabled: isSubmitting,
-            className: 'flex-1 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 disabled:opacity-50 text-white py-4 rounded-xl font-semibold transition-all duration-300 hover-glow'
+            className: 'flex-1 bg-teal-600 hover:from-green-500 hover:to-teal-500 disabled:opacity-50 text-white py-4 rounded-xl font-semibold transition-all duration-300 hover-glow'
           },
             isSubmitting ? React.createElement('div', { className: 'flex items-center justify-center' },
               React.createElement('i', { className: 'fas fa-spinner fa-spin mr-2' }),
@@ -908,6 +939,8 @@ const CheckoutModal = ({ cart, onClose, onOrderSubmit }) => {
 
 // Order Confirmation Modal Component
 const OrderConfirmationModal = ({ onClose }) => {
+  const theme = useTheme(); // Add theme detection
+  
   return React.createElement('div', {
     className: 'fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4',
     onClick: (e) => e.target === e.currentTarget && onClose()
@@ -923,7 +956,7 @@ const OrderConfirmationModal = ({ onClose }) => {
       ),
       React.createElement('button', {
         onClick: onClose,
-        className: 'bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover-glow'
+        className: 'bg-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover-glow'
       }, 'Чудово!')
     )
   );
@@ -931,6 +964,8 @@ const OrderConfirmationModal = ({ onClose }) => {
 
 // 404 Not Found Page Component
 const NotFoundPage = ({ onHome }) => {
+  const theme = useTheme(); // Add theme detection
+  
   return React.createElement('div', { className: 'fixed inset-0 bg-dark-900 flex items-center justify-center z-50' },
     React.createElement('div', { className: 'text-center max-w-2xl mx-auto px-4' },
       React.createElement('div', { className: 'text-8xl font-game text-primary-400 mb-8 animate-pulse' }, '404'),
@@ -942,7 +977,7 @@ const NotFoundPage = ({ onHome }) => {
         React.createElement('div', { className: 'text-6xl mb-6 animate-float' }, '🎮'),
         React.createElement('button', {
           onClick: onHome,
-          className: 'bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
+          className: 'bg-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover-glow'
         },
           React.createElement('i', { className: 'fas fa-home mr-2' }),
           'Повернутися на головну'
@@ -956,6 +991,7 @@ const NotFoundPage = ({ onHome }) => {
 const ItemPage = ({ item, onBack, addToCart }) => {
   const converter = new showdown.Converter();
   const [selectedImage, setSelectedImage] = useState(item.image);
+  const theme = useTheme(); // Add theme detection
 
   const handleAddToCart = () => {
     addToCart(item);
@@ -984,20 +1020,20 @@ const ItemPage = ({ item, onBack, addToCart }) => {
       React.createElement('div', { className: 'grid grid-cols-1 lg:grid-cols-2 gap-12' },
         // Image section
         React.createElement('div', null,
-          React.createElement('div', { className: 'relative overflow-hidden rounded-2xl bg-gradient-to-br from-dark-800 to-dark-700 mb-6' },
+          React.createElement('div', { className: 'relative overflow-hidden rounded-2xl bg-dark-700 mb-6' },
             React.createElement('img', {
               src: selectedImage,
               alt: item.title,
               className: 'w-full h-96 lg:h-[500px] object-cover'
             }),
             item.discount && React.createElement('div', {
-              className: 'absolute top-6 left-6 bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-2 rounded-full font-semibold animate-pulse'
+              className: 'absolute top-6 left-6 bg-pink-500 text-white px-4 py-2 rounded-full font-semibold animate-pulse'
             },
               React.createElement('i', { className: 'fas fa-fire mr-2' }),
               `-${Math.round((1 - item.discountPrice / item.price) * 100)}%`
             ),
             item.preorder && React.createElement('div', {
-              className: 'absolute top-6 right-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-full font-semibold'
+              className: 'absolute top-6 right-6 bg-orange-500 text-white px-4 py-2 rounded-full font-semibold'
             },
               React.createElement('i', { className: 'fas fa-clock mr-2' }),
               'Передзамовлення'
@@ -1048,7 +1084,7 @@ const ItemPage = ({ item, onBack, addToCart }) => {
           
           React.createElement('button', {
             onClick: handleAddToCart,
-            className: 'add-to-cart-page w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white py-6 px-8 rounded-xl font-semibold text-xl transition-all duration-300 hover-glow'
+            className: 'add-to-cart-page w-full bg-teal-600 hover:from-green-500 hover:to-teal-500 text-white py-6 px-8 rounded-xl font-semibold text-xl transition-all duration-300 hover-glow'
           },
             React.createElement('i', { className: 'fas fa-cart-plus mr-3' }),
             'Додати до кошика'
