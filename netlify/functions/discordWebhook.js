@@ -31,9 +31,10 @@ exports.handler = async (event) => {
       const orderData = JSON.parse(event.body);
       
       // Format the order for Discord
-      const cartItems = orderData.cart.map(item => 
-        `• ${item.title} x ${item.quantity} - ${(item.price * item.quantity).toFixed(2)} грн`
-      ).join('\n');
+      const cartItems = orderData.cart.map(item => {
+        const price = item.discount ? item.discountPrice : item.price;
+        return `• ${item.title} x ${item.quantity} - ${(price * item.quantity).toFixed(2)} грн`;
+      }).join('\n');
 
       const discordMessage = {
         embeds: [{
