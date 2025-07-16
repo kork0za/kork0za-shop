@@ -91,11 +91,11 @@ const App = () => {
             </div>
             
             <div class="flex space-x-2">
-              <button class="view-item-btn bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover-glow" data-item-id="${item.id}">
+              <button class="view-item-btn bg-primary-600 hover:bg-accent-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover-glow" data-item-id="${item.id}">
                 <i class="fas fa-eye mr-1"></i>
                 <span class="hidden sm:inline">Деталі</span>
               </button>
-              <button class="add-to-cart-btn bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-500 hover:to-teal-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover-glow" data-item-id="${item.id}">
+              <button class="add-to-cart-btn bg-green-600 hover:bg-teal-500 text-white px-4 py-2 rounded-lg transition-all duration-300 hover-glow" data-item-id="${item.id}">
                 <i class="fas fa-cart-plus mr-1"></i>
                 <span class="hidden sm:inline">Купити</span>
               </button>
