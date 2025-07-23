@@ -1,0 +1,23 @@
+{
+  "name": "kork0za-shop",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.0",
+    "react-icons": "^4.7.1",
+    "showdown": "^2.1.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0",
+    "netlify-plugin-inline-functions-env": "^1.0.9",
+    "node-fetch": "^2.6.7"
+  },
+  "scripts": {
+    "start": "node dev-server.js",
+    "build": "echo 'Build complete - static files ready'",
+    "dev": "node dev-server.js",
+    "serve": "serve . -l 3000"
+  }
+}

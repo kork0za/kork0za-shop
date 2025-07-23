@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="uk" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Сторінка не знайдена | Kork0za Merch</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.imgur.com/vBDgh5k.png" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                        },
+                        accent: {
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                        },
+                        dark: {
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        'game': ['"Press Start 2P"', 'cursive'],
+                        'modern': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'none',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            'from': { 'box-shadow': 'none' },
+                            'to': { 'box-shadow': 'none' },
+                        }
+                    },
+                    backgroundImage: {
+                        'gaming-gradient': 'none',
+                        'neon-gradient': 'none',
+                        'cyber-grid': "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        .bg-gaming-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .text-shadow-neon {
+            text-shadow: none;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-white font-modern overflow-x-hidden min-h-screen flex items-center justify-center">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 bg-gaming-pattern animate-pulse-slow opacity-30 pointer-events-none"></div>
+    <div class="fixed inset-0 bg-cyber-grid opacity-20 pointer-events-none"></div>
+    
+    <!-- Floating Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-20 left-10 w-20 h-20 bg-primary-500/20 rounded-full animate-float"></div>
+        <div class="absolute top-40 right-20 w-16 h-16 bg-accent-500/20 rounded-full animate-float" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-20 left-20 w-24 h-24 bg-yellow-500/20 rounded-full animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-40 right-10 w-12 h-12 bg-green-500/20 rounded-full animate-float" style="animation-delay: 3s;"></div>
+    </div>
+    
+    <!-- 404 Content -->
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+        <!-- Error Code -->
+        <div class="mb-8">
+            <h1 class="font-game text-6xl sm:text-8xl md:text-9xl text-primary-400">
+                404
+            </h1>
+        </div>
+        
+        <!-- Animated Character -->
+        <div class="mb-8 animate-float">
+            <div class="text-8xl sm:text-9xl mb-4">🎮</div>
+        </div>
+        
+        <!-- Error Message -->
+        <div class="glass-effect rounded-2xl p-8 sm:p-12 border border-primary-500/30 mb-8">
+            <h2 class="text-2xl sm:text-4xl font-bold text-white mb-6">
+                Game Over! Сторінка не знайдена
+            </h2>
+            <p class="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                На жаль, сторінка яку ви шукаєте не існує або була переміщена. 
+                Можливо, вона вирушила у цифрову пригоду без нас! 🚀
+            </p>
+            
+            <!-- Error Details -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                <div class="bg-red-500/20 border border-red-500/30 rounded-lg p-4">
+                    <i class="fas fa-exclamation-triangle text-red-400 text-2xl mb-2"></i>
+                    <div class="text-sm text-red-300">Помилка 404</div>
+                </div>
+                <div class="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-4">
+                    <i class="fas fa-search text-yellow-400 text-2xl mb-2"></i>
+                    <div class="text-sm text-yellow-300">Сторінка не знайдена</div>
+                </div>
+                <div class="bg-blue-500/20 border border-blue-500/30 rounded-lg p-4">
+                    <i class="fas fa-home text-blue-400 text-2xl mb-2"></i>
+                    <div class="text-sm text-blue-300">Перейти на головну</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            <a href="index.html" class="group bg-primary-600 hover:bg-primary-500 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 w-full sm:w-auto">
+                <i class="fas fa-home mr-2"></i>
+                Повернутися на головну
+            </a>
+            <a href="index.html#shop" class="group glass-effect border border-primary-500/50 hover:border-primary-400 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-primary-500/20 w-full sm:w-auto">
+                <i class="fas fa-store mr-2"></i>
+                Переглянути товари
+            </a>
+        </div>
+        
+        <!-- Quick Navigation -->
+        <div class="glass-effect rounded-xl p-6 border border-primary-500/20">
+            <h3 class="text-lg font-semibold text-white mb-4">Популярні розділи:</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <a href="index.html#shop" class="bg-primary-500/20 hover:bg-primary-500/30 border border-primary-500/30 rounded-lg p-3 text-center transition-all duration-200 hover:scale-105">
+                    <i class="fas fa-tshirt text-primary-400 mb-2 block text-xl"></i>
+                    <span class="text-sm text-white">Стікери</span>
+                </a>
+                <a href="index.html#shop" class="bg-accent-500/20 hover:bg-accent-500/30 border border-accent-500/30 rounded-lg p-3 text-center transition-all duration-200 hover:scale-105">
+                    <i class="fas fa-badge text-accent-400 mb-2 block text-xl"></i>
+                    <span class="text-sm text-white">Піни</span>
+                </a>
+                <a href="index.html#delivery" class="bg-green-500/20 hover:bg-green-500/30 border border-green-500/30 rounded-lg p-3 text-center transition-all duration-200 hover:scale-105">
+                    <i class="fas fa-shipping-fast text-green-400 mb-2 block text-xl"></i>
+                    <span class="text-sm text-white">Доставка</span>
+                </a>
+                <a href="index.html#contact" class="bg-yellow-500/20 hover:bg-yellow-500/30 border border-yellow-500/30 rounded-lg p-3 text-center transition-all duration-200 hover:scale-105">
+                    <i class="fas fa-envelope text-yellow-400 mb-2 block text-xl"></i>
+                    <span class="text-sm text-white">Контакти</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Fun Interactive Elements -->
+    <div class="fixed bottom-8 right-8 z-20">
+        <div class="group cursor-pointer">
+            <div class="bg-primary-600 w-16 h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                <i class="fas fa-gamepad text-white text-2xl"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript for Interactive Elements -->
+    <script>
+        // Add some fun interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Konami Code Easter Egg
+            let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+            let userInput = [];
+            
+            document.addEventListener('keydown', function(e) {
+                userInput.push(e.code);
+                if (userInput.length > konamiCode.length) {
+                    userInput.shift();
+                }
+                
+                if (JSON.stringify(userInput) === JSON.stringify(konamiCode)) {
+                    // Easter egg activated!
+                    document.body.style.animation = 'rainbow 1s infinite';
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                        alert('🎉 Konami Code activated! You found the secret! 🎮');
+                    }, 2000);
+                }
+            });
+            
+            // Add rainbow animation for easter egg
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes rainbow {
+                    0% { filter: hue-rotate(0deg); }
+                    100% { filter: hue-rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Floating gamepad interaction
+            const gamepad = document.querySelector('.fixed.bottom-8.right-8 .group');
+            if (gamepad) {
+                gamepad.addEventListener('click', function() {
+                    // Simple click interaction without spinning animation
+                    console.log('Gamepad clicked!');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1282 @@
+/* Tailwind CSS Custom Styles for Kork0za Shop */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Press+Start+2P&display=swap');
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0f172a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Gaming Pattern Background */
+.bg-gaming-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+}
+
+/* Cyber Grid Pattern */
+.bg-cyber-grid {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Glass Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Hover Effect - Flat Design */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Modal Theme Support */
+[data-theme="light"] .glass-effect {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .bg-dark-700,
+[data-theme="light"] .bg-dark-800,
+[data-theme="light"] .bg-dark-800\/30,
+[data-theme="light"] .bg-dark-800\/50 {
+  background-color: #ffffff !important;
+}
+
+/* Modal overlay for light theme */
+[data-theme="light"] .fixed.bg-black\/80 {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Text colors in light theme modals */
+[data-theme="light"] .text-white {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .text-gray-300 {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .text-gray-400 {
+  color: #64748b !important;
+}
+
+/* Text Shadow - Flat Design */
+.text-shadow-neon {
+  text-shadow: none;
+}
+
+/* Border - Flat Design */
+.border-neon {
+  border: 2px solid #38bdf8;
+  box-shadow: none;
+}
+
+/* Pixel Corners */
+.pixel-corners {
+  clip-path: polygon(
+    0px 8px, 8px 0px, 
+    calc(100% - 8px) 0px, 100% 8px, 
+    100% calc(100% - 8px), calc(100% - 8px) 100%, 
+    8px 100%, 0px calc(100% - 8px)
+  );
+}
+
+/* Background - Flat Design */
+.bg-gradient-animated {
+  background: #667eea;
+  background-size: auto;
+  animation: none;
+}
+
+/* Scrollbar Hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom Scrollbar - Flat Design */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #38bdf8;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0ea5e9;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Remove glow animations for flat design */
+@keyframes glow {
+  from { box-shadow: none; }
+  to { box-shadow: none; }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Animation Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Disable glow animation class for flat design */
+.animate-glow {
+  animation: none;
+}
+
+.animate-gradient {
+  animation: gradient 8s ease infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s infinite;
+}
+
+/* Line Clamp Utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Navigation Enhancements - Flat Design */
+.nav-link {
+  position: relative;
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #38bdf8;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover:after {
+  width: 100%;
+}
+
+/* Button Hover Effects - Flat Design */
+.btn-primary {
+  background: #0284c7;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:before {
+  display: none;
+}
+
+.btn-primary:hover:before {
+  display: none;
+}
+
+/* Loading Animation */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(56, 189, 248, 0.3);
+  border-top: 4px solid #38bdf8;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Card Hover Effects - Flat Design */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Image Effects */
+.image-hover-zoom {
+  transition: transform 0.3s ease;
+}
+
+.image-hover-zoom:hover {
+  transform: scale(1.1);
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: relative;
+}
+
+.tooltip:before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.tooltip:after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.tooltip:hover:before,
+.tooltip:hover:after {
+  opacity: 1;
+  visibility: visible;
+  bottom: calc(100% + 5px);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-full {
+    width: 100% !important;
+  }
+  
+  .mobile-text-sm {
+    font-size: 0.875rem !important;
+  }
+  
+  .mobile-p-4 {
+    padding: 1rem !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .glass-effect {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ffffff;
+  }
+  
+  .text-gray-300 {
+    color: #ffffff !important;
+  }
+  
+  .text-gray-400 {
+    color: #e5e5e5 !important;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-glow,
+  .animate-gradient,
+  .animate-pulse-slow,
+  .animate-bounce-slow {
+    animation: none;
+  }
+  
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Dark Mode Optimizations */
+@media (prefers-color-scheme: dark) {
+  /* Already optimized for dark mode */
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .glass-effect {
+    background: white !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* Light theme modal form enhancements */
+[data-theme="light"] .glass-effect {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Form container styling for better visual hierarchy */
+[data-theme="light"] .bg-dark-800\/30 {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  border: 2px solid #e2e8f0 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+}
+
+/* Enhanced input field styling */
+[data-theme="light"] input:not([type="submit"]):not([type="button"]),
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  background: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  color: #1e293b !important;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] input:focus,
+[data-theme="light"] textarea:focus,
+[data-theme="light"] select:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  outline: none;
+  background: #ffffff !important;
+}
+
+/* Placeholder text styling */
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #64748b !important;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Label styling for better readability */
+[data-theme="light"] label {
+  color: #374151 !important;
+  font-weight: 600;
+  text-shadow: none;
+}
+
+/* Warning and info boxes */
+[data-theme="light"] .bg-yellow-500\/20 {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%) !important;
+  border: 2px solid #f59e0b !important;
+  box-shadow: 0 2px 4px rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="light"] .text-yellow-300 {
+  color: #92400e !important;
+  font-weight: 600;
+  text-shadow: none;
+}
+
+/* Success boxes for confirmation modal */
+[data-theme="light"] .bg-green-500\/20 {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
+  border: 2px solid #16a34a !important;
+  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.1);
+}
+
+[data-theme="light"] .text-green-300 {
+  color: #15803d !important;
+  font-weight: 600;
+}
+
+/* Dropdown suggestions styling */
+[data-theme="light"] .bg-dark-700 {
+  background: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .hover\:bg-primary-500\/20:hover {
+  background: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+/* Modal header styling */
+[data-theme="light"] .glass-effect h2 {
+  color: #0f172a !important;
+  font-weight: 800;
+  text-shadow: none;
+}
+
+[data-theme="light"] .glass-effect h3 {
+  color: #1e293b !important;
+  font-weight: 700;
+  text-shadow: none;
+}
+
+/* Order summary styling */
+[data-theme="light"] .text-white {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+[data-theme="light"] .text-gray-300 {
+  color: #e2e8f0 !important;
+  font-weight: 500;
+}
+
+/* Price displays with enhanced contrast */
+[data-theme="light"] .text-primary-400 {
+  color: #1d4ed8 !important;
+  font-weight: 800;
+  text-shadow: none;
+}
+
+[data-theme="light"] .text-green-400 {
+  color: #059669 !important;
+  font-weight: 700;
+}
+
+/* Button styling improvements */
+[data-theme="light"] button {
+  font-weight: 600;
+  text-shadow: none;
+}
+
+[data-theme="light"] .bg-gray-600 {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%) !important;
+  border: none;
+  color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .bg-gray-600:hover {
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .bg-teal-600 {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%) !important;
+  border: none;
+  color: #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .bg-teal-600:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Close button enhanced */
+[data-theme="light"] .text-gray-400 {
+  color: #6b7280 !important;
+  transition: color 0.2s ease;
+}
+
+[data-theme="light"] .text-gray-400:hover {
+  color: #374151 !important;
+}
+
+/* Modal border and divider improvements */
+[data-theme="light"] .border-primary-500\/30 {
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .border-primary-500\/20 {
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .border-t {
+  border-color: #e2e8f0 !important;
+}
+
+/* Icon colors in modals */
+[data-theme="light"] .fas,
+[data-theme="light"] .fab {
+  color: #1d4ed8 !important;
+}
+
+/* Specific icon color overrides for colored backgrounds */
+[data-theme="light"] .bg-teal-600 .fas,
+[data-theme="light"] .bg-gray-600 .fas,
+[data-theme="light"] .text-primary-400 .fas {
+  color: #ffffff !important;
+}
+
+/* Enhanced text contrast for better readability */
+[data-theme="light"] .text-sm {
+  color: #475569 !important;
+  font-weight: 500;
+}
+
+[data-theme="light"] .font-semibold {
+  color: #1e293b !important;
+  font-weight: 700;
+}
+
+[data-theme="light"] .font-bold {
+  color: #0f172a !important;
+  font-weight: 800;
+}
+
+/* Disabled state improvements */
+[data-theme="light"] button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Loading state styling */
+[data-theme="light"] .fa-spinner {
+  color: #ffffff !important;
+}
+
+/* Button and icon color fixes for light theme */
+
+/* Product card buttons - ensure white text and icons */
+[data-theme="light"] .view-item-btn,
+[data-theme="light"] .add-to-cart-btn {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .view-item-btn i,
+[data-theme="light"] .add-to-cart-btn i,
+[data-theme="light"] .view-item-btn span,
+[data-theme="light"] .add-to-cart-btn span {
+  color: #ffffff !important;
+}
+
+/* Cart navigation button */
+[data-theme="light"] #cart-btn {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] #cart-btn i {
+  color: #ffffff !important;
+}
+
+/* Hero section button styling */
+[data-theme="light"] .hero-button {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .hero-button i {
+  color: #ffffff !important;
+}
+
+/* Gaming icon should be blue */
+[data-theme="light"] .gaming-icon,
+[data-theme="light"] .fa-gamepad {
+  color: #3b82f6 !important;
+}
+
+/* Badge styling - Pre-order and discount */
+[data-theme="light"] .bg-orange-500,
+[data-theme="light"] .bg-yellow-500,
+[data-theme="light"] .bg-pink-500 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 2px solid #e2e8f0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .bg-orange-500 i,
+[data-theme="light"] .bg-yellow-500 i,
+[data-theme="light"] .bg-pink-500 i {
+  color: #0f172a !important;
+}
+
+/* Specific fix for pre-order badge text and icons */
+[data-theme="light"] .bg-yellow-500 *,
+[data-theme="light"] .bg-orange-500 *,
+[data-theme="light"] .bg-pink-500 * {
+  color: #0f172a !important;
+}
+
+/* Extra specific targeting for FontAwesome icons in badges */
+[data-theme="light"] .bg-yellow-500 .fa-clock,
+[data-theme="light"] .bg-orange-500 .fa-clock,
+[data-theme="light"] .bg-orange-500 .fa-fire,
+[data-theme="light"] .bg-pink-500 .fa-fire,
+[data-theme="light"] .bg-yellow-500 .fas,
+[data-theme="light"] .bg-orange-500 .fas,
+[data-theme="light"] .bg-pink-500 .fas {
+  color: #0f172a !important;
+}
+
+/* Primary action buttons */
+[data-theme="light"] .checkout-button,
+[data-theme="light"] .continue-shopping-button,
+[data-theme="light"] .bg-accent-600 {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .checkout-button i,
+[data-theme="light"] .continue-shopping-button i,
+[data-theme="light"] .bg-accent-600 i {
+  color: #ffffff !important;
+}
+
+/* Modal add to cart buttons */
+[data-theme="light"] .add-to-cart-modal,
+[data-theme="light"] .add-to-cart-page {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .add-to-cart-modal i,
+[data-theme="light"] .add-to-cart-page i {
+  color: #ffffff !important;
+}
+
+/* Form submit buttons */
+[data-theme="light"] button[type="submit"] {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] button[type="submit"] i {
+  color: #ffffff !important;
+}
+
+/* Navigation elements */
+[data-theme="light"] nav button,
+[data-theme="light"] nav a {
+  color: inherit;
+}
+
+[data-theme="light"] nav .bg-primary-600,
+[data-theme="light"] nav .bg-primary-600 i {
+  color: #ffffff !important;
+}
+
+/* Ensure all colored buttons maintain white text */
+[data-theme="light"] .bg-green-600,
+[data-theme="light"] .bg-green-500,
+[data-theme="light"] .bg-blue-600,
+[data-theme="light"] .bg-blue-500 {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .bg-green-600 i,
+[data-theme="light"] .bg-green-500 i,
+[data-theme="light"] .bg-blue-600 i,
+[data-theme="light"] .bg-blue-500 i {
+  color: #ffffff !important;
+}
+
+/* Override any conflicting icon styles */
+[data-theme="light"] button .fas,
+[data-theme="light"] button .fab,
+[data-theme="light"] button i {
+  color: inherit !important;
+}
+
+/* Specific overrides for colored button backgrounds */
+[data-theme="light"] .bg-teal-600 .fas,
+[data-theme="light"] .bg-green-600 .fas,
+[data-theme="light"] .bg-primary-600 .fas,
+[data-theme="light"] .bg-accent-600 .fas {
+  color: #ffffff !important;
+}
+
+/* Badge icons should be dark on white background - highest priority override */
+[data-theme="light"] .bg-orange-500 .fas,
+[data-theme="light"] .bg-yellow-500 .fas,
+[data-theme="light"] .bg-pink-500 .fas {
+  color: #0f172a !important;
+}
+
+/* Gaming icon specific styling */
+[data-theme="light"] .gaming-icon {
+  color: #3b82f6 !important;
+}
+
+/* Override for gaming icon in the hero section */
+[data-theme="light"] .fas.fa-gamepad.gaming-icon {
+  color: #3b82f6 !important;
+}
+
+/* Cart count badge - enhanced contrast for light theme */
+[data-theme="light"] #cart-count {
+  background: #dc2626 !important; /* Darker red for better contrast */
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(220, 38, 38, 0.1) !important;
+  font-weight: 700 !important;
+}
+
+/* Fix checkout form button contrast issues */
+[data-theme="light"] .bg-gray-600,
+[data-theme="light"] .bg-gray-600:hover,
+[data-theme="light"] .bg-gray-500 {
+  background: #4b5563 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .bg-teal-600,
+[data-theme="light"] .bg-teal-600:hover,
+[data-theme="light"] .bg-green-500,
+[data-theme="light"] .bg-green-600 {
+  background: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+/* Ensure all form buttons have white text */
+[data-theme="light"] button {
+  color: #ffffff !important;
+}
+
+/* Specifically target checkout form buttons */
+[data-theme="light"] .checkout-button,
+[data-theme="light"] button[type="submit"],
+[data-theme="light"] .continue-shopping-button {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* Fix basket/cart modal buttons */
+[data-theme="light"] .checkout-button i,
+[data-theme="light"] button[type="submit"] i {
+  color: #ffffff !important;
+}
+
+/* Override any gray text on buttons */
+[data-theme="light"] button.bg-gray-600,
+[data-theme="light"] button.bg-gray-500,
+[data-theme="light"] .bg-gray-600,
+[data-theme="light"] .bg-gray-500 {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] button.bg-teal-600,
+[data-theme="light"] button.bg-green-600,
+[data-theme="light"] .bg-teal-600,
+[data-theme="light"] .bg-green-600 {
+  color: #ffffff !important;
+}
+
+/* Ensure button text inheritance */
+[data-theme="light"] button span {
+  color: inherit !important;
+}
+
+/* Fix specific button text issues */
+[data-theme="light"] .flex-1.bg-gray-600,
+[data-theme="light"] .flex-1.bg-teal-600 {
+  color: #ffffff !important;
+}
+
+/* Cancel and submit button text fixes */
+[data-theme="light"] .flex-1.bg-gray-600:hover,
+[data-theme="light"] .flex-1.bg-teal-600:hover {
+  color: #ffffff !important;
+}
+
+/* COMPREHENSIVE BUTTON COLOR FIXES FOR LIGHT THEME - HIGH SPECIFICITY */
+
+/* Force white text on all colored buttons - highest priority */
+[data-theme="light"] button.bg-gray-600,
+[data-theme="light"] button.bg-gray-500,
+[data-theme="light"] button.bg-teal-600,
+[data-theme="light"] button.bg-green-600,
+[data-theme="light"] button.bg-green-500,
+[data-theme="light"] .bg-gray-600,
+[data-theme="light"] .bg-gray-500,
+[data-theme="light"] .bg-teal-600,
+[data-theme="light"] .bg-green-600,
+[data-theme="light"] .bg-green-500 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+/* Specific targeting for flex buttons in checkout form */
+[data-theme="light"] .flex-1.bg-gray-600,
+[data-theme="light"] .flex-1.bg-teal-600,
+[data-theme="light"] .flex-1.bg-gray-600:hover,
+[data-theme="light"] .flex-1.bg-teal-600:hover {
+  color: #ffffff !important;
+  background-color: inherit !important;
+}
+
+/* Force white text and icons on checkout buttons */
+[data-theme="light"] .checkout-button,
+[data-theme="light"] .checkout-button:hover,
+[data-theme="light"] button[class*="checkout"],
+[data-theme="light"] button[class*="checkout"]:hover {
+  color: #ffffff !important;
+  background-color: #0d9488 !important;
+}
+
+/* Fix all icons inside colored buttons */
+[data-theme="light"] button i,
+[data-theme="light"] .bg-gray-600 i,
+[data-theme="light"] .bg-gray-500 i,
+[data-theme="light"] .bg-teal-600 i,
+[data-theme="light"] .bg-green-600 i,
+[data-theme="light"] .bg-green-500 i,
+[data-theme="light"] .checkout-button i,
+[data-theme="light"] button[type="submit"] i,
+[data-theme="light"] .flex-1 i {
+  color: #ffffff !important;
+}
+
+/* Fix all spans inside colored buttons */
+[data-theme="light"] button span,
+[data-theme="light"] .bg-gray-600 span,
+[data-theme="light"] .bg-teal-600 span,
+[data-theme="light"] .checkout-button span,
+[data-theme="light"] .flex-1 span {
+  color: #ffffff !important;
+}
+
+/* Override Tailwind text color utilities with !important */
+[data-theme="light"] .bg-gray-600.text-white,
+[data-theme="light"] .bg-teal-600.text-white,
+[data-theme="light"] .checkout-button.text-white,
+[data-theme="light"] button.text-white {
+  color: #ffffff !important;
+}
+
+/* Ensure hover states maintain white text */
+[data-theme="light"] button:hover,
+[data-theme="light"] .bg-gray-600:hover,
+[data-theme="light"] .bg-teal-600:hover,
+[data-theme="light"] .checkout-button:hover {
+  color: #ffffff !important;
+}
+
+/* Target specific button content in cart modal */
+[data-theme="light"] .checkout-button *,
+[data-theme="light"] .flex-1.bg-gray-600 *,
+[data-theme="light"] .flex-1.bg-teal-600 *,
+[data-theme="light"] button[type="submit"] * {
+  color: #ffffff !important;
+}
+
+/* Override any conflicting Tailwind classes */
+[data-theme="light"] [class*="bg-gray-6"].text-gray-900,
+[data-theme="light"] [class*="bg-teal-6"].text-gray-900,
+[data-theme="light"] [class*="bg-green-6"].text-gray-900 {
+  color: #ffffff !important;
+}
+
+/* SPECIFIC FIX FOR "ОФОРМИТИ ЗАМОВЛЕННЯ" BUTTON TEXT */
+[data-theme="light"] button:contains("Оформити замовлення"),
+[data-theme="light"] button:contains("Скасувати") {
+  color: #ffffff !important;
+}
+
+/* Fix button content that contains Ukrainian text */
+[data-theme="light"] button[class*="bg-"]:not([class*="bg-white"]):not([class*="bg-transparent"]) {
+  color: #ffffff !important;
+}
+
+/* Final catch-all for any button with colored background */
+[data-theme="light"] button[style*="background"],
+[data-theme="light"] button[class*="bg-blue"],
+[data-theme="light"] button[class*="bg-red"],
+[data-theme="light"] button[class*="bg-yellow"],
+[data-theme="light"] button[class*="bg-purple"],
+[data-theme="light"] button[class*="bg-pink"],
+[data-theme="light"] button[class*="bg-indigo"] {
+  color: #ffffff !important;
+}
+
+/* Ensure text content inside React elements is white */
+[data-theme="light"] .checkout-button > *,
+[data-theme="light"] .bg-teal-600 > *,
+[data-theme="light"] .bg-gray-600 > *,
+[data-theme="light"] button[class*="bg-"] > * {
+  color: inherit !important;
+}
+
+/* ULTRA-SPECIFIC BUTTON TEXT FIXES FOR CHECKOUT FORM - MAXIMUM PRIORITY */
+
+/* Target the exact button structure from the checkout form */
+[data-theme="light"] .flex-1.bg-gray-600,
+[data-theme="light"] .flex-1.bg-gray-600:hover,
+[data-theme="light"] .flex-1.bg-gray-600:focus,
+[data-theme="light"] .flex-1.bg-gray-600:active,
+[data-theme="light"] button.flex-1.bg-gray-600,
+[data-theme="light"] button.flex-1.bg-gray-600:hover,
+[data-theme="light"] button.flex-1.bg-gray-600:focus,
+[data-theme="light"] button.flex-1.bg-gray-600:active {
+  color: #ffffff !important;
+  background-color: #4b5563 !important;
+}
+
+[data-theme="light"] .flex-1.bg-teal-600,
+[data-theme="light"] .flex-1.bg-teal-600:hover,
+[data-theme="light"] .flex-1.bg-teal-600:focus,
+[data-theme="light"] .flex-1.bg-teal-600:active,
+[data-theme="light"] button.flex-1.bg-teal-600,
+[data-theme="light"] button.flex-1.bg-teal-600:hover,
+[data-theme="light"] button.flex-1.bg-teal-600:focus,
+[data-theme="light"] button.flex-1.bg-teal-600:active {
+  color: #ffffff !important;
+  background-color: #0d9488 !important;
+}
+
+/* Force override of any Tailwind text utilities on these specific buttons */
+[data-theme="light"] button[class*="flex-1"][class*="bg-gray-6"],
+[data-theme="light"] button[class*="flex-1"][class*="bg-teal-6"] {
+  color: #ffffff !important;
+}
+
+/* Target buttons that contain the specific Ukrainian text */
+[data-theme="light"] button[type="button"]:contains("Скасувати"),
+[data-theme="light"] button[type="submit"]:contains("Оформити замовлення") {
+  color: #ffffff !important;
+}
+
+/* Maximum specificity override for checkout form buttons */
+[data-theme="light"] form button.flex-1.bg-gray-600,
+[data-theme="light"] form button.flex-1.bg-teal-600,
+[data-theme="light"] form .flex-1.bg-gray-600,
+[data-theme="light"] form .flex-1.bg-teal-600 {
+  color: #ffffff !important;
+}
+
+/* Override any possible text color classes on these buttons */
+[data-theme="light"] .flex-1.bg-gray-600.text-gray-900,
+[data-theme="light"] .flex-1.bg-teal-600.text-gray-900,
+[data-theme="light"] .flex-1.bg-gray-600.text-black,
+[data-theme="light"] .flex-1.bg-teal-600.text-black,
+[data-theme="light"] .flex-1.bg-gray-600[class*="text-"],
+[data-theme="light"] .flex-1.bg-teal-600[class*="text-"] {
+  color: #ffffff !important;
+}
+
+/* Ensure all child elements also have white text */
+[data-theme="light"] .flex-1.bg-gray-600 *,
+[data-theme="light"] .flex-1.bg-teal-600 *,
+[data-theme="light"] button.flex-1.bg-gray-600 *,
+[data-theme="light"] button.flex-1.bg-teal-600 * {
+  color: #ffffff !important;
+}
+
+/* Additional safety net for any text inside these buttons */
+[data-theme="light"] .flex-1[class*="bg-gray-6"] > *,
+[data-theme="light"] .flex-1[class*="bg-teal-6"] > *,
+[data-theme="light"] button.flex-1[class*="bg-gray-6"] > *,
+[data-theme="light"] button.flex-1[class*="bg-teal-6"] > * {
+  color: inherit !important;
+}
+
+/* Force styling for the exact button classes from the checkout form */
+[data-theme="light"] button[class="flex-1 bg-gray-600 hover:bg-gray-500 text-white py-4 rounded-xl font-semibold transition-all duration-300"],
+[data-theme="light"] button[class="flex-1 bg-teal-600 hover:from-green-500 hover:to-teal-500 disabled:opacity-50 text-white py-4 rounded-xl font-semibold transition-all duration-300 hover-glow"] {
+  color: #ffffff !important;
+}
+
+/* GLOBAL BUTTON TEXT CONTRAST ENFORCEMENT FOR LIGHT THEME */
+
+/* Force white text on ALL buttons with ANY colored background */
+[data-theme="light"] button:not([class*="bg-white"]):not([class*="bg-transparent"]):not([class*="bg-gray-1"]):not([class*="bg-gray-2"]):not([class*="bg-gray-3"]):not([class*="bg-slate-1"]):not([class*="bg-slate-2"]):not([class*="bg-slate-3"]) {
+  color: #ffffff !important;
+}
+
+/* Specifically target all variations of gray and teal buttons */
+[data-theme="light"] button[class*="bg-gray-4"],
+[data-theme="light"] button[class*="bg-gray-5"],
+[data-theme="light"] button[class*="bg-gray-6"],
+[data-theme="light"] button[class*="bg-gray-7"],
+[data-theme="light"] button[class*="bg-gray-8"],
+[data-theme="light"] button[class*="bg-gray-9"],
+[data-theme="light"] button[class*="bg-teal"],
+[data-theme="light"] button[class*="bg-green"],
+[data-theme="light"] button[class*="bg-blue"],
+[data-theme="light"] button[class*="bg-primary"],
+[data-theme="light"] button[class*="bg-accent"] {
+  color: #ffffff !important;
+}
+
+/* Override Tailwind's text color utilities with maximum specificity */
+[data-theme="light"] button[class*="bg-gray-"][class*="text-"],
+[data-theme="light"] button[class*="bg-teal-"][class*="text-"],
+[data-theme="light"] button[class*="bg-green-"][class*="text-"],
+[data-theme="light"] button[class*="bg-blue-"][class*="text-"],
+[data-theme="light"] button[class*="bg-primary-"][class*="text-"],
+[data-theme="light"] button[class*="bg-accent-"][class*="text-"] {
+  color: #ffffff !important;
+}
+
+/* Safety net: Any element with flex-1 and a background color should have white text */
+[data-theme="light"] .flex-1[class*="bg-"]:not([class*="bg-white"]):not([class*="bg-transparent"]) {
+  color: #ffffff !important;
+}
+
+/* Final override for checkout form structure */
+[data-theme="light"] .flex.space-x-4 > button {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .flex.space-x-4 > button:first-child {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .flex.space-x-4 > button:last-child {
+  border-radius: 20px!important;
+  background-color: #0d9488 !important;
+  color: #ffffff !important;
+}
+
+/* ICON CONTRAST FIXES FOR LIGHT THEME */
+
+/* Hero Features Highlights icons - darker backgrounds for better contrast (excluding badges) */
+[data-theme="light"] .glass-effect .bg-primary-500,
+[data-theme="light"] section .bg-primary-500,
+[data-theme="light"] .hero .bg-primary-500 {
+  background-color: #1e40af !important; /* Darker blue */
+}
+
+[data-theme="light"] .glass-effect .bg-accent-500,
+[data-theme="light"] section .bg-accent-500,
+[data-theme="light"] .hero .bg-accent-500 {
+  background-color: #7c3aed !important; /* Darker purple */
+}
+
+[data-theme="light"] .glass-effect .bg-yellow-500,
+[data-theme="light"] section .bg-yellow-500:not(.absolute),
+[data-theme="light"] .hero .bg-yellow-500 {
+  background-color: #d97706 !important; /* Darker orange */
+}
+
+[data-theme="light"] .glass-effect .bg-green-500,
+[data-theme="light"] section .bg-green-500,
+[data-theme="light"] .hero .bg-green-500 {
+  background-color: #059669 !important; /* Darker green */
+}
+
+/* Badge backgrounds remain white for proper contrast in light theme */
+[data-theme="light"] .absolute.bg-yellow-500,
+[data-theme="light"] .absolute.bg-orange-500,
+[data-theme="light"] .absolute.bg-pink-500 {
+  background-color: #ffffff !important; /* White background for badges */
+  border: 2px solid #e5e7eb !important; /* Light gray border */
+}
+
+/* Badge text and icons are dark for contrast on white background - HIGHEST PRIORITY */
+[data-theme="light"] .absolute.bg-yellow-500,
+[data-theme="light"] .absolute.bg-yellow-500 *,
+[data-theme="light"] .absolute.bg-yellow-500 .fas,
+[data-theme="light"] .absolute.bg-yellow-500 .fa-clock,
+[data-theme="light"] .absolute.bg-yellow-500 i,
+[data-theme="light"] .absolute.bg-orange-500,
+[data-theme="light"] .absolute.bg-orange-500 *,
+[data-theme="light"] .absolute.bg-orange-500 .fas,
+[data-theme="light"] .absolute.bg-orange-500 .fa-clock,
+[data-theme="light"] .absolute.bg-orange-500 i,
+[data-theme="light"] .absolute.bg-pink-500,
+[data-theme="light"] .absolute.bg-pink-500 *,
+[data-theme="light"] .absolute.bg-pink-500 .fas,
+[data-theme="light"] .absolute.bg-pink-500 .fa-fire,
+[data-theme="light"] .absolute.bg-pink-500 i {
+  color: #0f172a !important; /* Dark text and icons on white background */
+}
+
+/* Override any conflicting white color rules for badge icons */
+[data-theme="light"] .absolute.bg-yellow-500 .text-white,
+[data-theme="light"] .absolute.bg-orange-500 .text-white,
+[data-theme="light"] .absolute.bg-pink-500 .text-white {
+  color: #0f172a !important; /* Force dark color even if text-white class is present */
+}
+
+/* Ensure white icons remain visible on darker backgrounds */
+[data-theme="light"] .bg-primary-500 .fas,
+[data-theme="light"] .bg-primary-500 i,
+[data-theme="light"] .bg-accent-500 .fas,
+[data-theme="light"] .bg-accent-500 i,
+[data-theme="light"] .bg-yellow-500 .fas,
+[data-theme="light"] .bg-yellow-500 i,
+[data-theme="light"] .bg-green-500 .fas,
+[data-theme="light"] .bg-green-500 i {
+  color: #ffffff !important;
+}
+
+/* About section icons - specific targeting for better contrast */
+[data-theme="light"] .glass-effect .bg-primary-500 .fas,
+[data-theme="light"] .glass-effect .bg-accent-500 .fas,
+[data-theme="light"] .glass-effect .bg-yellow-500 .fas {
+  color: #ffffff !important;
+}
+
+/* Delivery and payment section icons */
+[data-theme="light"] .bg-primary-500 .fa-truck,
+[data-theme="light"] .bg-accent-500 .fa-credit-card,
+[data-theme="light"] .bg-yellow-500 .fa-shield-alt,
+[data-theme="light"] .bg-green-500 .fa-headset {
+  color: #ffffff !important;
+}
+
+/* Social media icons in header and footer */
+[data-theme="light"] .fab.fa-discord,
+[data-theme="light"] .fab.fa-instagram, 
+[data-theme="light"] .fab.fa-telegram {
+  color: #374151 !important; /* Dark gray for better contrast */
+}
+
+/* Navigation and footer social icons with backgrounds */
+[data-theme="light"] nav .bg-primary-500 .fab,
+[data-theme="light"] footer .bg-primary-500 .fab,
+[data-theme="light"] nav .bg-accent-500 .fab,
+[data-theme="light"] footer .bg-accent-500 .fab {
+  color: #ffffff !important;
+}
+
+/* Header navigation icons */
+[data-theme="light"] nav .fas,
+[data-theme="light"] nav .fab {
+  color: #374151 !important;
+}
+
+/* Footer icons */
+[data-theme="light"] footer .fas,
+[data-theme="light"] footer .fab {
+  color: #9ca3af !important;
+}
+
+/* Contact section icons with colored backgrounds - ensure white icons */
+[data-theme="light"] #contact .bg-blue-500 .fab,
+[data-theme="light"] #contact .bg-pink-500 .fab,
+[data-theme="light"] #contact .bg-cyan-500 .fab,
+[data-theme="light"] section#contact .fas,
+[data-theme="light"] section#contact .fab {
+  color: #ffffff !important;
+}
+
+/* Contact section - ЗВ'ЯЗОК З НАМИ - all icons should be white */
+[data-theme="light"] #contact .glass-effect .fas,
+[data-theme="light"] #contact .glass-effect .fab,
+[data-theme="light"] #contact .bg-primary-500 .fas,
+[data-theme="light"] #contact .bg-accent-500 .fas,
+[data-theme="light"] #contact .bg-yellow-500 .fas,
+[data-theme="light"] #contact .bg-green-500 .fas,
+[data-theme="light"] #contact .bg-blue-500 .fab,
+[data-theme="light"] #contact .bg-pink-500 .fab,
+[data-theme="light"] #contact .bg-cyan-500 .fab {
+  color: #ffffff !important;
+}
+
+/* Ensure Discord, Instagram, Telegram icons are visible (excluding badges) */
+[data-theme="light"] section .bg-blue-500,
+[data-theme="light"] #contact .bg-blue-500,
+[data-theme="light"] footer .bg-blue-500 {
+  background-color: #1d4ed8 !important; /* Darker blue for Discord */
+}
+
+[data-theme="light"] section .bg-pink-500:not(.absolute),
+[data-theme="light"] #contact .bg-pink-500,
+[data-theme="light"] footer .bg-pink-500 {
+  background-color: #be185d !important; /* Darker pink for Instagram */
+}
+
+[data-theme="light"] section .bg-cyan-500,
+[data-theme="light"] #contact .bg-cyan-500,
+[data-theme="light"] footer .bg-cyan-500 {
+  background-color: #0891b2 !important; /* Darker cyan for Telegram */
+}
+
+/* Award, palette, and heart icons in about section */
+[data-theme="light"] .fa-award,
+[data-theme="light"] .fa-palette,
+[data-theme="light"] .fa-heart {
+  color: #ffffff !important;
+}
+
+/* Hero section floating icons - make them more visible */
+[data-theme="light"] .bg-primary-500\/20,
+[data-theme="light"] .bg-accent-500\/20,
+[data-theme="light"] .bg-yellow-500\/20,
+[data-theme="light"] .bg-green-500\/20 {
+  background-color: rgba(59, 130, 246, 0.3) !important; /* More visible floating elements */
+}
