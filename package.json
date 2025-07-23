@@ -7,11 +7,11 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-router-dom": "^6.8.0",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "netlify-plugin-inline-functions-env": "^1.0.9",
-    "node-fetch": "^2.7.0",
     "serve": "^14.2.0"
   },
   "scripts": {
